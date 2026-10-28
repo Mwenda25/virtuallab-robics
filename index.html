@@ -387,7 +387,7 @@ body>*:not(#tp){display:none!important}
 </style></head>
 <body><div class="w">
 <div class="hd"><div><h1>KitBench</h1><p class="s" id="hsub">Build, program and test your own robot.</p></div><button id="lvchip" class="lvchip" onclick="mpLevelOpen()" aria-label="Change level"></button></div>
-<div class="tabs"><button id="t9" onclick="tab(9)"><i>&#x1F3AF;</i><b>Missions</b></button><button id="t1" onclick="tab(1)"><i>&#x1F9E9;</i><b>Build</b></button><button id="t6" onclick="tab(6)"><i>&#x1F3A8;</i><b>Design</b></button><button id="t2" onclick="tab(2)"><i>&#x1F50C;</i><b>Wire</b></button><button id="t5" onclick="tab(5)"><i>&#x1F9F1;</i><b>Program</b></button><button id="t3" onclick="tab(window.simLast||3)"><i>&#x1F579;</i><b>Simulator</b></button><button id="t7" onclick="tab(7)"><i>&#x1F4D8;</i><b>Projects</b></button></div>
+<div class="tabs"><button id="t9" onclick="tab(9)"><i>&#x1F3AF;</i><b>Missions</b></button><button id="t1" onclick="tab(1)"><i>&#x1F9E9;</i><b>Build</b></button><button id="t6" onclick="tab(6)"><i>&#x1F3A8;</i><b>Design</b></button><button id="t2" onclick="tab(2)"><i>&#x1F50C;</i><b>Wire</b></button><button id="t5" onclick="tab(5)"><i>&#x1F9F1;</i><b>Program</b></button><button id="t3" onclick="tab(window.simLast||3)"><i>&#x1F579;</i><b>Simulator</b></button><button id="t7" onclick="tab(7)"><i>&#x1F4D8;</i><b>Projects</b></button><button id="tx" onclick="mpExit()"><i>&#x1F6AA;</i><b>Exit</b></button></div>
 <div id="simbar" class="simbar hid" role="tablist" aria-label="Simulator view"><span class="mu">View</span><button id="sm3" onclick="tab(3)">2D practice track</button><button id="sm4" onclick="tab(4)">3D mission mat</button><button id="sm8" onclick="tab(8)">Project lab (3D)</button></div>
 
 <div id="p1" class="g">
@@ -1863,6 +1863,16 @@ window.tpPrint=function(){var land=CUR=='cert'||CUR=='sheet',s=document.createEl
 var done=function(){var o=$q('tpPage');if(o)o.remove();window.removeEventListener('afterprint',done)};window.addEventListener('afterprint',done);window.print()};
 })();
 </script>
+<script>
+(function(){
+function $q(i){return document.getElementById(i)}
+window.mpExit=function(){try{if(typeof stop=='function')stop()}catch(e){}try{if(window.kb3d&&kb3d.stopProgram)kb3d.stopProgram()}catch(e){}
+var nm='';try{nm=(JSON.parse(localStorage.getItem('kitbench.mp.v1')||'{}').name||'')}catch(e){}
+var o=$q('mplv');o.innerHTML='<div class="mpbox mpc2"><div class="mpbolt">'+(window.KBM?KBM.bolt('happy',96):'')+'</div><h2>Bye'+(nm?', '+esc(nm):'')+'!</h2><p>Your stars and blocks are saved on this device. See you next time!</p><div class="mpact"><button class="pri" onclick="mpClose(\'mplv\')">Stay and keep playing</button><button onclick="mpLeave()">Close KitBench</button></div><p class="mu" id="mpbyem"></p></div>';o.hidden=false};
+window.mpLeave=function(){var m=$q('mpbyem');try{window.close()}catch(e){}
+setTimeout(function(){if(m)m.textContent='Your browser keeps this window open. Please close this tab, or swipe the app away. Your work is saved.'},400)};
+})();
+</script>
 <script type="importmap">{"imports":{"three":"./offline/libs/three/three.module.js","three/addons/":"./offline/libs/three/addons/"}}</script>
 <script type="module">
 
@@ -3003,6 +3013,7 @@ if(ios&&!standalone&&!st('x')&&'serviceWorker' in navigator)show('To install on 
 })();
 </script>
 </body></html>
+
 
 
 
