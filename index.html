@@ -332,6 +332,58 @@ h1{font-size:22px}
 .mpbanner{padding:10px}
 }
 @media(pointer:coarse){.mpbtn button,.pmodes button,.simbar button,.mpfoot button{min-height:44px}}
+.tp{position:fixed;inset:0;z-index:120;background:#eef0f3;color:#1b1f24;overflow:auto;font-size:15px}
+.tp[hidden]{display:none}
+.tp *{box-sizing:border-box}
+.tpbar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 14px;background:#fff;border-bottom:1px solid #cfd5dc}
+.tpbar button{padding:8px 14px;border-radius:10px;border:1px solid #b9c1ca;background:#fff;color:#1b1f24;font:inherit;cursor:pointer}
+.tpbar button.on{background:#e3f0fb;border-color:#185FA5;color:#185FA5;font-weight:600}
+.tpbar button.pri{background:#185FA5;border-color:#185FA5;color:#fff}
+.tpnav{display:flex;gap:6px;flex-wrap:wrap}
+.tpsp{flex:1}
+.tpbody{max-width:900px;margin:16px auto;padding:0 12px 40px}
+.tps{display:none}.tps.on{display:block}
+.tppage{background:#fff;border:1px solid #d6dbe1;border-radius:12px;padding:22px 26px;margin-bottom:16px;line-height:1.5}
+.tph{border-bottom:3px solid #1798d4;margin-bottom:10px;padding-bottom:6px}
+.tph small{color:#5b6670;text-transform:uppercase;letter-spacing:1px;font-size:11px;font-weight:700}
+.tph h2{margin:2px 0 4px;font-size:24px}
+.tpmeta{color:#5b6670;font-size:13px}
+.tppage h3{margin:14px 0 4px;font-size:15px;color:#185FA5}
+.tppage p{margin:4px 0}
+.tppage ul,.tppage ol{margin:4px 0;padding-left:22px}
+.tpt{width:100%;border-collapse:collapse;margin:4px 0;font-size:14px}
+.tpt th,.tpt td{border:1px solid #cfd5dc;padding:6px 8px;text-align:left;vertical-align:top}
+.tpt th{background:#eef3f8}
+.tpsol{padding:8px 12px;background:#f3f8ee;border:1px solid #cfe3bd;border-radius:8px}
+.tpsol pre{margin:6px 0;padding:8px;background:#fff;border:1px solid #d6dbe1;border-radius:6px;font:12.5px/1.45 ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap}
+.tpform{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:8px 0 14px}
+.tpform label{display:flex;flex-direction:column;gap:3px;font-size:13px;font-weight:600}
+.tpform input,.tpform select{padding:8px;border:1px solid #b9c1ca;border-radius:8px;font:inherit;font-weight:400;background:#fff;color:#1b1f24}
+.tpcert{position:relative;text-align:center;padding:28px 32px;border:10px double #1798d4;border-radius:6px;background:#fffdf6}
+.tpcb{display:flex;justify-content:center}
+.tpck{font-weight:800;letter-spacing:4px;color:#185FA5;font-size:18px}
+.tpcert h2{font-size:34px;margin:6px 0 10px}
+.tpcn{font-size:34px;font-weight:700;color:#185FA5;border-bottom:2px solid #1b1f24;display:inline-block;min-width:60%;padding:0 12px 4px;margin:8px 0 14px}
+.tpcs{display:flex;gap:24px;justify-content:center;font-weight:700;color:#8a5a00;margin:10px 0 24px}
+.tpcsig{display:flex;gap:60px;justify-content:center;margin-top:26px}
+.tpcsig div{min-width:200px;font-size:13px}
+.tpcsig i{display:block;border-top:1px solid #1b1f24;margin-bottom:4px}
+.tpsheet th{font-size:12px;line-height:1.2}
+.tpsheet td{height:28px}
+.tpsheet .tpnm{min-width:140px}
+.tpsheet .tpst{font-size:15px;letter-spacing:1px;text-align:center;color:#8a8f98;white-space:nowrap}
+.tpm{display:inline-block;min-width:18px;margin-right:4px;border-radius:9px;background:#185FA5;color:#fff;text-align:center;font-size:11px}
+@media print{
+html,body{background:#fff!important;overflow:visible!important;height:auto!important}
+body>*:not(#tp){display:none!important}
+.tp{position:static!important;overflow:visible!important;background:#fff!important}
+.tpbar,.tpctl{display:none!important}
+.tpbody{max-width:none;margin:0;padding:0}
+.tppage{border:0;border-radius:0;padding:0;margin:0;page-break-after:always;break-after:page}
+.tppage:last-child{page-break-after:auto;break-after:auto}
+.tpcert{page-break-inside:avoid}
+.tpsheet tr{page-break-inside:avoid}
+}
 </style></head>
 <body><div class="w">
 <div class="hd"><div><h1>KitBench</h1><p class="s" id="hsub">Build, program and test your own robot.</p></div><button id="lvchip" class="lvchip" onclick="mpLevelOpen()" aria-label="Change level"></button></div>
@@ -1672,7 +1724,7 @@ var next=null;for(var i=0;i<v.length;i++)if(open_(i)&&!stars(v[i].id)){next=v[i]
 var say=!MP.lv?'':done==v.length?'You finished every mission, '+who()+'! Try for three stars on all of them.':next?'Hi '+who()+'! Ready for "'+next.t+'"?':'Hi '+who()+'!';
 var h='<div class="mpbanner">'+bolt(done==v.length?'wow':'happy',84)+'<div class="mpbt"><h2>'+(done==v.length?'Champion!':'Missions')+'</h2><p>'+say+'</p><div class="mpprog"><i style="width:'+Math.round(tot/(v.length*3)*100)+'%"></i></div><small>'+tot+' of '+v.length*3+' stars &middot; '+done+' of '+v.length+' missions</small></div></div>';
 h+='<div class="mpgrid">'+v.map(function(m,i){var op=open_(i),s=stars(m.id);return '<button class="mpcard'+(op?'':' lock')+(s?' done':'')+'" '+(op?'':'disabled ')+'onclick="mpStart(\''+m.id+'\')"><span class="mpnum">'+(i+1)+'</span><span class="mpic">'+(op?m.ic:'&#128274;')+'</span><b>'+esc(m.t)+'</b><small>'+esc(m.story)+'</small><span class="mpstars">'+starStr(s)+'</span><em>'+(op?(s?'Play again':'Start'):'Finish the last mission to unlock')+'</em></button>'}).join('')+'</div>';
-h+='<div class="r mpfoot"><button onclick="mpLevelOpen()">Change level or name</button><label class="mu"><input type="checkbox" id="mpsnd" '+(MP.snd?'checked':'')+' onchange="mpSnd(this.checked)"> Sounds</label>'+(MP.lv=='g'?'<button onclick="tab(5)">Free play</button>':'')+'<button id="mpreset" onclick="mpReset()">Clear my stars</button></div>';
+h+='<div class="r mpfoot"><button onclick="mpLevelOpen()">Change level or name</button><button onclick="tpOpen()">Teacher pack</button><label class="mu"><input type="checkbox" id="mpsnd" '+(MP.snd?'checked':'')+' onchange="mpSnd(this.checked)"> Sounds</label>'+(MP.lv=='g'?'<button onclick="tab(5)">Free play</button>':'')+'<button id="mpreset" onclick="mpReset()">Clear my stars</button></div>';
 el.innerHTML=h};
 window.mpSnd=function(v){MP.snd=v?1:0;mpSave();if(v)cheer()};
 window.mpReset=function(){var b=$('mpreset');if(!b.dataset.sure){b.dataset.sure=1;b.textContent='Click again to clear';setTimeout(function(){if(b){b.dataset.sure='';b.textContent='Clear my stars'}},3000);return}MP.stars={};MP.best={};mpSave();mpRender()};
@@ -1683,8 +1735,132 @@ if(mini){mini.width=320;mini.height=200;mini.onclick=function(){mini.classList.t
 var _pd=window.progDraw;window.progDraw=function(){if(_pd)_pd.apply(this,arguments);var p5=$('p5');if(window.innerWidth>760||!p5||p5.classList.contains('hid')){mini.style.display='none';return}mini.style.display='block';if(!mini.classList.contains('min'))mini.getContext('2d').drawImage($('cv'),0,0,320,200)}}
 
 /* ---------- start-up ---------- */
-mpLoad();applyLevel();
+window.KBM={MS:MS,MP:MP,LV:LV,RANK:RANK,bolt:bolt};mpLoad();applyLevel();
 if(!MP.lv){mpLevelOpen(true);tab(9)}else tab(9);
+})();
+</script>
+<div id="tp" class="tp" hidden></div>
+<script>
+(function(){
+/* ===== Teacher pack: guide, lesson plans, certificate and class score sheet ===== */
+var K=window.KBM;if(!K)return;
+var MP=K.MP,MS=K.MS,LV=K.LV,RANK=K.RANK;
+var TD={
+hello:{time:'30 min',goal:'Learners place a block under "when program starts" and run their first program.',words:'program, block, run, display',
+ warm:'Ask: "What is a robot? What can it do?" Let two or three learners answer. Meet Bolt on the screen.',
+ demo:'On a projector or one phone, drag the "write Hello" block under "when program starts". Press the round play button. Show that the text appears on the robot screen.',
+ check:['Which block made the robot say hello?','What do you think happens if there is no "when program starts" block?'],
+ sol:'when program starts &rarr; write "Hello"',ext:'Change the text to your own name. Add a beep from the SOUND blocks.'},
+roll:{time:'30 min',goal:'Learners use a movement block and see that changing a number changes the distance.',words:'forward, rotation, distance, number',
+ warm:'Ask: "How could you tell a friend to walk to the door?" Link to giving a robot clear steps.',
+ demo:'Drag "move forward for 2 rotations" under "when program starts". Run it. Change the number to 4 and run again so learners see the robot go further.',
+ check:['What did the number in the block change?','What happened when your number was too small?'],
+ sol:'when program starts &rarr; move forward for 6 rotations',ext:'Try to stop exactly in the middle of the mat. How many rotations is that?'},
+blue:{time:'30 min',goal:'Learners estimate a number, test it, and improve it (try, check, fix).',words:'estimate, test, improve',
+ warm:'Play "guess the steps": one learner closes their eyes and the class says how many steps to the board. Compare guesses.',
+ demo:'Run the Roll forward program and point at the blue square. Ask the class to guess how many rotations are needed before anyone tries.',
+ check:['How did you choose your number?','What did you change after your first try?'],
+ sol:'when program starts &rarr; move forward for 12 rotations',ext:'Reach the blue square using two move blocks instead of one.'},
+red:{time:'35 min',goal:'Learners put blocks in the right order (a sequence) and use a turn.',words:'sequence, order, turn, left',
+ warm:'Give a spoken route round the classroom with turns ("forward, turn left, forward"). Learners follow it. Ask what happens if two steps swap places.',
+ demo:'Show that "move left for 0.5 rotations" turns the robot a quarter turn on the spot. Run it alone first.',
+ check:['Why does the order of the blocks matter?','Which block made the robot turn?'],
+ sol:'move forward 6 rotations &rarr; move left 0.5 rotations &rarr; move forward 6 rotations',ext:'Drive back to the grey start square.'},
+wall:{time:'40 min',goal:'Learners use a sensor reading in a condition ("wait until") to make the robot react to its surroundings.',words:'sensor, distance, centimetre, condition',
+ warm:'Ask: "How does a car know it is close to a wall when it parks?" Introduce the idea of a parking sensor.',
+ demo:'Show the "distance in cm" block in SENSORS. Place it in a "wait until" block with a less-than comparison.',
+ check:['What does the distance sensor measure?','Why stop at 12 cm and not at 0?'],
+ sol:'when program starts &rarr; start moving steering 0 &rarr; wait until [distance in cm &lt; 12] &rarr; stop moving',ext:'Make the robot beep just before it stops.'},
+line:{time:'40 min',goal:'Learners combine a loop with if / else-if decisions to follow a line.',words:'loop, repeat forever, if, else, sensor',
+ warm:'Walk a line taped on the floor with eyes on your feet. Ask which way you step when the line drifts left or right.',
+ demo:'Show "reflected light left" and "reflected light right". A low number means the sensor is over the dark line.',
+ check:['What does the left sensor tell the robot?','Why does everything sit inside "repeat forever"?'],
+ sol:'repeat forever &rarr; if [reflected light left &lt; 50] start moving steering -40, else if [reflected light right &lt; 50] start moving steering 40, else start moving steering 0',ext:'Make the robot slower on bends using "set movement speed".'},
+box:{time:'35 min',goal:'Learners write a simple decision with if / else inside a loop.',words:'obstacle, decision, if, else',
+ warm:'Ask learners to walk across the room and stop when you raise your hand. Link to a sensor that "raises its hand".',
+ demo:'Tick "Obstacle" on the screen so the orange box appears. Show that the distance reading drops as the robot gets close.',
+ check:['What does the robot do when the box is far away?','What does it do when the box is close?'],
+ sol:'repeat forever &rarr; if [distance in cm &lt; 15] stop moving, else start moving steering 0',ext:'Turn away from the box instead of stopping.'},
+green:{time:'45 min',goal:'Learners combine distance travelled, the gyro (heading) and the colour sensor in one program.',words:'heading, gyro, odometer, algorithm',
+ warm:'Discuss compass directions. Ask: "If you face east and turn left, which way do you face?"',
+ demo:'Show the live readings under the robot view: heading, odometer and colour. Drive the robot by hand and watch them change.',
+ check:['Which sensor told the robot it had turned far enough?','What did the colour sensor do at the end?'],
+ sol:'<pre>def loop(s):\n    if s.odo &lt; 235:\n        return 0.6, 0.6        # drive east\n    if s.heading &gt; -90:\n        return -0.3, 0.3       # turn left until heading is -90\n    if s.color != "green":\n        return 0.6, 0.6        # drive until green\n    return 0, 0</pre>(Needs the gyro and the colour sensor in Build. Tested in the simulator.)',ext:'Find the red square instead.'},
+sumo:{time:'45 min',goal:'Learners plan a strategy with several sensors and decide which rule matters most.',words:'strategy, priority, algorithm',
+ warm:'Ask: "In a sumo match, what two things must a robot know?" (where the edge is, where the opponent is).',
+ demo:'Run the starter code and watch it back away from the edge before it can push. Ask learners why.',
+ check:['What does your robot do when it sees the edge?','What does it do when it sees the opponent?','Which rule wins when both are true?'],
+ sol:'This mission is open-ended, so there is no single answer. Ideas to test: charge when the opponent is close, back away only when the edge is seen and the opponent is not close, and spin to search otherwise.',ext:'Hold a class sumo tournament by comparing results on the screen.'},
+ball:{time:'40 min',goal:'Learners use the ball camera to search, approach and stop.',words:'camera, angle, search, stop',
+ warm:'Play "find the ball": a blindfolded learner turns on the spot until told "there!" Link to a robot that spins until it sees the ball.',
+ demo:'Show that "ball in view?" is false until the camera sees the ball. The ball camera needs to be in the kit (the app adds it for this mission).',
+ check:['What does the robot do when it cannot see the ball?','How does it know when to stop?'],
+ sol:'<pre>def loop(s):\n    if s.ball is None:\n        return 0.4, -0.4       # spin to look\n    if s.ball.dist &lt; 5:\n        return 0, 0            # close enough\n    return 0.5, 0.5            # drive at the ball</pre>(Tested in the simulator.)',ext:'Stop 20 cm from the ball instead.'},
+goal:{time:'45 min',goal:'Learners use an angle to steer, and tune a number (bias) by testing.',words:'angle, steering, bias, tuning',
+ warm:'Ask: "To kick a ball into a goal, where do you stand?" Discuss lining up behind the ball.',
+ demo:'Show the starter code and what "bias" does: a small positive number makes the robot aim to one side of the ball.',
+ check:['What does a positive ball angle mean?','What happens when you change the bias number?'],
+ sol:'<pre>def loop(s):\n    if s.ball is None:\n        return 0.4, -0.4\n    bias = 5   # aim a little off-centre\n    a = s.ball.angle - bias\n    k = 0.02\n    return 0.6 + k * a, 0.6 - k * a</pre>(In the simulator a bias of about 5 scored. Large values miss, so test small changes.)',ext:'Score from a different starting position.'}
+};
+
+function E(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function $q(id){return document.getElementById(id)}
+function vis(lv){var r=RANK[lv]||3;return MS.filter(function(m){return RANK[m.lv]<=r})}
+function lvOpts(sel,all){return (all?'<option value="all"'+(sel=='all'?' selected':'')+'>All levels</option>':'')+['e','b','g'].map(function(k){return '<option value="'+k+'"'+(sel==k?' selected':'')+'>'+LV[k].n+' ('+LV[k].age.toLowerCase()+')</option>'}).join('')}
+function stars(id){return MP.stars[id]||0}
+
+/* ---------- guide ---------- */
+function guide(){return '<section class="tppage"><div class="tph"><small>KitBench teacher pack</small><h2>Teacher guide</h2></div>'
++'<h3>What KitBench is</h3><p>KitBench is a virtual robotics lab. Learners build a robot kit, program it with blocks (and later Python or JavaScript) and test it on a simulated mat. No robot is needed, and after the first visit it works without internet.</p>'
++'<h3>Choose a level</h3><table class="tpt"><tr><th>Level</th><th>Ages</th><th>What learners see</th><th>Missions</th></tr>'
++['e','b','g'].map(function(k){return '<tr><td><b>'+LV[k].n+'</b></td><td>'+LV[k].age.replace('Ages ','')+'</td><td>'+E(LV[k].d)+'</td><td>'+vis(k).length+'</td></tr>'}).join('')+'</table>'
++'<p>Learners can change level from the chip at the top right. Start younger learners on Explorer even if they type well. Older beginners can start on Builder.</p>'
++'<h3>Get the devices ready (once, with internet)</h3><ol><li>Open the KitBench web address on each phone or laptop.</li><li>Wait about 10 seconds. A message says KitBench is saved. On a phone with mobile data it asks before saving Python (about 15 MB).</li><li>Install it: on Android Chrome tap <b>Install app</b>; on iPhone or iPad use Share, then <b>Add to Home Screen</b>; on a laptop use the install icon in the address bar.</li><li>Open it once more with the internet turned off to check that it works.</li></ol>'
++'<h3>A 40-minute lesson</h3><table class="tpt"><tr><td><b>5 min</b></td><td>Warm-up. A question or an unplugged activity (see each lesson plan).</td></tr><tr><td><b>5 min</b></td><td>Demonstrate the new idea on one screen.</td></tr><tr><td><b>20 min</b></td><td>Learners work in pairs on the mission. One is the <b>driver</b> (moves blocks) and one is the <b>navigator</b> (reads the goal and hints). Swap roles each mission.</td></tr><tr><td><b>5 min</b></td><td>Share. Ask the check questions on the lesson plan.</td></tr><tr><td><b>5 min</b></td><td>Record stars on the class score sheet and tidy up.</td></tr></table>'
++'<h3>How stars work</h3><p>&#9733; for finishing the mission. &#9733; for finishing without opening a hint. &#9733; for finishing under the target time. Hints are for help, not a penalty: encourage learners to use them after trying for a few minutes.</p>'
++'<h3>If something goes wrong</h3><table class="tpt"><tr><td><b>The robot does not move</b></td><td>Open Build the kit (Builder and Engineer) and look for the red or yellow message. Or tap the mission again: it repairs the kit and wiring.</td></tr><tr><td><b>Python will not run</b></td><td>Python needs to be saved once with internet. Block programs and JavaScript always work.</td></tr><tr><td><b>Learners lost their blocks</b></td><td>Work is saved on the device and browser in use. Each mission keeps its own blocks.</td></tr><tr><td><b>Shared device shows another learner\'s stars</b></td><td>On the Missions page choose <b>Clear my stars</b>, or use the score sheet to record stars first.</td></tr><tr><td><b>Page looks old after an update</b></td><td>Open KitBench once with internet, close it, and open it again.</td></tr></table>'
++'<h3>Good practice</h3><ul><li>Pair a confident reader with a learner who is still learning to read, and swap roles.</li><li>Let learners predict before they press play: "What will the robot do?"</li><li>Celebrate trying again. Fixing a mistake is the main skill in programming.</li></ul></section>'}
+
+/* ---------- lesson plans ---------- */
+function plan(m,i){var d=TD[m.id]||{};
+return '<section class="tppage"><div class="tph"><small>KitBench lesson plan &middot; '+E(LV[m.lv].n)+' and above</small><h2>Mission '+(i+1)+': '+E(m.t)+'</h2><div class="tpmeta">Time: '+E(d.time||'40 min')+' &middot; Learners work in pairs &middot; Needs: one phone or laptop per pair</div></div>'
++'<h3>Learning goal</h3><p>'+E(d.goal||m.goal)+'</p><h3>Key words</h3><p>'+E(d.words||'')+'</p>'
++'<h3>The mission</h3><p>'+E(m.story)+' <b>Goal:</b> '+E(m.goal)+'</p>'
++'<h3>Lesson steps</h3><table class="tpt"><tr><td><b>Warm-up<br>5 min</b></td><td>'+E(d.warm||'')+'</td></tr><tr><td><b>Demonstrate<br>5 min</b></td><td>'+E(d.demo||'')+'</td></tr><tr><td><b>Learners try<br>20 min</b></td><td>Open <b>Missions</b> and choose Mission '+(i+1)+'. Pairs build the program and press play. Remind them: try first, then use a hint. Walk round and ask "What do you think will happen?"</td></tr><tr><td><b>Share<br>5 min</b></td><td>Ask the check questions below. Record stars on the score sheet.</td></tr></table>'
++'<h3>Hints in the app</h3><ol>'+m.hints.map(function(h){return '<li>'+E(h)+'</li>'}).join('')+'</ol>'
++'<h3>Answer</h3><div class="tpsol">'+(d.sol||'')+'</div>'
++'<h3>Check understanding</h3><ul>'+(d.check||[]).map(function(q){return '<li>'+E(q)+'</li>'}).join('')+'</ul>'
++'<h3>Go further</h3><p>'+E(d.ext||'')+'</p>'
++'<h3>Stars</h3><p>1 star: finished. 2 stars: finished without hints. 3 stars: finished in under '+m.par+' seconds of robot time.</p></section>'}
+function plans(sel){var lv=sel||MP.lv||'g';return vis(lv).map(function(m){return plan(m,vis(lv).indexOf(m))}).join('')}
+
+/* ---------- certificate and score sheet ---------- */
+function cert(){var lv=$q('tcLv').value,v=vis(lv),tot=v.reduce(function(a,m){return a+stars(m.id)},0),done=v.filter(function(m){return stars(m.id)>0}).length,
+ name=$q('tcName').value.trim()||'____________________',sch=$q('tcSch').value.trim(),tch=$q('tcTch').value.trim(),dt=$q('tcDt').value;
+$q('tcOut').innerHTML='<div class="tpcert"><div class="tpcb">'+K.bolt('happy',72)+'</div><div class="tpck">KitBench</div><h2>Certificate of achievement</h2><p>This certificate is awarded to</p><div class="tpcn">'+E(name)+'</div><p>for completing the <b>'+E(LV[lv].n)+'</b> robotics missions'+(sch?' at <b>'+E(sch)+'</b>':'')+'.</p>'
++'<p class="tpcs">'+'<span>'+(done+' of '+v.length+' missions')+'</span><span>'+tot+' of '+v.length*3+' stars</span></p><div class="tpcsig"><div><i></i>'+(tch?E(tch):'Teacher')+'</div><div><i></i>'+(dt?E(dt):'Date')+'</div></div></div>'}
+function certSec(){var lv=MP.lv||'g';return '<section class="tppage"><div class="tpctl"><div class="tph"><small>KitBench teacher pack</small><h2>Certificate</h2></div><p>Fill in the boxes, then press <b>Print this page</b> (choose "Save as PDF" to keep a copy). The stars come from the stars saved on this device for the chosen level.</p>'
++'<div class="tpform"><label>Learner name<input id="tcName" maxlength="40" value="'+E(MP.name)+'" oninput="tpCert()"></label><label>Level<select id="tcLv" onchange="tpCert()">'+lvOpts(lv)+'</select></label><label>School (optional)<input id="tcSch" maxlength="50" oninput="tpCert()"></label><label>Teacher (optional)<input id="tcTch" maxlength="40" oninput="tpCert()"></label><label>Date<input id="tcDt" type="date" onchange="tpCert()"></label></div></div><div id="tcOut"></div></section>'}
+function sheet(){var lv=$q('tsLv').value,n=Math.max(5,Math.min(60,+$q('tsN').value||30)),cls=$q('tsCls').value.trim(),v=vis(lv),rows='';
+for(var i=1;i<=n;i++)rows+='<tr><td>'+i+'</td><td class="tpnm"></td>'+v.map(function(){return '<td class="tpst">&#9734;&#9734;&#9734;</td>'}).join('')+'<td></td></tr>';
+$q('tsOut').innerHTML='<div class="tph"><small>KitBench class score sheet</small><h2>'+E(LV[lv].n)+' missions'+(cls?' &middot; '+E(cls):'')+'</h2><div class="tpmeta">Date: ______________ &nbsp; Teacher: ______________________ &nbsp; Colour in a star for each star earned.</div></div><table class="tpt tpsheet"><tr><th>#</th><th>Learner name</th>'+v.map(function(m,i){return '<th><span class="tpm">'+(i+1)+'</span>'+E(m.t)+'</th>'}).join('')+'<th>Total</th></tr>'+rows+'</table>'}
+function sheetSec(){var lv=MP.lv||'g';return '<section class="tppage tpland"><div class="tpctl"><div class="tph"><small>KitBench teacher pack</small><h2>Class score sheet</h2></div><p>A blank sheet to print. Learners or the teacher colour in stars after each mission.</p><div class="tpform"><label>Level<select id="tsLv" onchange="tpSheet()">'+lvOpts(lv)+'</select></label><label>Number of learners<input id="tsN" type="number" min="5" max="60" value="30" onchange="tpSheet()"></label><label>Class name (optional)<input id="tsCls" maxlength="30" oninput="tpSheet()"></label></div></div><div id="tsOut"></div></section>'}
+function planSec(){var lv=MP.lv||'g';return '<section class="tpctl2"><div class="tpctl"><div class="tph"><small>KitBench teacher pack</small><h2>Lesson plans</h2></div><p>One page per mission, with the answer and check questions. Choose the level, then press <b>Print this page</b>.</p><div class="tpform"><label>Show missions for<select id="tpLv" onchange="tpPlans()">'+lvOpts(lv)+'</select></label></div></div><div id="tpPl">'+plans(lv)+'</div></section>'}
+
+/* ---------- shell ---------- */
+var CUR='guide';
+function body(){var b=$q('tpbody'),sc=CUR;
+b.innerHTML='<div class="tps'+(sc=='guide'?' on':'')+'" data-s="guide">'+guide()+'</div><div class="tps'+(sc=='plans'?' on':'')+'" data-s="plans">'+planSec()+'</div><div class="tps'+(sc=='cert'?' on':'')+'" data-s="cert">'+certSec()+'</div><div class="tps'+(sc=='sheet'?' on':'')+'" data-s="sheet">'+sheetSec()+'</div>';
+tpCert();tpSheet()}
+window.tpCert=function(){if($q('tcLv'))cert()};
+window.tpSheet=function(){if($q('tsLv'))sheet()};
+window.tpPlans=function(){var s=$q('tpLv');if(s)$q('tpPl').innerHTML=plans(s.value)};
+window.tpShow=function(s){CUR=s;[].forEach.call(document.querySelectorAll('.tps'),function(e){e.classList.toggle('on',e.dataset.s==s)});[].forEach.call(document.querySelectorAll('.tpnav button'),function(e){e.classList.toggle('on',e.dataset.s==s)})};
+window.tpOpen=function(){var t=$q('tp');t.innerHTML='<div class="tpbar"><b>Teacher pack</b><span class="tpnav"><button data-s="guide" onclick="tpShow(\'guide\')">Guide</button><button data-s="plans" onclick="tpShow(\'plans\')">Lesson plans</button><button data-s="cert" onclick="tpShow(\'cert\')">Certificate</button><button data-s="sheet" onclick="tpShow(\'sheet\')">Score sheet</button></span><span class="tpsp"></span><button class="pri" onclick="tpPrint()">Print this page</button><button onclick="tpClose()">Close</button></div><div id="tpbody" class="tpbody"></div>';
+CUR='guide';body();tpShow('guide');t.hidden=false;t.scrollTop=0;document.documentElement.style.overflow='hidden'};
+window.tpClose=function(){var t=$q('tp');t.hidden=true;t.innerHTML='';document.documentElement.style.overflow=''};
+window.tpPrint=function(){var land=CUR=='cert'||CUR=='sheet',s=document.createElement('style');s.id='tpPage';s.textContent='@page{size:A4 '+(land?'landscape':'portrait')+';margin:12mm}';document.head.appendChild(s);
+var done=function(){var o=$q('tpPage');if(o)o.remove();window.removeEventListener('afterprint',done)};window.addEventListener('afterprint',done);window.print()};
 })();
 </script>
 <script type="importmap">{"imports":{"three":"./offline/libs/three/three.module.js","three/addons/":"./offline/libs/three/addons/"}}</script>
@@ -2827,6 +3003,7 @@ if(ios&&!standalone&&!st('x')&&'serviceWorker' in navigator)show('To install on 
 })();
 </script>
 </body></html>
+
 
 
 

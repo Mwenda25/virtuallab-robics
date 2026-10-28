@@ -4,6 +4,13 @@ A browser-based virtual robotics lab for schools. Pick parts from a real kit, wi
 
 **Live version: [https://mwenda25.github.io/virtuallab-robics/](https://mwenda25.github.io/virtuallab-robics/)** (opens in your browser)
 
+## For schools
+
+- **Three levels:** Explorer (ages 6 to 8), Builder (9 to 12) and Engineer (13 to 17). The level changes which tabs, blocks and tools learners see.
+- **Missions:** 11 short missions with hints, up to 3 stars each, and a celebration from the robot helper Bolt.
+- **Phones and laptops:** a bottom tab bar and a small robot view on phones. It installs on Android, iPhone, iPad and laptops and then works offline.
+- **Teacher pack:** on the Missions page choose **Teacher pack** for a teacher guide, one printable lesson plan per mission with answers and check questions, a certificate, and a blank class score sheet. Use Print and choose Save as PDF to keep copies.
+
 ## What it does
 
 1. **Build the kit.** Choose an ESP32 starter kit, a LEGO EV3 set or a LEGO SPIKE Prime set. Checks flag missing or incompatible parts.
