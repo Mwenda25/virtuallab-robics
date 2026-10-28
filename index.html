@@ -214,6 +214,19 @@ select{padding:8px;border-radius:8px;border:1px solid var(--bd);background:var(-
 .pwabar button{padding:6px 12px;border-radius:8px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font:inherit;cursor:pointer}
 .pwabar button.pri{background:var(--ac);color:var(--bg);border-color:var(--ac)}
 .pwabar #pwamsg{flex:1 1 200px}
+.psnip{margin:0 0 8px;padding:8px 10px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.pwrap:not(.code) .psnip{display:none}
+.psnr{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.psnr select{flex:1 1 220px;min-width:0;padding:6px 8px;border-radius:8px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font:inherit}
+.psnr button{padding:6px 12px;border-radius:8px;border:1px solid var(--ac);background:var(--ac);color:var(--bg);font:inherit;cursor:pointer}
+#psn_d{margin:6px 0 4px;font-size:13px}
+#psn_pre{margin:0;padding:8px 10px;max-height:150px;overflow:auto;border-radius:8px;background:var(--bg);color:var(--tx);font:12px/1.5 ui-monospace,Menlo,Consolas,monospace;white-space:pre}
+.psnip details{margin-top:6px;font-size:13px}
+.psnip summary{cursor:pointer;color:var(--ac)}
+.psr{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:8px;padding:4px 0;border-bottom:1px solid var(--bd)}
+.psr code{font:12px ui-monospace,Menlo,Consolas,monospace;word-break:break-word}
+.psr span{color:var(--mu)}
+@media(max-width:600px){.psr{grid-template-columns:1fr}}
 </style></head>
 <body><div class="w">
 <h1>KitBench</h1>
@@ -272,7 +285,10 @@ select{padding:8px;border-radius:8px;border:1px solid var(--bd);background:var(-
 <div class="c" id="pjmain"></div>
 </div></div>
 <div id="p5" class="hid"><div class="pg">
-<div class="pwrap" id="pwrap"><div class="pmodes"><button id="pm_bl" class="on" onclick="progMode('bl')" aria-pressed="true">Blocks</button><button id="pm_py" onclick="progMode('py')" aria-pressed="false">Python</button><button id="pm_js" onclick="progMode('js')" aria-pressed="false">JavaScript</button><button class="mu rs prc" onclick="progResetCode()" title="Restore this lesson's starting code">Reset code</button></div><div class="pws" id="pws"><div id="pblk"></div><textarea id="pcode" class="hid" spellcheck="false" aria-label="Program code"></textarea>
+<div class="pwrap" id="pwrap"><div class="pmodes"><button id="pm_bl" class="on" onclick="progMode('bl')" aria-pressed="true">Blocks</button><button id="pm_py" onclick="progMode('py')" aria-pressed="false">Python</button><button id="pm_js" onclick="progMode('js')" aria-pressed="false">JavaScript</button><button class="mu rs prc" onclick="progResetCode()" title="Restore this lesson's starting code">Reset code</button></div><div class="psnip" id="psnip"><div class="psnr"><label for="psn_sel"><b>Ready-made code</b></label><select id="psn_sel" onchange="psnShow()" aria-label="Ready-made code"></select><button id="psn_use" class="pri" onclick="psnUse()">Use this program</button><span class="mu" id="psn_msg" role="status"></span></div>
+<div class="mu" id="psn_d"></div><pre id="psn_pre" aria-label="Preview of the code"></pre>
+<details><summary>All commands</summary><div id="psn_ref"></div></details></div>
+<div class="pws" id="pws"><div id="pblk"></div><textarea id="pcode" class="hid" spellcheck="false" aria-label="Program code"></textarea>
 <div class="pbar"><button onclick="progUndo()" aria-label="Undo" title="Undo">&#x21B6;</button><button onclick="progRedo()" aria-label="Redo" title="Redo">&#x21B7;</button><button onclick="progZoom(-1)" aria-label="Zoom out" title="Zoom out">&#x2212;</button><button onclick="progZoom(1)" aria-label="Zoom in" title="Zoom in">&#x2B;</button><button onclick="progZoom(0)" aria-label="Fit" title="Reset view">&#x2316;</button></div>
 <button id="prun" class="prun" onclick="progRun()" aria-label="Run">&#9654;</button>
 <div id="pload" class="pload">Open this tab to load the blocks editor.</div></div><div class="pview" id="pview"><div class="pvh"><b>Your blocks as code</b><span class="pvt"><button id="pv_py" class="on" onclick="progView('py')">Python</button><button id="pv_js" onclick="progView('js')">JavaScript</button></span><span class="pvr"><span class="mu" id="pvmsg"></span><button onclick="progCopyCode()">Copy</button><button onclick="progOpenCode()">Edit as code</button></span></div><pre id="pvcode" aria-label="Your blocks translated to code"></pre></div></div>
@@ -1271,6 +1287,154 @@ function desCopyBom(){var t=bomText(),m=$('dbommsg');function ok(x){if(m){m.text
 try{navigator.clipboard.writeText(t).then(function(){ok('Copied')},function(){ok('Copy not allowed here')})}catch(e){ok('Copy not allowed here')}}
 window.desUI=desUI;desUI();
 (function(){var d=desDefaults();for(var k in d)if(!(k in DES))DES[k]=d[k];desLoad();desUI()})();
+</script>
+<script>
+(function(){
+function L(a){return a.join('\n')}
+/* Starter programs replace the whole program. Pieces are added where the cursor is. */
+var SN=[
+{g:'start',id:'hello',t:'Say hello (display and beep)',d:'Shows a message on the robot display, plays a beep and waits. A first program with await steps.',
+ py:L(['# Show a message, beep, then wait','import runloop','','async def main():','    display_write("Hello!")','    await beep(60, 0.5)','    await wait(1)','    display_clear()','','runloop.run(main())','']),
+ js:L(['// Show a message, beep, then wait','async function main() {','  displayWrite("Hello!");','  await beep(60, 0.5);','  await wait(1);','  displayClear();','}','','main();',''])},
+{g:'start',id:'fwd',t:'Drive forward and stop',d:'Moves forward 3 wheel turns, then stops. "await" waits until the robot finishes the step.',
+ py:L(['# Drive forward 3 wheel turns, then stop','import runloop','','async def main():','    await move_for("forward", 3, "rotations")','    stop_all()','','runloop.run(main())','']),
+ js:L(['// Drive forward 3 wheel turns, then stop','async function main() {','  await moveFor("forward", 3, "rotations");','  stopAll();','}','','main();',''])},
+{g:'start',id:'square0',t:'Drive in a square',d:'Drives forward, then spins right about 90 degrees. Repeats 4 times. About 0.5 wheel turns spins the robot 90 degrees, so change that number to tune your turns.',
+ py:L(['# Drive in a square','import runloop','','async def turn_right():','    await move_for("right", 0.5, "rotations")   # about 90 degrees','','async def main():','    for _ in range(4):','        await move_for("forward", 2, "rotations")','        await turn_right()','','runloop.run(main())','']),
+ js:L(['// Drive in a square','async function turnRight() {','  await moveFor("right", 0.5, "rotations");   // about 90 degrees','}','','async function main() {','  for (let i = 0; i < 4; i++) {','    await moveFor("forward", 2, "rotations");','    await turnRight();','  }','}','','main();',''])},
+{g:'start',id:'square',t:'Drive in a square (exact gyro turns)',d:'Needs the gyro (IMU) ticked in Build the kit. Turns right until the gyro reads 90 degrees. Without a gyro the robot would never finish the turn.',
+ py:L(['# Drive in a square. The gyro tells us when we have turned 90 degrees.','import runloop','','async def turn_right(degrees):','    reset_yaw()','    move_start(100)   # steering 100 = spin on the spot to the right','    await wait_until(lambda: yaw() >= degrees)','    move_stop()','','async def main():','    for _ in range(4):','        await move_for("forward", 2, "rotations")','        await turn_right(90)','','runloop.run(main())','']),
+ js:L(['// Drive in a square. The gyro tells us when we have turned 90 degrees.','async function turnRight(degrees) {','  resetYaw();','  moveStart(100);   // steering 100 = spin on the spot to the right','  await waitUntil(() => yaw() >= degrees);','  moveStop();','}','','async function main() {','  for (let i = 0; i < 4; i++) {','    await moveFor("forward", 2, "rotations");','    await turnRight(90);','  }','}','','main();',''])},
+{g:'start',id:'wall',t:'Drive until a wall is close',d:'Drives straight until the distance sensor reads less than 15 cm, then stops and beeps. Needs the distance sensor, picked in Build the kit and wired.',
+ py:L(['# Drive straight until a wall is closer than 15 cm','import runloop','','async def main():','    move_start(0)   # steering 0 = straight','    await wait_until(lambda: distance() < 15)','    move_stop()','    await beep(72, 0.3)','','runloop.run(main())','']),
+ js:L(['// Drive straight until a wall is closer than 15 cm','async function main() {','  moveStart(0);   // steering 0 = straight','  await waitUntil(() => distance() < 15);','  moveStop();','  await beep(72, 0.3);','}','','main();',''])},
+{g:'start',id:'colour',t:'Wait for green, then go',d:'Waits until the colour sensor sees green, then drives forward. Try it on the RoboMission mat. Needs the colour sensor, picked in Build the kit and wired.',
+ py:L(['# Wait for the colour sensor to see green, then go','import runloop','','async def main():','    await wait_until(lambda: is_color("green"))','    await move_for("forward", 3, "rotations")','','runloop.run(main())','']),
+ js:L(['// Wait for the colour sensor to see green, then go','async function main() {','  await waitUntil(() => isColor("green"));','  await moveFor("forward", 3, "rotations");','}','','main();',''])},
+{g:'start',id:'count',t:'Count on the display (variable and loop)',d:'A variable called count goes up by 1 five times and is shown on the display each time.',
+ py:L(['# Count to 5 on the display','import runloop','','async def main():','    count = 0','    for _ in range(5):','        count += 1','        display_write(count)','        await wait(0.5)','','runloop.run(main())','']),
+ js:L(['// Count to 5 on the display','async function main() {','  let count = 0;','  for (let i = 0; i < 5; i++) {','    count += 1;','    displayWrite(count);','    await wait(0.5);','  }','}','','main();',''])},
+{g:'start',id:'motor',t:'Run motors A and B',d:'Spins motor A clockwise for 2 rotations, then motor B counterclockwise for 1 second.',
+ py:L(['# Run two motors, one after the other','import runloop','','async def main():','    await motor_run_for("A", "cw", 2, "rotations")','    await motor_run_for("B", "ccw", 1, "seconds")','','runloop.run(main())','']),
+ js:L(['// Run two motors, one after the other','async function main() {','  await motorRunFor("A", "cw", 2, "rotations");','  await motorRunFor("B", "ccw", 1, "seconds");','}','','main();',''])},
+{g:'start',id:'cube',t:'Pick up the red cube (3D mission)',d:'Opens the claw, picks up the red cube, delivers it and goes home. Run it on the 3D RoboMission mat.',
+ py:L(['# Pick up the red cube and deliver it (run on the 3D mission)','import runloop','','async def main():','    await claw("open")','    await auto_pick("red")','    await auto_deliver("red")','    await auto_home()','','runloop.run(main())','']),
+ js:L(['// Pick up the red cube and deliver it (run on the 3D mission)','async function main() {','  await claw("open");','  await autoPick("red");','  await autoDeliver("red");','  await autoHome();','}','','main();',''])},
+{g:'start',loop:1,id:'l_line',t:'Follow the line (loop style)',d:'Style 1. loop(s) runs many times a second and returns the left and right speeds. Turns away from the line edge it sees. Needs the line sensors, picked in Build the kit and wired.',
+ py:L(['# Follow the left edge of a line','def loop(s):','    if s.line.left:','        return 0.3, 0.8   # turn left','    return 0.7, 0.7       # go straight','']),
+ js:L(['// Follow the left edge of a line','function loop(s) {','  if (s.line.left) {','    return [0.3, 0.8];   // turn left','  }','  return [0.7, 0.7];     // go straight','}',''])},
+{g:'start',loop:1,id:'l_line2',t:'Follow the line and stop for an obstacle',d:'Style 1. Same as line following, but stops when something is closer than 15 cm. Tick Obstacle to test it.',
+ py:L(['# Follow the line, stop if something is in the way','def loop(s):','    if s.dist < 15:','        return 0, 0','    if s.line.left:','        return 0.3, 0.8','    if s.line.right:','        return 0.8, 0.3','    return 0.7, 0.7','']),
+ js:L(['// Follow the line, stop if something is in the way','function loop(s) {','  if (s.dist < 15) {','    return [0, 0];','  }','  if (s.line.left) {','    return [0.3, 0.8];','  }','  if (s.line.right) {','    return [0.8, 0.3];','  }','  return [0.7, 0.7];','}',''])},
+{g:'start',loop:1,id:'l_stop',t:'Stop before the wall (loop style)',d:'Style 1. Drives forward and stops when the distance is under 20 cm.',
+ py:L(['# Drive forward, stop before the wall','def loop(s):','    if s.dist < 20:','        return 0, 0','    return 0.6, 0.6','']),
+ js:L(['// Drive forward, stop before the wall','function loop(s) {','  if (s.dist < 20) {','    return [0, 0];','  }','  return [0.6, 0.6];','}',''])},
+{g:'start',loop:1,id:'l_time',t:'Drive for 2 seconds',d:'Style 1. s.t is the time in seconds since the program started.',
+ py:L(['# Drive for 2 seconds, then stop','def loop(s):','    if s.t < 2:','        return 0.5, 0.5','    return 0, 0','']),
+ js:L(['// Drive for 2 seconds, then stop','function loop(s) {','  if (s.t < 2) {','    return [0.5, 0.5];','  }','  return [0, 0];','}',''])},
+{g:'start',loop:1,id:'l_sumo',t:'Sumo: find and push',d:'Style 1. Backs away from the white edge, charges when it sees the opponent, and otherwise spins to look.',
+ py:L(['# Sumo robot','def loop(s):','    if s.line.left or s.line.mid or s.line.right:','        return -0.6, -0.2   # at the edge: back away and turn','    if s.dist < 40:','        return 1, 1         # opponent ahead: charge','    return 0.5, -0.5        # look around','']),
+ js:L(['// Sumo robot','function loop(s) {','  if (s.line.left || s.line.mid || s.line.right) {','    return [-0.6, -0.2];   // at the edge: back away and turn','  }','  if (s.dist < 40) {','    return [1, 1];         // opponent ahead: charge','  }','  return [0.5, -0.5];      // look around','}',''])},
+{g:'start',loop:1,id:'l_ball',t:'RoboSports: find the ball',d:'Style 1. Spins until the ball camera sees the ball, then drives to it. Use the RoboSports pitch.',
+ py:L(['# Find the ball and drive at it','def loop(s):','    # s.ball is None when the camera cannot see the ball','    if s.ball is None:','        return 0.4, -0.4','    return 0.5, 0.5','']),
+ js:L(['// Find the ball and drive at it','function loop(s) {','  // s.ball is null when the camera cannot see the ball','  if (s.ball === null) {','    return [0.4, -0.4];','  }','  return [0.5, 0.5];','}',''])},
+{g:'start',loop:1,id:'l_goal',t:'RoboSports: steer to the ball',d:'Style 1. Steers towards the ball. A positive angle means the ball is on the right. Change bias to aim off-centre.',
+ py:L(['# Steer towards the ball','def loop(s):','    if s.ball is None:','        return 0.4, -0.4','    bias = 0   # aim off-centre to change where the ball goes','    a = s.ball.angle - bias','    k = 0.02','    return 0.6 + k * a, 0.6 - k * a','']),
+ js:L(['// Steer towards the ball','function loop(s) {','  if (s.ball === null) {','    return [0.4, -0.4];','  }','  let bias = 0;   // aim off-centre to change where the ball goes','  let a = s.ball.angle - bias;','  let k = 0.02;','  return [0.6 + k * a, 0.6 - k * a];','}',''])},
+
+{g:'piece',id:'p_fwd',t:'Move forward 2 turns',d:'Moves forward. Directions: forward, backward, left, right. Units: rotations, degrees, seconds.',
+ py:'await move_for("forward", 2, "rotations")',js:'await moveFor("forward", 2, "rotations");'},
+{g:'piece',id:'p_steer',t:'Steer while moving',d:'Steering goes from -100 (left) to 100 (right). 0 is straight.',
+ py:'await move_steer_for(30, 2, "rotations")',js:'await moveSteerFor(30, 2, "rotations");'},
+{g:'piece',id:'p_speed',t:'Set the speed',d:'Sets how fast the robot moves, from 0 to 100 percent.',
+ py:'move_speed(60)',js:'moveSpeed(60);'},
+{g:'piece',id:'p_start',t:'Start moving and stop',d:'Starts moving without waiting. Stop it later with move_stop.',
+ py:L(['move_start(0)','await wait(2)','move_stop()']),js:L(['moveStart(0);','await wait(2);','moveStop();'])},
+{g:'piece',id:'p_turn0',t:'Turn right about 90 degrees',d:'Spins on the spot. About 0.5 wheel turns is 90 degrees. Use "left" to turn the other way.',
+ py:'await move_for("right", 0.5, "rotations")',js:'await moveFor("right", 0.5, "rotations");'},
+{g:'piece',id:'p_turn',t:'Turn right 90 degrees (gyro)',d:'Needs the gyro (IMU) ticked in Build the kit. Spins until the gyro says 90 degrees. Change 90 for other angles.',
+ py:L(['reset_yaw()','move_start(100)','await wait_until(lambda: yaw() >= 90)','move_stop()']),js:L(['resetYaw();','moveStart(100);','await waitUntil(() => yaw() >= 90);','moveStop();'])},
+{g:'piece',id:'p_motor',t:'Run a motor',d:'Ports A to F. Direction cw or ccw. Units: rotations, degrees, seconds.',
+ py:'await motor_run_for("A", "cw", 1, "rotations")',js:'await motorRunFor("A", "cw", 1, "rotations");'},
+{g:'piece',id:'p_repeat',t:'Repeat 4 times',d:'Runs the steps inside 4 times. Indent the steps you want to repeat.',
+ py:L(['for _ in range(4):','    await wait(0.5)']),js:L(['for (let i = 0; i < 4; i++) {','  await wait(0.5);','}'])},
+{g:'piece',id:'p_forever',t:'Repeat forever',d:'Keeps going until you press Stop. Always include a wait so the robot can act.',
+ py:L(['while True:','    await wait(0.1)']),js:L(['while (true) {','  await wait(0.1);','}'])},
+{g:'piece',id:'p_if',t:'If something is close',d:'Makes a decision from the distance sensor (in cm).',
+ py:L(['if distance() < 15:','    stop_all()','else:','    move_start(0)']),js:L(['if (distance() < 15) {','  stopAll();','} else {','  moveStart(0);','}'])},
+{g:'piece',id:'p_ifcol',t:'If the colour is red',d:'Colours: red, yellow, green, blue, grey, white, black.',
+ py:L(['if is_color("red"):','    await beep(60, 0.2)']),js:L(['if (isColor("red")) {','  await beep(60, 0.2);','}'])},
+{g:'piece',id:'p_until',t:'Wait until something happens',d:'Pauses the program until the condition is true.',
+ py:'await wait_until(lambda: distance() < 20)',js:'await waitUntil(() => distance() < 20);'},
+{g:'piece',id:'p_wait',t:'Wait 1 second',d:'Pauses the program for a number of seconds.',
+ py:'await wait(1)',js:'await wait(1);'},
+{g:'piece',id:'p_beep',t:'Play a beep',d:'The note is a number (60 is middle C). The second number is how long, in seconds.',
+ py:'await beep(60, 0.3)',js:'await beep(60, 0.3);'},
+{g:'piece',id:'p_disp',t:'Write on the display',d:'Shows text or a number on the robot display.',
+ py:'display_write("Hi!")',js:'displayWrite("Hi!");'},
+{g:'piece',id:'p_var',t:'Make a variable and add to it',d:'A variable remembers a number. Here it counts up by 1.',
+ py:L(['count = 0','count += 1','display_write(count)']),js:L(['let count = 0;','count += 1;','displayWrite(count);'])},
+{g:'piece',id:'p_rand',t:'Random number',d:'Picks a whole number between the two values, including both.',
+ py:'n = random_int(1, 6)',js:'let n = randomInt(1, 6);'},
+{g:'piece',id:'p_timer',t:'Use the timer',d:'timer() gives seconds since the program started, or since reset_timer().',
+ py:L(['reset_timer()','await wait_until(lambda: timer() > 3)']),js:L(['resetTimer();','await waitUntil(() => timer() > 3);'])},
+{g:'piece',id:'p_claw',t:'Claw and arm (3D mission)',d:'Open or close the claw, raise or lower the arm. Works on the 3D RoboMission.',
+ py:L(['await claw("open")','await arm("lower")','await claw("close")','await arm("raise")']),js:L(['await claw("open");','await arm("lower");','await claw("close");','await arm("raise");'])},
+{g:'piece',id:'p_auto',t:'Pick up and deliver a cube (3D)',d:'One-step helpers for the 3D mission. Cube colours: red, yellow, green, blue.',
+ py:L(['await auto_pick("blue")','await auto_deliver("blue")','await auto_home()']),js:L(['await autoPick("blue");','await autoDeliver("blue");','await autoHome();'])},
+{g:'piece',id:'p_ball',t:'Is the ball in view?',d:'RoboSports pitch with a ball camera. ball_angle() is positive when the ball is on the right.',
+ py:L(['if ball_in_view():','    move_steer_for(ball_angle(), 1, "rotations")']),js:L(['if (ballInView()) {','  moveSteerFor(ballAngle(), 1, "rotations");','}'])},
+{g:'piece',id:'p_ls',t:'Loop style: avoid an obstacle',d:'For loop(s) style code. Return the left and right speed, from -1 to 1.',
+ py:L(['if s.dist < 15:','    return -0.5, 0.5']),js:L(['if (s.dist < 15) {','  return [-0.5, 0.5];','}'])},
+{g:'piece',id:'p_lsline',t:'Loop style: line sensors',d:'For loop(s) style code. s.line.left, s.line.mid and s.line.right are true over the line.',
+ py:L(['if s.line.left:','    return 0.3, 0.8','if s.line.right:','    return 0.8, 0.3']),js:L(['if (s.line.left) {','  return [0.3, 0.8];','}','if (s.line.right) {','  return [0.8, 0.3];','}'])}
+];
+
+var REF=[
+['move_for(direction, amount, unit)','Move forward, backward, left or right. Units: rotations, degrees, seconds.'],
+['move_steer_for(steering, amount, unit)','Move with steering from -100 (left) to 100 (right).'],
+['move_start(steering) / move_stop()','Start moving without waiting, and stop.'],
+['move_speed(percent)','Speed from 0 to 100.'],
+['motor_run_for(port, direction, amount, unit)','Run one motor. Ports A to F, direction cw or ccw.'],
+['motor_start / motor_stop / motor_set_speed','Control a motor without waiting.'],
+['motor_degrees(port) / motor_speed(port)','Read how far a motor turned and how fast it goes.'],
+['wait(seconds) / wait_until(condition)','Pause for a time, or until something is true.'],
+['distance()','Distance sensor reading in cm.'],
+['color() / is_color(name)','Colour sensor: what it sees, or whether it sees a colour.'],
+['reflected_light(side)','Brightness under the left, mid or right line sensor.'],
+['yaw() / reset_yaw()','Gyro turn angle in degrees (right turns are positive).'],
+['timer() / reset_timer()','Seconds since the program (or timer) started.'],
+['display_write(text) / display_clear()','Show or clear text on the robot display.'],
+['beep(note, seconds)','Play a note. 60 is middle C.'],
+['stop_all()','Stop every motor.'],
+['random_int(a, b)','A random whole number from a to b.'],
+['claw("open" or "close") / arm("raise" or "lower")','Claw and arm on the 3D mission.'],
+['auto_pick(colour) / auto_deliver(colour) / auto_home()','One-step 3D mission helpers.'],
+['ball_in_view() / ball_angle() / ball_distance()','Ball camera on the RoboSports pitch.'],
+['holding() / held_color()','Whether the claw holds a cube, and its colour.']
+];
+function camelS(s){return s.replace(/_([a-z])/g,function(m,c){return c.toUpperCase()})}
+
+function lang(){return $('pm_py').classList.contains('on')?'py':'js'}
+function code(it){var l=lang();if(it[l])return it[l];return ''}
+function cur(){var v=$('psn_sel').value;return SN.filter(function(x){return x.id==v})[0]}
+function build(){var s=$('psn_sel');if(!s||s.options.length)return;
+var h='<optgroup label="Starter programs (replace my code)">',g='start';
+SN.forEach(function(x){if(x.g!=g){h+='</optgroup><optgroup label="Code pieces (added at the cursor)">';g=x.g}h+='<option value="'+x.id+'">'+x.t+'</option>'});
+s.innerHTML=h+'</optgroup>'}
+function show(){var it=cur();if(!it)return;$('psn_d').textContent=it.d+(it.g=='start'?' Replaces your code (press Ctrl+Z to undo).':' Added where your cursor is.');
+$('psn_pre').textContent=code(it);$('psn_use').textContent=it.g=='start'?'Use this program':'Add to my code';
+var ref=$('psn_ref'),py=lang()=='py';ref.innerHTML=REF.map(function(r){var n=py?r[0]:r[0].replace(/[a-z]+(?:_[a-z]+)+/g,camelS);return '<div class="psr"><code>'+n.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</code><span>'+r[1]+'</span></div>'}).join('')}
+window.psnShow=show;
+window.psnUse=function(){var it=cur();if(!it)return;var ta=$('pcode'),c=code(it);if(!c)return;ta.focus();
+if(it.g=='start'){ta.select();if(!document.execCommand||!document.execCommand('insertText',false,c)){ta.value=c;ta.dispatchEvent(new Event('input'))}ta.setSelectionRange(0,0);ta.scrollTop=0}
+else{var a=ta.selectionStart,v=ta.value,ls=v.lastIndexOf('\n',a-1)+1,ind=(/^[ \t]*/.exec(v.slice(ls,a))||[''])[0],lines=c.split('\n'),txt=lines.map(function(l,i){return i?ind+l:l}).join('\n')+'\n';
+var atLineStart=a==ls||/^\s*$/.test(v.slice(ls,a));if(!atLineStart)txt='\n'+ind+txt.replace(/\n$/,'');
+if(!document.execCommand||!document.execCommand('insertText',false,txt)){ta.setRangeText(txt,a,ta.selectionEnd,'end');ta.dispatchEvent(new Event('input'))}}
+var m=$('psn_msg');m.textContent='Added.';setTimeout(function(){m.textContent=''},1800)};
+var _pm=window.progMode;window.progMode=function(m){_pm(m);build();show()};
+build();show();
+})();
 </script>
 <script type="importmap">{"imports":{"three":"./offline/libs/three/three.module.js","three/addons/":"./offline/libs/three/addons/"}}</script>
 <script type="module">
@@ -2412,6 +2576,7 @@ if(ios&&!standalone&&!st('x')&&'serviceWorker' in navigator)show('To install on 
 })();
 </script>
 </body></html>
+
 
 
 
