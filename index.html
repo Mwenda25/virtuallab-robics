@@ -415,11 +415,76 @@ body>*:not(#tp){display:none!important}
 #p4.emb #scorebox .big{font-size:20px}
 #p4.emb #controls{bottom:6px;padding:4px;gap:4px;flex-wrap:nowrap;max-width:calc(100% - 12px);left:50%;right:auto;transform:translateX(-50%)}
 #p4.emb button{padding:6px 8px;font-size:11.5px;white-space:nowrap}
+#p10{display:grid;grid-template-columns:280px minmax(0,1fr) 340px;gap:12px;align-items:start;color:#e6edf7;font-size:14px}#p10.hid{display:none}
+#p10 .lp{background:#0d1424;border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:14px;max-height:min(80vh,760px);overflow:auto}
+#p10 h3{margin:0;font-size:20px;letter-spacing:1px}
+#p10 .lsub{font-size:11px;color:#9fb0c8;text-transform:uppercase;letter-spacing:1px;margin:2px 0 10px}
+#p10 h4{margin:14px 0 6px;font-size:11px;letter-spacing:2px;color:#ffcf1a;text-transform:uppercase}
+#p10 select,#p10 input[type=number]{background:#16203a;color:#e6edf7;border:1px solid rgba(255,255,255,.18);border-radius:7px;padding:5px 7px;font:inherit;font-size:13px;max-width:100%}
+#p10 input[type=number]{width:64px}
+#p10 #ltpl,#p10 #lctl,#p10 #lport{width:100%}
+#p10 select:disabled,#p10 input:disabled{opacity:.45}
+#p10 .lm{font-size:12px;color:#8ea0ba;margin:4px 0}
+#p10 .lchips{display:flex;flex-wrap:wrap;gap:5px}
+#p10 .lchip,#p10 .lb{background:#16203a;color:#e6edf7;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:5px 10px;font:inherit;font-size:12.5px;cursor:pointer}
+#p10 .lb{border-radius:8px;padding:6px 10px;margin:6px 6px 0 0}
+#p10 .lchip:hover,#p10 .lb:hover{border-color:#4fc3f7;color:#fff}
+#p10 .ll{display:block;font-size:12px;color:#8ea0ba;margin:8px 0 3px}
+#p10 .lrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:13px}
+#p10 .lrow>span{flex:1 1 120px}
+#p10 .lrow input[type=range]{flex:1 1 90px;min-width:70px;accent-color:#4fc3f7}
+#p10 .lrow b{min-width:56px;text-align:right;color:#fff;font-size:12.5px}
+#p10 .lrule{display:flex;flex-wrap:wrap;gap:5px;align-items:center;padding:8px;margin-bottom:6px;background:rgba(255,255,255,.04);border-radius:8px}
+#p10 .lk{font-size:10.5px;font-weight:700;letter-spacing:1px;color:#ffcf1a}
+#p10 .lx{margin-left:auto;background:none;border:1px solid rgba(255,255,255,.18);color:#e6edf7;border-radius:6px;cursor:pointer;padding:2px 8px}
+#p10 .lck{font-size:12.5px;padding:6px 8px;border-radius:7px;margin-bottom:5px;border:1px solid transparent}
+#p10 .lck.ok{background:rgba(61,220,132,.12);border-color:rgba(61,220,132,.4);color:#8ff0b8}
+#p10 .lck.wn{background:rgba(255,207,26,.1);border-color:rgba(255,207,26,.4);color:#ffe27a}
+#p10 .lck.in{background:rgba(79,195,247,.1);border-color:rgba(79,195,247,.35);color:#a5defa}
+#p10 #dgstage{position:relative;height:min(80vh,760px);min-height:420px;border-radius:12px;overflow:hidden;background:#0a0f1c}
+#p10 #dgstage canvas{display:block;touch-action:none}
+#p10 .lmsg{position:absolute;left:50%;bottom:44px;transform:translateX(-50%);max-width:88%;background:rgba(12,18,32,.92);border:1px solid rgba(255,255,255,.15);border-radius:9px;padding:8px 12px;font-size:13px;opacity:0;transition:opacity .25s;pointer-events:none;text-align:center}
+#p10 .lmsg.bad{border-color:#ff8a80;color:#ffb4ab}
+#p10 .lhelp{position:absolute;left:12px;right:12px;bottom:10px;font-size:11.5px;color:#8ea0ba;text-align:center;pointer-events:none}
+#p10 .lsndl{display:block;margin-top:10px}
+@media(max-width:1060px){#p10{grid-template-columns:1fr}#p10 #dgstage{order:-1;height:56vh}#p10 .lp{max-height:none}}
+body.lv-e #sm10{display:none}
+#p10 input[type=range]{width:100%;accent-color:#4fc3f7;margin:0 0 6px}
+#dgstage #dgtri{position:absolute;left:10px;top:10px;width:220px;height:170px;border-radius:10px;border:1px solid rgba(255,255,255,.18);touch-action:none;cursor:grab;z-index:3}
+#p10 .dgtabs{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
+#p10 .dgtabs button{padding:6px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.18);background:#16203a;color:#e6edf7;font:inherit;font-size:13px;cursor:pointer}
+#p10 .dgtabs button.on{background:#e3f0fb;border-color:#4fc3f7;color:#0b3a66;font-weight:700}
+#p10 .dgs{display:none}#p10 .dgs.on{display:block}
+#p10 .dgleg{padding:6px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+#p10 .dgleg>b{font-size:12px;color:#ffcf1a;text-transform:uppercase;letter-spacing:1px}
+#p10 .dgl2{display:flex;justify-content:space-between;font-size:12.5px;color:#cfd8e3;margin-top:3px}
+#p10 .dgv{color:#fff;font-weight:700}
+#p10 .dglim{font-size:13px;line-height:2.1}
+#p10 .dglim input[type=number]{width:62px}
+#p10 .dgck{display:block;margin:4px 0;cursor:pointer}
+#p10 .lb.pri{background:#185FA5;border-color:#4fc3f7}
+#p10 .lb.stop{background:#a82218;border-color:#ff8a80}
+#p10 .dgscroll{max-height:200px;overflow:auto}
+#p10 .dgt{width:100%;border-collapse:collapse;font-size:12.5px}
+#p10 .dgt th,#p10 .dgt td{border-bottom:1px solid rgba(255,255,255,.1);padding:4px 5px;text-align:left}
+#p10 .dgt tr.sel td{background:rgba(79,195,247,.15)}
+#p10 .dgt button{padding:2px 7px;border-radius:6px;border:1px solid rgba(255,255,255,.2);background:#16203a;color:#e6edf7;font:inherit;font-size:12px;cursor:pointer;margin-right:2px}
+#p10 .dgblk{height:300px;border-radius:10px;overflow:hidden;background:#fff;margin:6px 0}
+#p10 .dgcodeh{display:flex;justify-content:space-between;align-items:center;margin-top:10px;font-size:13px}
+#p10 .dgcodeh button{padding:3px 9px;border-radius:7px;border:1px solid rgba(255,255,255,.2);background:#16203a;color:#e6edf7;font:inherit;font-size:12px;cursor:pointer}
+#p10 .dgcodeh button.on{background:#e3f0fb;color:#0b3a66}
+#p10 .dgcode{margin:4px 0;padding:8px;max-height:220px;overflow:auto;background:#06101c;border-radius:8px;font:12px/1.45 ui-monospace,Menlo,Consolas,monospace;white-space:pre;color:#cfe3ff}
+.dgjoy{position:relative;width:140px;height:140px;margin:8px auto;border-radius:50%;background:rgba(79,195,247,.12);border:2px solid #4fc3f7;touch-action:none}
+.dgjoy.big{width:260px;height:260px;border-color:#1798d4}
+.dgjoy i{position:absolute;left:50%;top:50%;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:#4fc3f7;box-shadow:0 2px 8px rgba(0,0,0,.5);transition:transform .05s}
+.dgjoy.big i{width:80px;height:80px;margin:-40px 0 0 -40px;background:#1798d4}
+#dgremote{position:fixed;inset:0;z-index:200;background:#0a0f1c;color:#e6edf7;text-align:center;padding:24px}
+@media(max-width:1060px){#dgstage #dgtri{width:170px;height:131px}}
 </style></head>
 <body><div class="w">
 <div class="hd"><div><h1>KitBench</h1><p class="s" id="hsub">Build, program and test your own robot.</p></div><button id="lvchip" class="lvchip" onclick="mpLevelOpen()" aria-label="Change level"></button></div>
 <div class="tabs"><button id="t9" onclick="tab(9)"><i>&#x1F3AF;</i><b>Missions</b></button><button id="t1" onclick="tab(1)"><i>&#x1F9E9;</i><b>Build</b></button><button id="t6" onclick="tab(6)"><i>&#x1F3A8;</i><b>Design</b></button><button id="t2" onclick="tab(2)"><i>&#x1F50C;</i><b>Wire</b></button><button id="t5" onclick="tab(5)"><i>&#x1F9F1;</i><b>Program</b></button><button id="t3" onclick="tab(window.simLast||3)"><i>&#x1F579;</i><b>Simulator</b></button><button id="t7" onclick="tab(7)"><i>&#x1F4D8;</i><b>Projects</b></button><button id="tx" onclick="mpExit()"><i>&#x1F6AA;</i><b>Exit</b></button></div>
-<div id="simbar" class="simbar hid" role="tablist" aria-label="Simulator view"><span class="mu">View</span><button id="sm3" onclick="tab(3)">2D practice track</button><button id="sm4" onclick="tab(4)">3D mission mat</button><button id="sm8" onclick="tab(8)">Project lab (3D)</button></div>
+<div id="simbar" class="simbar hid" role="tablist" aria-label="Simulator view"><span class="mu">View</span><button id="sm3" onclick="tab(3)">2D practice track</button><button id="sm4" onclick="tab(4)">3D mission mat</button><button id="sm8" onclick="tab(8)">Project lab (3D)</button><button id="sm10" onclick="tab(10)">Robot Dog (3D)</button></div>
 
 <div id="p1" class="g">
 <div class="c"><h2>Parts</h2><div id="parts"></div>
@@ -466,6 +531,7 @@ body>*:not(#tp){display:none!important}
 <label class="lm lsndl"><input type="checkbox" id="lsnd" onchange="lab.snd(this.checked)"> Play buzzer sound</label>
 </div>
 </div>
+<div id="p10" class="hid"><div class="lp" id="dgl"></div><div id="dgstage"><div id="dgmsg" class="lmsg" role="status" aria-live="polite"></div><canvas id="dgtri" width="220" height="170" aria-label="Leg triangle: drag the green foot"></canvas><div class="lhelp">Drag to turn the view. The red dot is the centre of mass. Green area: where the feet touch.</div></div><div class="lp" id="dgr"></div></div>
 <div id="p9" class="hid"><div id="mpmain"></div></div>
 <div id="p7" class="hid"><div class="pj">
 <div class="c"><h2>Projects</h2><div id="pjlist"></div>
@@ -634,8 +700,8 @@ if(!has('box'))add('wn','No storage box. Lost parts are a common cause of kit fa
 
 if(c.join('').indexOf('class="ck er"')<0)c.unshift('<div class="ck ok">Core build is complete: controller, drive, power and wheels are all present.</div>');
 $('checks').innerHTML=c.join('');drawWire();sensNote()}
-function tab(n){var pn=n==6?4:n;for(var i=1;i<=9;i++){var p=$('p'+i);if(p)p.className=i==pn?(i==1?'g':''):'hid';var t=$('t'+i);if(t)t.className=i==n?'on':''}
-$('p4').classList.toggle('dm',n==6);var sim=n==3||n==4||n==8;document.querySelector('.w').classList.toggle('wide',n==8);if(sim)window.simLast=n;$('t3').className=sim?'on':'';$('simbar').classList.toggle('hid',!sim);$('sm3').className=n==3?'on':'';$('sm4').className=n==4?'on':'';$('sm8').className=n==8?'on':'';
+function tab(n){var pn=n==6?4:n;for(var i=1;i<=10;i++){var p=$('p'+i);if(p)p.className=i==pn?(i==1?'g':''):'hid';var t=$('t'+i);if(t)t.className=i==n?'on':''}
+$('p4').classList.toggle('dm',n==6);var sim=n==3||n==4||n==8||n==10;document.querySelector('.w').classList.toggle('wide',n==8||n==10);if(sim)window.simLast=n;$('t3').className=sim?'on':'';$('simbar').classList.toggle('hid',!sim);$('sm3').className=n==3?'on':'';$('sm4').className=n==4?'on':'';$('sm8').className=n==8?'on':'';$('sm10').className=n==10?'on':'';
 if(n==3){sensNote();reset();if(!PY&&!PYFAIL&&!PYLOAD)PYLOAD=loadPy()}
 if(n==5&&window.progOpen)progOpen();if(window.mp3dSync)mp3dSync(n);if(n==9&&window.mpRender)mpRender();if(n==5&&window.mpBar)mpBar();
 if(n==6){if(window.desUI)desUI();if(window.kb3d&&kb3d.applyDesign)kb3d.applyDesign()}
@@ -1850,7 +1916,7 @@ function guide(){return '<section class="tppage"><div class="tph"><small>KitBenc
 +'<h3>A 40-minute lesson</h3><table class="tpt"><tr><td><b>5 min</b></td><td>Warm-up. A question or an unplugged activity (see each lesson plan).</td></tr><tr><td><b>5 min</b></td><td>Demonstrate the new idea on one screen.</td></tr><tr><td><b>20 min</b></td><td>Learners work in pairs on the mission. One is the <b>driver</b> (moves blocks) and one is the <b>navigator</b> (reads the goal and hints). Swap roles each mission.</td></tr><tr><td><b>5 min</b></td><td>Share. Ask the check questions on the lesson plan.</td></tr><tr><td><b>5 min</b></td><td>Record stars on the class score sheet and tidy up.</td></tr></table>'
 +'<h3>How stars work</h3><p>&#9733; for finishing the mission. &#9733; for finishing without opening a hint. &#9733; for finishing under the target time. Hints are for help, not a penalty: encourage learners to use them after trying for a few minutes.</p>'
 +'<h3>If something goes wrong</h3><table class="tpt"><tr><td><b>The robot does not move</b></td><td>Open Build the kit (Builder and Engineer) and look for the red or yellow message. Or tap the mission again: it repairs the kit and wiring.</td></tr><tr><td><b>Python will not run</b></td><td>Python needs to be saved once with internet. Block programs and JavaScript always work.</td></tr><tr><td><b>Learners lost their blocks</b></td><td>Work is saved on the device and browser in use. Each mission keeps its own blocks.</td></tr><tr><td><b>Shared device shows another learner\'s stars</b></td><td>On the Missions page choose <b>Clear my stars</b>, or use the score sheet to record stars first.</td></tr><tr><td><b>Page looks old after an update</b></td><td>Open KitBench once with internet, close it, and open it again.</td></tr></table>'
-+'<h3>Privacy and safety</h3><p>KitBench has no server, no advertising and no tracking. Learner names, PINs, stars and blocks are stored only in the browser on this device, and nothing is sent to any website. Use first names or nicknames only. The PIN is a simple lock to stop classmates changing each other\'s stars, not strong security, so never use a real password. Clearing the browser data deletes the stars: use Teacher, then Download backup, to keep a copy.</p>'+'<h3>Good practice</h3><ul><li>Pair a confident reader with a learner who is still learning to read, and swap roles.</li><li>Let learners predict before they press play: "What will the robot do?"</li><li>Celebrate trying again. Fixing a mistake is the main skill in programming.</li></ul></section>'}
++'<h3>Robot Dog challenge (Builder and Engineer)</h3><p>In the Simulator, open <b>Robot Dog (3D)</b>. Over five days learners move a four-legged robot: Day 1 hip and knee angles and the foot target (inverse kinematics), Day 2 standing and tipping over, Day 3 balancing on three legs by moving the battery (centre of mass), Day 4 walking straight after calibrating wobbly servos, Day 5 training many dogs and sharing a clip. Ask learners to log every attempt in the Projects tab, especially the ones that fail. The Share tab can download MicroPython code for a real ESP32 dog (check pins and test with the legs in the air first). Train it is a simple evolution game, not real robot learning.</p>'+'<h3>Privacy and safety</h3><p>KitBench has no server, no advertising and no tracking. Learner names, PINs, stars and blocks are stored only in the browser on this device, and nothing is sent to any website. Use first names or nicknames only. The PIN is a simple lock to stop classmates changing each other\'s stars, not strong security, so never use a real password. Clearing the browser data deletes the stars: use Teacher, then Download backup, to keep a copy.</p>'+'<h3>Good practice</h3><ul><li>Pair a confident reader with a learner who is still learning to read, and swap roles.</li><li>Let learners predict before they press play: "What will the robot do?"</li><li>Celebrate trying again. Fixing a mistake is the main skill in programming.</li></ul></section>'}
 
 /* ---------- lesson plans ---------- */
 function plan(m,i){var d=TD[m.id]||{};
@@ -2005,6 +2071,42 @@ p4.classList.remove('hid','dm');p4.classList.add('emb');box.classList.remove('hi
 setTimeout(function(){window.dispatchEvent(new Event('resize'))},50)}
 else{if(HOME&&p4.parentNode===box)HOME.parent.insertBefore(p4,HOME.next);p4.classList.remove('emb');if(n!=4&&n!=6)p4.classList.add('hid');box.classList.add('hid');$q('cv2').style.display=''}};
 window.mpRun3d=function(){var p5=$q('p5'),sel=$q('prunon');if(p5&&!p5.classList.contains('hid')&&sel&&sel.value=='3d')mp3dSync(5);else tab(4);kb3d.runProgram()};
+})();
+</script>
+<script>
+(function(){var add=[{id:'srv8',g:'Robot Dog',n:'8 servo motors (SG90 or MG90S)',d:'Hips and knees for the Robot Dog. ESP32 only',p:16,on:0},{id:'pca',g:'Robot Dog',n:'PCA9685 servo driver board',d:'Gives the 8 servos steady power and signals. ESP32 only',p:4,on:0},{id:'dogfr',g:'Robot Dog',n:'Robot Dog frame (body and 4 legs)',d:'Laser-cut or 3D-printed body with 7.5 cm upper and lower legs',p:15,on:0}];
+add.forEach(function(x){PARTS.push(x);COMPAT[x.id]=['esp']});
+try{var s=JSON.parse(localStorage.getItem(SK)||'null');if(s&&s.p)PARTS.forEach(function(x){if(['srv8','pca','dogfr'].indexOf(x.id)>=0&&x.id in s.p)x.on=s.p[x.id]?1:0})}catch(e){}
+drawParts();update()})();
+</script>
+<script>
+(function(){
+/* Balance check for the wheeled robot in the Design Lab: where is the weight, and does it stay over the wheels and caster? */
+var d=document.getElementById('dpanel');if(!d)return;var hs=d.querySelectorAll('h2'),at=null;for(var i=0;i<hs.length;i++)if(/Check against/i.test(hs[i].textContent))at=hs[i];if(!at)return;
+var B={bx:0,bz:0,pay:0},box=document.createElement('div');
+box.innerHTML='<h2>Balance check (top view)</h2><canvas id="dbal" width="260" height="150" style="width:100%;border-radius:8px;background:rgba(255,255,255,.05)" aria-label="Top view of the robot with its centre of mass"></canvas>'
++'<label class="dk" style="display:block">Battery forward / back <span id="dbalv1"></span><input type="range" id="dbal1" min="-6" max="8" step="0.5" value="0" style="width:100%" oninput="dBal(\'bx\',this.value)"></label>'
++'<label class="dk" style="display:block">Battery left / right <span id="dbalv2"></span><input type="range" id="dbal2" min="-5" max="5" step="0.5" value="0" style="width:100%" oninput="dBal(\'bz\',this.value)"></label>'
++'<label class="dk" style="display:block">Weight on top (grams) <span id="dbalv3"></span><input type="range" id="dbal3" min="0" max="300" step="10" value="0" style="width:100%" oninput="dBal(\'pay\',this.value)"></label><div id="dbalt" style="font-size:12.5px;margin:4px 0 8px"></div>';
+at.parentNode.insertBefore(box,at);
+window.dBal=function(k,v){B[k]=+v;draw()};
+function draw(){var c=document.getElementById('dbal');if(!c)return;var x=c.getContext('2d'),T=(window.DES&&DES.track)||16.4,S=7,cx=88,cy=75;
+/* grams and positions in cm: x forward, z right. wheels on the axle at x=0, caster at the back */
+var M=[[300,-2,0],[120,0,0],[40,-3,0],[200,-3+B.bx,B.bz]];if(B.pay>0)M.push([B.pay,2,0]);var tm=0,mx=0,mz=0;M.forEach(function(m){tm+=m[0];mx+=m[0]*m[1];mz+=m[0]*m[2]});mx/=tm;mz/=tm;
+var P=[[0,-T/2],[0,T/2],[-9,0]];
+function inside(px,pz){var s=0,ok=true;for(var i=0;i<3;i++){var a=P[i],b=P[(i+1)%3],cr=(b[0]-a[0])*(pz-a[1])-(b[1]-a[1])*(px-a[0]);if(i==0)s=cr>0?1:-1;else if(cr*s<0)ok=false}return ok}
+function sd(px,pz,a,b){var dx=b[0]-a[0],dz=b[1]-a[1],t=Math.max(0,Math.min(1,((px-a[0])*dx+(pz-a[1])*dz)/(dx*dx+dz*dz)));return Math.hypot(a[0]+t*dx-px,a[1]+t*dz-pz)}
+var ok=inside(mx,mz),dist=Math.min(sd(mx,mz,P[0],P[1]),sd(mx,mz,P[1],P[2]),sd(mx,mz,P[2],P[0]));
+x.clearRect(0,0,260,150);x.fillStyle='#1b2438';x.fillRect(0,0,260,150);
+var X=function(v){return cx+v*S},Z=function(v){return cy+v*S};
+x.fillStyle='#2b6fd9';x.fillRect(X(-10),Z(-T/2+1),S*14,S*(T-2));x.fillStyle='#222';x.fillRect(X(-2),Z(-T/2-1.5),S*4,S*3);x.fillRect(X(-2),Z(T/2-1.5),S*4,S*3);x.beginPath();x.fillStyle='#888';x.arc(X(-9),Z(0),4,0,7);x.fill();
+x.fillStyle=ok?'rgba(61,220,132,.35)':'rgba(255,90,79,.35)';x.beginPath();P.forEach(function(p,i){i?x.lineTo(X(p[0]),Z(p[1])):x.moveTo(X(p[0]),Z(p[1]))});x.closePath();x.fill();x.strokeStyle=ok?'#3ddc84':'#ff5a4f';x.stroke();
+x.fillStyle='#ffcf1a';x.fillRect(X(-3+B.bx)-12,Z(B.bz)-6,24,12);
+x.fillStyle='#ff3b3b';x.beginPath();x.arc(X(mx),Z(mz),5,0,7);x.fill();x.fillStyle='#cfd8e3';x.font='10px sans-serif';x.fillText('front >',215,12);
+var msg=ok?'Stable. The red dot is '+(Math.round(dist*10)/10)+' cm inside the green area.':(mx>0?'Tips forward! The weight is in front of the wheels, so the nose dips.':'Tips over! The red dot is outside the green area.');
+var t=document.getElementById('dbalt');t.textContent=msg;t.style.color=ok?'#3ddc84':'#ff8a80';
+document.getElementById('dbalv1').textContent=B.bx+' cm';document.getElementById('dbalv2').textContent=B.bz+' cm';document.getElementById('dbalv3').textContent=B.pay+' g'}
+draw();setInterval(draw,800);
 })();
 </script>
 <script type="importmap">{"imports":{"three":"./offline/libs/three/three.module.js","three/addons/":"./offline/libs/three/addons/"}}</script>
@@ -3146,7 +3248,723 @@ window.addEventListener('appinstalled',function(){bar.hidden=true});
 if(ios&&!standalone&&!st('x')&&'serviceWorker' in navigator)show('To install on iPhone or iPad: tap the Share button, then Add to Home Screen.');
 })();
 </script>
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+/* ===== Robot Dog: the maths (legs, balance, walking, training). No drawing in this part. ===== */
+const DG={L1:7.5,L2:7.5,HX:8,HZ:5.5,TRACK:11};
+const LEGS=['FL','FR','RL','RR'];
+const LEGP={FL:{x:DG.HX,z:-DG.HZ,side:-1},FR:{x:DG.HX,z:DG.HZ,side:1},RL:{x:-DG.HX,z:-DG.HZ,side:-1},RR:{x:-DG.HX,z:DG.HZ,side:1}};
+const LEGN={FL:'front left',FR:'front right',RL:'rear left',RR:'rear right'};
+const RAD=Math.PI/180,DEG=180/Math.PI;
+const clampN=(v,a,b)=>Math.max(a,Math.min(b,v));
+
+/* forward kinematics: hip angle h and knee bend k (degrees) -> knee and foot, measured from the hip (x forward, y down, in cm) */
+function fk(h,k){const a=h*RAD,b=(h-k)*RAD;return{kx:DG.L1*Math.sin(a),ky:DG.L1*Math.cos(a),x:DG.L1*Math.sin(a)+DG.L2*Math.sin(b),y:DG.L1*Math.cos(a)+DG.L2*Math.cos(b)}}
+/* inverse kinematics: foot at (x,y) from the hip -> hip and knee angles in degrees */
+function ik(x,y){let d=Math.hypot(x,y),mx=DG.L1+DG.L2-0.01,mn=Math.abs(DG.L1-DG.L2)+0.6,ok=true;
+if(d>mx){x*=mx/d;y*=mx/d;d=mx;ok=false}if(d<mn){const s=mn/(d||1e-6);x*=s;y*=s;d=mn;ok=false}
+const cK=(DG.L1*DG.L1+DG.L2*DG.L2-d*d)/(2*DG.L1*DG.L2),interior=Math.acos(clampN(cK,-1,1)),cB=(DG.L1*DG.L1+d*d-DG.L2*DG.L2)/(2*DG.L1*d),beta=Math.acos(clampN(cB,-1,1)),phi=Math.atan2(x,y);
+return{h:(phi+beta)*DEG,k:(Math.PI-interior)*DEG,ok:ok,x:x,y:y}}
+
+/* settings that the panels change */
+const DOG={
+ limits:{h:[-60,60],k:[0,140]},
+ pose:{FL:{h:20,k:40},FR:{h:20,k:40},RL:{h:20,k:40},RR:{h:20,k:40}},
+ battery:{x:0,z:0},payload:0,
+ walk:{h:3,s:6,f:2,duty:0.5,bodyH:11,shift:0.5,turn:0},
+ real:{on:0,seed:1,wobble:1,off:null},
+ trim:{FL:{h:0,k:0},FR:{h:0,k:0},RL:{h:0,k:0},RR:{h:0,k:0}}
+};
+function seedOffsets(seed){let s=(seed*9301+49297)%233280,r=()=>{s=(s*9301+49297)%233280;return s/233280-0.5};const o={};LEGS.forEach(l=>{o[l]={h:Math.round(r()*2*8*10)/10,k:Math.round(r()*2*8*10)/10}});return o}
+DOG.real.off=seedOffsets(1);
+function limit(l,j,v){const L=DOG.limits[j];return clampN(v,L[0],L[1])}
+/* the angle the servo really turns to: command + hidden offset (real-world mode) + the learner's trim + a little wobble */
+function actual(l,j,cmd,t){let v=cmd+DOG.trim[l][j];if(DOG.real.on){v+=DOG.real.off[l][j];if(DOG.real.wobble)v+=DOG.real.wobble*0.9*Math.sin((t||0)*17+l.charCodeAt(0)*1.7+(j=='k'?1.3:0))}return v}
+
+/* masses in grams: positions are (x forward, z right) from the middle of the body */
+function massList(pose){
+ const M=[{m:250,x:0,z:0,n:'body'},{m:40,x:-3,z:0,n:'controller'},{m:300,x:DOG.battery.x,z:DOG.battery.z,n:'battery'}];
+ if(DOG.payload>0)M.push({m:DOG.payload,x:11,z:0,n:'camera'});
+ LEGS.forEach(l=>{const P=LEGP[l],f=fk(pose[l].h,pose[l].k);
+  M.push({m:10,x:P.x,z:P.z,n:'hip servo'});M.push({m:12,x:P.x+f.kx/2,z:P.z,n:'thigh'});M.push({m:10,x:P.x+f.kx,z:P.z,n:'knee servo'});M.push({m:10,x:P.x+(f.kx+f.x)/2,z:P.z,n:'shin'})});
+ return M}
+function centreOfMass(pose){const M=massList(pose);let t=0,x=0,z=0;M.forEach(q=>{t+=q.m;x+=q.m*q.x;z+=q.m*q.z});return{x:x/t,z:z/t,mass:t,list:M}}
+
+/* convex hull of points {x,z} and the signed distance from a point to it (positive = inside) */
+function hull(pts){const p=pts.slice().sort((a,b)=>a.x-b.x||a.z-b.z);if(p.length<3)return p;const cr=(o,a,b)=>(a.x-o.x)*(b.z-o.z)-(a.z-o.z)*(b.x-o.x);
+const lo=[];p.forEach(q=>{while(lo.length>=2&&cr(lo[lo.length-2],lo[lo.length-1],q)<=0)lo.pop();lo.push(q)});
+const up=[];p.slice().reverse().forEach(q=>{while(up.length>=2&&cr(up[up.length-2],up[up.length-1],q)<=0)up.pop();up.push(q)});
+lo.pop();up.pop();return lo.concat(up)}
+function segDist(p,a,b){const dx=b.x-a.x,dz=b.z-a.z,l2=dx*dx+dz*dz;let t=l2?((p.x-a.x)*dx+(p.z-a.z)*dz)/l2:0;t=clampN(t,0,1);return Math.hypot(p.x-(a.x+t*dx),p.z-(a.z+t*dz))}
+function margin(p,H){if(!H.length)return -99;if(H.length==1)return -Math.hypot(p.x-H[0].x,p.z-H[0].z);if(H.length==2)return -segDist(p,H[0],H[1]);
+let inside=true,md=1e9;for(let i=0;i<H.length;i++){const a=H[i],b=H[(i+1)%H.length];if((b.x-a.x)*(p.z-a.z)-(b.z-a.z)*(p.x-a.x)<0)inside=false;md=Math.min(md,segDist(p,a,b))}return inside?md:-md}
+
+/* standing: where each foot is, which feet touch the ground, how high the body sits, and whether the dog balances */
+function stance(cmd,t){const pose={},foot={};let maxD=-1e9;
+ LEGS.forEach(l=>{const h=actual(l,'h',limit(l,'h',cmd[l].h),t),k=actual(l,'k',limit(l,'k',cmd[l].k),t);pose[l]={h:h,k:k};const f=fk(h,k);foot[l]={x:f.x,y:f.y,kx:f.kx,ky:f.ky};if(f.y>maxD)maxD=f.y});
+ const contact=LEGS.filter(l=>foot[l].y>=maxD-0.5),pts=contact.map(l=>({x:LEGP[l].x+foot[l].x,z:LEGP[l].z,l:l})),H=hull(pts),c=centreOfMass(pose);
+ return{pose:pose,foot:foot,H:maxD,contact:contact,hull:H,com:c,margin:margin(c,H)}}
+
+/* walking: one time step. Feet follow a path, the body moves by pushing off the feet that touch the ground. */
+function newWalker(){return{phase:0,t:0,X:0,Z:0,psi:0,dist:0,prev:null,bad:0,fell:0,fellAt:0,energy:0,pr:null}}
+function gaitTarget(l,u,P){const swing=1-P.duty,sc=1+P.turn*0.6*(LEGP[l].side<0?1:-1),s=P.s*sc;let x,y;
+ if(u<swing){const m=u/swing,e=(1-Math.cos(Math.PI*m))/2;x=-s/2+s*e;y=P.bodyH-P.h*Math.sin(Math.PI*m)}
+ else{const m=(u-swing)/P.duty;x=s/2-s*m;y=P.bodyH}return{x:x,y:y}}
+function walkCmd(W,P){const off={FL:0,RR:0,FR:P.shift,RL:P.shift},cmd={},ok={};LEGS.forEach(l=>{const g=gaitTarget(l,(W.phase+off[l])%1,P),a=ik(g.x,g.y);cmd[l]={h:a.h,k:a.k};ok[l]=a.ok});return{cmd:cmd,ok:ok}}
+function walkStep(W,P,dt,real){
+ W.phase=(W.phase+P.f*dt)%1;W.t+=dt;const c=walkCmd(W,P),st=stance(c.cmd,real?W.t:0);
+ const contact=st.contact;let dL=[],dR=[];
+ if(W.prev){contact.forEach(l=>{if(W.prev.contact.indexOf(l)>=0){const d=-(st.foot[l].x-W.prev.foot[l].x);(LEGP[l].side<0?dL:dR).push(d)}})}
+ const av=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:null;let vl=av(dL),vr=av(dR);if(vl==null)vl=vr==null?0:vr;if(vr==null)vr=vl;
+ let fwd=(vl+vr)/2,yaw=(vl-vr)/DG.TRACK;
+ if(W.fell){fwd*=0.12;yaw*=0.3}
+ W.psi+=yaw;W.X+=fwd*Math.cos(W.psi);W.Z+=fwd*Math.sin(W.psi);W.dist+=fwd;
+ if(W.pr){LEGS.forEach(l=>{W.energy+=Math.abs(st.pose[l].h-W.pr[l].h)+Math.abs(st.pose[l].k-W.pr[l].k)})}
+ W.pr=st.pose;W.prev={contact:contact,foot:st.foot};
+ /* toy balance rule: weight off-centre plus the sway from high, fast steps must stay under a limit; feet that stay down longer raise the limit */
+ const a=2.2+28*(P.duty-0.5)-0.12*(P.bodyH-10),m=st.margin,sway=0.1*P.h*P.f+0.02*P.s*P.f*P.f;W.margin=m;W.allow=a;W.sway=sway;W.off=Math.max(0,-m);W.contact=contact.length;
+ if(!W.fell){const ex=W.off+sway-a;if(ex>0)W.bad+=ex*dt*0.5;else W.bad=Math.max(0,W.bad-dt*0.5);if(W.bad>1){W.fell=1;W.fellAt=W.t}}
+ return{st:st,cmd:c.cmd,ok:c.ok}}
+
+/* training: run a whole trial without drawing anything */
+const GENE={h:[0,6],s:[0,14],f:[0.5,4],duty:[0.45,0.85],bodyH:[9,13],shift:[0.3,0.7]};
+function randGenome(r){const g={};for(const k in GENE)g[k]=GENE[k][0]+r()*(GENE[k][1]-GENE[k][0]);g.turn=0;return g}
+function trial(g,T){const P=Object.assign({},g,{turn:g.turn||0}),W=newWalker(),xs=[];const dt=0.025,n=Math.round((T||8)/dt);
+ for(let i=0;i<n;i++){walkStep(W,P,dt,false);if(i%10==0)xs.push(W.fell?-W.dist:W.dist)}
+ return{dist:W.dist,fell:W.fell,fellAt:W.fellAt,energy:W.energy/1000,xs:xs,Z:W.Z}}
+function score(r,w){return w.fwd*(r.dist/20)-w.fall*(r.fell?8:0)-w.energy*(r.energy/2)}
+function mutate(g,r,amt){const o={};for(const k in GENE){const R=GENE[k][1]-GENE[k][0];o[k]=clampN(g[k]+(r()+r()+r()-1.5)*R*amt,GENE[k][0],GENE[k][1])}o.turn=0;return o}
+function mulberry(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+
+
+/* ===== Robot Dog: the 3D scene ===== */
+const P10=document.getElementById('p10'),STG=document.getElementById('dgstage'),Qd=id=>document.getElementById(id);
+const renderer=new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.outputColorSpace=THREE.SRGBColorSpace;
+STG.insertBefore(renderer.domElement,STG.firstChild);
+const scene=new THREE.Scene();scene.background=new THREE.Color(0x0a0f1c);scene.fog=new THREE.Fog(0x0a0f1c,120,300);
+const camera=new THREE.PerspectiveCamera(42,1,0.5,800);camera.position.set(-6,24,38);
+const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.target.set(0,6,0);controls.maxPolarAngle=1.5;controls.minDistance=14;controls.maxDistance=140;
+scene.add(new THREE.HemisphereLight(0xcfe3ff,0x223044,1.0));
+const sun=new THREE.DirectionalLight(0xffffff,1.6);sun.position.set(20,50,25);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);Object.assign(sun.shadow.camera,{left:-60,right:60,top:60,bottom:-60,near:5,far:160});scene.add(sun);
+let gridTex;(function(){const c=document.createElement('canvas');c.width=c.height=512;const x=c.getContext('2d');x.fillStyle='#1b2438';x.fillRect(0,0,512,512);x.strokeStyle='#2a3652';x.lineWidth=2;for(let i=0;i<=512;i+=64){x.beginPath();x.moveTo(i,0);x.lineTo(i,512);x.stroke();x.beginPath();x.moveTo(0,i);x.lineTo(512,i);x.stroke()}
+gridTex=new THREE.CanvasTexture(c);gridTex.wrapS=gridTex.wrapT=THREE.RepeatWrapping;gridTex.repeat.set(24,24);gridTex.colorSpace=THREE.SRGBColorSpace;
+const g=new THREE.Mesh(new THREE.PlaneGeometry(600,600),new THREE.MeshStandardMaterial({map:gridTex,roughness:.95}));g.rotation.x=-Math.PI/2;g.position.y=-0.02;g.receiveShadow=true;scene.add(g)})();
+const mat=(c,r,m)=>new THREE.MeshStandardMaterial({color:c,roughness:r==null?.5:r,metalness:m||.1});
+const tipG=new THREE.Group(),root=new THREE.Group();scene.add(tipG);tipG.add(root);
+const box=(w,h,d,c)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat(c));m.castShadow=true;return m};
+const CYL=new THREE.CylinderGeometry(1,1,1,14);
+const cyl=c=>{const m=new THREE.Mesh(CYL,mat(c,.4,.3));m.castShadow=true;return m};
+const bodyM=box(20,3.6,11,0x1798d4);root.add(bodyM);
+const headM=box(6,5,6,0x1380b5);root.add(headM);
+[-1.7,1.7].forEach(z=>{const e=new THREE.Mesh(new THREE.SphereGeometry(0.7,12,8),new THREE.MeshBasicMaterial({color:0x7be0ff}));e.position.set(3.1,0.8,z);headM.add(e);const ear=box(1.4,2.2,0.6,0x0f6a96);ear.position.set(-0.6,3.2,z*1.4);headM.add(ear)});
+const tail=cyl(0x0f6a96);root.add(tail);
+const battM=box(7,2.4,3.4,0xffcf1a);root.add(battM);const ctlM=box(4,0.6,3,0x2a8f5a);root.add(ctlM);
+const payM=new THREE.Mesh(new THREE.SphereGeometry(1.8,16,12),mat(0x333344));root.add(payM);
+const parts={};LEGS.forEach(l=>{parts[l]={thigh:cyl(0x9fb3c8),shin:cyl(0xc9d6e6),hip:box(3,2.6,2.4,0x2b6fd9),knee:box(2.4,2.2,2.2,0x2b6fd9),foot:new THREE.Mesh(new THREE.SphereGeometry(1,14,10),mat(0x3ddc84))};Object.values(parts[l]).forEach(m=>root.add(m))});
+/* overlays: centre of mass, support area */
+const comM=new THREE.Mesh(new THREE.SphereGeometry(1,16,12),new THREE.MeshBasicMaterial({color:0xff3b3b,depthTest:false}));comM.renderOrder=20;root.add(comM);
+const comLine=new THREE.Mesh(CYL,new THREE.MeshBasicMaterial({color:0xff3b3b,transparent:true,opacity:.7,depthTest:false}));comLine.renderOrder=19;root.add(comLine);
+const comRing=new THREE.Mesh(new THREE.RingGeometry(0.9,1.5,24),new THREE.MeshBasicMaterial({color:0xff3b3b,side:THREE.DoubleSide,depthTest:false}));comRing.rotation.x=-Math.PI/2;comRing.renderOrder=19;root.add(comRing);
+let supM=null,supKey='';
+function setSupport(H,ok){const key=H.map(p=>p.x.toFixed(1)+','+p.z.toFixed(1)).join(';')+ok;if(key==supKey)return;supKey=key;if(supM){root.remove(supM);supM.geometry.dispose();supM.material.dispose();supM=null}
+ if(H.length<2)return;let g;if(H.length==2){const a=H[0],b=H[1],dx=b.x-a.x,dz=b.z-a.z,l=Math.hypot(dx,dz)||1,nx=-dz/l*0.6,nz=dx/l*0.6;const s=new THREE.Shape();s.moveTo(a.x+nx,-(a.z+nz));s.lineTo(b.x+nx,-(b.z+nz));s.lineTo(b.x-nx,-(b.z-nz));s.lineTo(a.x-nx,-(a.z-nz));g=new THREE.ShapeGeometry(s)}
+ else{const s=new THREE.Shape();H.forEach((p,i)=>i?s.lineTo(p.x,-p.z):s.moveTo(p.x,-p.z));g=new THREE.ShapeGeometry(s)}
+ supM=new THREE.Mesh(g,new THREE.MeshBasicMaterial({color:ok?0x3ddc84:0xff5a4f,transparent:true,opacity:.45,side:THREE.DoubleSide,depthWrite:false}));supM.rotation.x=-Math.PI/2;supM.position.y=0.05;root.add(supM)}
+function place(m,a,b,r){const d=new THREE.Vector3().subVectors(b,a),l=d.length()||0.001;m.position.copy(a).add(b).multiplyScalar(0.5);m.scale.set(r,l,r);m.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),d.divideScalar(l))}
+const UI={showCom:true,showTri:true,sel:'FL',hot:null,link:'off',walking:false};
+let lastSt=null;
+function drawDog(st,cmd){lastSt=st;const H=st.H;
+ bodyM.position.set(0,H+1.0,0);headM.position.set(12.5,H+1.6,0);tail.position.set(-12,H+1.8,0);place(tail,new THREE.Vector3(-10,H+1.2,0),new THREE.Vector3(-14.5,H+3.6,0),0.5);
+ battM.position.set(DOG.battery.x,H+3.8,DOG.battery.z);ctlM.position.set(-3,H+3.1,0);payM.visible=DOG.payload>0;payM.position.set(15.5,H+1.2,0);payM.scale.setScalar(0.5+DOG.payload/300);
+ const lim=(l,j)=>{const v=cmd[l][j],L=DOG.limits[j];return v<=L[0]+0.01||v>=L[1]-0.01};
+ LEGS.forEach(l=>{const P=LEGP[l],f=st.foot[l],hp=new THREE.Vector3(P.x,H,P.z),kp=new THREE.Vector3(P.x+f.kx,H-f.ky,P.z),fp=new THREE.Vector3(P.x+f.x,H-f.y,P.z),p=parts[l];
+  place(p.thigh,hp,kp,0.75);place(p.shin,kp,fp,0.6);p.hip.position.copy(hp);p.knee.position.copy(kp);p.foot.position.copy(fp);p.foot.scale.setScalar(0.9);
+  const on=st.contact.indexOf(l)>=0;p.foot.material.color.setHex(on?0x3ddc84:0xffb300);
+  [['hip','h'],['knee','k']].forEach(([n,j])=>{const m=p[n],hot=UI.hot==l+'.'+j,bad=lim(l,j);m.material.color.setHex(bad?0xe53935:hot?0xff9800:0x2b6fd9);m.material.emissive.setHex(hot?0x663300:0);});
+  p.hip.rotation.z=0});
+ comM.visible=comLine.visible=comRing.visible=UI.showCom;
+ if(UI.showCom){const c=st.com;comM.position.set(c.x,H+0.2,c.z);comM.scale.setScalar(0.9);comLine.position.set(c.x,(H+0.2)/2,c.z);comLine.scale.set(0.12,H+0.2,0.12);comRing.position.set(c.x,0.07,c.z)}
+ if(supM)supM.visible=UI.showCom;
+ if(UI.showCom)setSupport(st.hull,st.margin>0);else setSupport([],true)}
+
+/* tipping over */
+const TIP={on:0,ang:0,max:1.45,q:new THREE.Quaternion(),piv:new THREE.Vector3(),axis:new THREE.Vector3(1,0,0),sign:1};
+function startTip(st){if(TIP.on)return;const H=st.hull,c=st.com;let a,b;
+ if(H.length>=3){let best=1e9;for(let i=0;i<H.length;i++){const p=H[i],q=H[(i+1)%H.length],d=segDist(c,p,q);if(d<best){best=d;a=p;b=q}}}
+ else if(H.length==2){a=H[0];b=H[1]}else{const p=H[0]||{x:0,z:0};a={x:p.x,z:p.z-1};b={x:p.x,z:p.z+1}}
+ root.updateMatrixWorld(true);const A=root.localToWorld(new THREE.Vector3(a.x,0,a.z)),B=root.localToWorld(new THREE.Vector3(b.x,0,b.z)),C=root.localToWorld(new THREE.Vector3(c.x,2,c.z));
+ TIP.piv.copy(A);TIP.axis.subVectors(B,A).normalize();const r=new THREE.Vector3().subVectors(C,A),dir=new THREE.Vector3().crossVectors(TIP.axis,r);TIP.sign=dir.y>0?-1:1;TIP.on=1;TIP.ang=0}
+function updateTip(dt){if(!TIP.on){tipG.position.set(0,0,0);tipG.quaternion.identity();return}
+ TIP.ang=Math.min(TIP.max,TIP.ang+dt*(1.2+TIP.ang*2.5));TIP.q.setFromAxisAngle(TIP.axis,TIP.sign*TIP.ang);tipG.quaternion.copy(TIP.q);tipG.position.copy(TIP.piv).sub(TIP.piv.clone().applyQuaternion(TIP.q))}
+function clearTip(){TIP.on=0;TIP.ang=0;tipG.position.set(0,0,0);tipG.quaternion.identity()}
+
+
+/* ===== Robot Dog: panels, main loop, balance, walking ===== */
+const SAVEK='kitbench.dog.v1';
+const SAVE={days:{},models:[],oops:0};
+function loadSave(){try{const j=JSON.parse(localStorage.getItem(SAVEK)||'null');if(j){Object.assign(SAVE,j.save||{});['limits','battery','payload','walk','trim'].forEach(k=>{if(j[k]!=null)DOG[k]=j[k]});if(j.real){DOG.real.on=j.real.on|0;DOG.real.seed=j.real.seed||1;DOG.real.off=seedOffsets(DOG.real.seed)}}}catch(e){}}
+function saveAll(){try{localStorage.setItem(SAVEK,JSON.stringify({save:SAVE,limits:DOG.limits,battery:DOG.battery,payload:DOG.payload,walk:DOG.walk,trim:DOG.trim,real:{on:DOG.real.on,seed:DOG.real.seed}}))}catch(e){}}
+function day(n){if(!SAVE.days[n]){SAVE.days[n]=1;saveAll();say('Challenge day '+n+' done! Check the Missions page.');if(window.mpRender&&!document.getElementById('p9').classList.contains('hid'))mpRender()}}
+let MODE='pose',W=newWalker(),simT=0,unst=0,SZ='',lastMsg=0;
+const tw={on:0,from:null,to:null,t:0,dur:0.5,cb:null};
+const cp=o=>JSON.parse(JSON.stringify(o));
+function say(t,bad){const m=Qd('dgmsg');if(!m)return;m.textContent=t;m.className='lmsg'+(bad?' bad':'');m.style.opacity=1;clearTimeout(lastMsg);lastMsg=setTimeout(()=>{m.style.opacity=0},4500)}
+const footPose=(x,y)=>{const a=ik(x,y);return{h:a.h,k:a.k,ok:a.ok}};
+const POSES={stand:()=>mkPose(l=>footPose(0,11)),crouch:()=>mkPose(l=>footPose(0,7.5)),lie:()=>mkPose(l=>footPose(0,4.5)),
+ lift:()=>mkPose(l=>l==UI.sel?footPose(3,8):footPose(0,11))};
+function mkPose(f){const p={};LEGS.forEach(l=>{const a=f(l);p[l]={h:limit(l,'h',a.h),k:limit(l,'k',a.k)}});return p}
+function tweenTo(p,dur,cb){tw.from=cp(DOG.pose);tw.to=cp(p);tw.t=0;tw.dur=dur||0.5;tw.on=1;tw.cb=cb||null}
+function setPoseNow(p){tw.on=0;LEGS.forEach(l=>{DOG.pose[l].h=p[l].h;DOG.pose[l].k=p[l].k})}
+function stopWalk(){if(MODE=='walk'){MODE='pose';UI.walking=false;const c=walkCmd(W,DOG.walk).cmd;LEGS.forEach(l=>{DOG.pose[l].h=limit(l,'h',c[l].h);DOG.pose[l].k=limit(l,'k',c[l].k)});syncSliders();setWalkBtn()}}
+function resetDog(){stopWalk();W=newWalker();clearTip();unst=0;setPoseNow(POSES.stand());syncSliders();say('Dog reset. Standing up.')}
+
+/* ---------- main loop ---------- */
+let last=performance.now(),remote={fwd:0,turn:0,on:0},uiT=0;
+function frame(){requestAnimationFrame(frame);if(P10.classList.contains('hid')){last=performance.now();return}
+ const w=STG.clientWidth,h=STG.clientHeight;if(w&&h&&SZ!=w+'x'+h){SZ=w+'x'+h;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix()}
+ const now=performance.now(),dt=Math.min(.05,(now-last)/1000);last=now;simT+=dt;
+ if(remote.on&&!TIP.on){if(Math.abs(remote.fwd)>0.15||Math.abs(remote.turn)>0.15){if(MODE!='walk')startWalk();DOG.walk.turn=clampN(remote.turn,-1,1);DOG.walk.f=Math.max(0.8,Math.abs(remote.fwd)*3)}else if(MODE=='walk')stopWalk()}
+ let cmd,st;
+ if(MODE=='walk'){const r=walkStep(W,DOG.walk,dt,DOG.real.on);cmd=r.cmd;st=r.st;if(W.fell&&!TIP.on){startTip(st);say('The dog fell over! Try a lower step, slower speed, or move the battery to the middle.',1);SAVE.fell=(SAVE.fell||0)+1;saveAll()}}
+ else{if(tw.on){tw.t+=dt;const k=Math.min(1,tw.t/tw.dur),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;LEGS.forEach(l=>['h','k'].forEach(j=>{DOG.pose[l][j]=tw.from[l][j]+(tw.to[l][j]-tw.from[l][j])*e}));if(k>=1){tw.on=0;const cb=tw.cb;tw.cb=null;cb&&cb()}}
+  cmd=DOG.pose;st=stance(cmd,simT);if(st.margin<0&&!TIP.on){unst+=dt;if(unst>0.18){startTip(st);say('Tipping over! The red dot (centre of mass) left the green area.',1);SAVE.tipped=1;day(2)}}else unst=0}
+ root.position.set(W.X,0,W.Z);root.rotation.y=-W.psi;updateTip(dt);drawDog(st,cmd);
+ const tgt=root.position;controls.target.lerp(new THREE.Vector3(tgt.x,6,tgt.z),MODE=='walk'?0.08:0.02);controls.update();
+ if(UI.showTri)drawTri(st);
+ if(now-uiT>150){uiT=now;uiUpdate(st,cmd)}
+ renderer.render(scene,camera)}
+
+/* ---------- the leg triangle (side view) ---------- */
+const tri=Qd('dgtri'),tx=tri.getContext('2d'),TS=7,HIP={x:62,y:22};
+let drag=false;
+function drawTri(st){const l=UI.sel,p=st.pose[l],f=st.foot[l];tx.clearRect(0,0,tri.width,tri.height);tx.fillStyle='rgba(8,12,22,.82)';tx.fillRect(0,0,tri.width,tri.height);
+ const hx=HIP.x,hy=HIP.y,kx=hx+f.kx*TS,ky=hy+f.ky*TS,fx=hx+f.x*TS,fy=hy+f.y*TS;
+ tx.strokeStyle='#3a4660';tx.lineWidth=1;tx.beginPath();tx.moveTo(0,hy+st.H*TS);tx.lineTo(tri.width,hy+st.H*TS);tx.stroke();
+ tx.fillStyle='rgba(79,195,247,.18)';tx.beginPath();tx.moveTo(hx,hy);tx.lineTo(kx,ky);tx.lineTo(fx,fy);tx.closePath();tx.fill();
+ tx.lineWidth=4;tx.lineCap='round';tx.strokeStyle='#9fb3c8';tx.beginPath();tx.moveTo(hx,hy);tx.lineTo(kx,ky);tx.stroke();tx.strokeStyle='#c9d6e6';tx.beginPath();tx.moveTo(kx,ky);tx.lineTo(fx,fy);tx.stroke();
+ tx.setLineDash([3,3]);tx.lineWidth=1;tx.strokeStyle='#4fc3f7';tx.beginPath();tx.moveTo(hx,hy);tx.lineTo(fx,fy);tx.stroke();tx.setLineDash([]);
+ tx.strokeStyle='#7a869c';tx.beginPath();tx.moveTo(hx,hy);tx.lineTo(hx,hy+30);tx.stroke();
+ [[hx,hy,'#2b6fd9'],[kx,ky,'#2b6fd9'],[fx,fy,'#3ddc84']].forEach(c=>{tx.fillStyle=c[2];tx.beginPath();tx.arc(c[0],c[1],5,0,7);tx.fill()});
+ tx.font='11px sans-serif';tx.fillStyle='#ffcf1a';tx.fillText('hip '+Math.round(p.h)+'°',hx+8,hy+16);tx.fillText('knee '+Math.round(p.k)+'°',kx+8,ky-4);
+ tx.fillStyle='#9fb3c8';tx.fillText(DG.L1+' cm',(hx+kx)/2-30,(hy+ky)/2);tx.fillText(DG.L2+' cm',(kx+fx)/2+6,(ky+fy)/2);tx.fillStyle='#e6edf7';tx.fillText(LEGN[l]+(drag?' (drag the foot)':' - drag the green foot'),6,tri.height-6)}
+function triPos(e){const r=tri.getBoundingClientRect();return{x:((e.clientX-r.left)*tri.width/r.width-HIP.x)/TS,y:((e.clientY-r.top)*tri.height/r.height-HIP.y)/TS}}
+tri.addEventListener('pointerdown',e=>{drag=true;tri.setPointerCapture(e.pointerId);stopWalk();moveFoot(UI.sel,triPos(e).x,triPos(e).y,true)});
+tri.addEventListener('pointermove',e=>{if(drag)moveFoot(UI.sel,triPos(e).x,triPos(e).y,true)});
+tri.addEventListener('pointerup',()=>{drag=false});
+
+/* ---------- panel building ---------- */
+function Sl(id,min,max,step,val,fn,lab,unit){return '<label class="dgl2">'+lab+'<span class="dgv" id="'+id+'_v"></span></label><input type="range" id="'+id+'" min="'+min+'" max="'+max+'" step="'+step+'" value="'+val+'" oninput="'+fn+'(this.value)" aria-label="'+lab+'">'}
+function buildUI(){
+ Qd('dgr').innerHTML='<div class="dgtabs" id="dgtabs">'+[['joints','Joints'],['balance','Balance'],['walk','Walk'],['train','Train'],['calib','Calibrate'],['prog','Program'],['share','Share']].map((t,i)=>'<button data-s="'+t[0]+'" class="'+(i?'':'on')+'" onclick="dg.tab(\''+t[0]+'\')">'+t[1]+'</button>').join('')+'</div>'
+ +'<div class="dgs on" data-s="joints"><p class="lm">Move a joint and watch the leg. <b style="color:#ff9800">Orange</b> is the joint you are moving. <b style="color:#ff5a4f">Red</b> means it hit its limit.</p>'
+ +'<label class="ll" for="dglink">Link legs</label><select id="dglink" onchange="dg.link(this.value)"><option value="off">Move one leg at a time</option><option value="side">Left and right together</option><option value="all">All four legs together</option></select><div id="dgjoints"></div>'
+ +'<h4>Joint limits (degrees)</h4><div class="dglim">hip <input type="number" id="dglh0" value="-60"> to <input type="number" id="dglh1" value="60"><br>knee <input type="number" id="dglk0" value="0"> to <input type="number" id="dglk1" value="140"><button class="lb" onclick="dg.limits()">Set limits</button></div>'
+ +'<h4>Move a foot to (x, y)</h4><p class="lm">x is forward, y is down, in cm from the hip. The computer works out the angles. This is inverse kinematics.</p><div class="dglim"><select id="dgleg" onchange="dg.sel(this.value)">'+LEGS.map(l=>'<option value="'+l+'">'+LEGN[l]+'</option>').join('')+'</select> x <input type="number" id="dgfx" value="0" step="0.5"> y <input type="number" id="dgfy" value="11" step="0.5"><button class="lb" onclick="dg.foot()">Go</button></div><div class="lm" id="dgikr"></div></div>'
+ +'<div class="dgs" data-s="balance"><p class="lm">The red dot is the <b>centre of mass</b>: where the weight balances. The coloured area is where the feet touch the ground. If the dot leaves the green area, the dog tips over.</p>'
+ +Sl('dgbx',-12,12,0.5,0,'dg.bat','Battery forward / back')+Sl('dgbz',-6,6,0.5,0,'dg.batz','Battery left / right')+Sl('dgpay',0,250,10,0,'dg.pay','Camera on the head (grams)')
+ +'<div class="lck in" id="dgbal"></div><p class="lm">Try this: lift a leg with the buttons on the left, then move the battery so the dot stays inside the green triangle.</p></div>'
+ +'<div class="dgs" data-s="walk"><p class="lm">The dog walks with a trot: two opposite legs step together.</p>'
+ +Sl('dgwh',0,6,0.5,3,'dg.w_h','Step height (cm)')+Sl('dgws',0,14,0.5,6,'dg.w_s','Step length (cm)')+Sl('dgwf',0.5,4,0.1,2,'dg.w_f','Speed (steps per second)')+Sl('dgwb',9,13,0.5,11,'dg.w_b','Body height (cm)')+Sl('dgwt',-1,1,0.1,0,'dg.w_t','Turn (left to right)')
+ +'<details><summary>More gait settings</summary>'+Sl('dgwd',0.45,0.85,0.05,0.5,'dg.w_d','Time with the foot down')+Sl('dgwx',0.3,0.7,0.05,0.5,'dg.w_x','Pair timing (0.5 is a trot)')+'</details>'
+ +'<div class="lbar"><button class="lb pri" id="dgwalk" onclick="dg.walk()">Walk</button><button class="lb" onclick="dg.resetpos()">Reset dog</button></div><div class="lck in" id="dgwst"></div></div>'
+ +'<div class="dgs" data-s="train" id="dgtrain"></div>'
+ +'<div class="dgs" data-s="calib" id="dgcal"></div>'
+ +'<div class="dgs" data-s="prog" id="dgprog"></div>'
+ +'<div class="dgs" data-s="share" id="dgshare"></div>';
+ Qd('dgl').innerHTML='<h3>Robot Dog</h3><div class="lsub">Legs, balance, walking and training</div>'
+ +'<h4>Kit</h4><div id="dgkit"></div><button class="lb" onclick="dg.kit()">Add the dog parts to my kit</button>'
+ +'<h4>Poses</h4><div class="lchips"><button class="lchip" onclick="dg.pose(\'stand\')">Stand</button><button class="lchip" onclick="dg.pose(\'crouch\')">Crouch</button><button class="lchip" onclick="dg.pose(\'lie\')">Lie down</button><button class="lchip" onclick="dg.pose(\'lift\')">Lift a leg</button><button class="lchip" onclick="dg.resetpos()">Reset dog</button></div>'
+ +'<h4>Show</h4><label class="lm dgck"><input type="checkbox" id="dgshowcom" checked onchange="dg.showcom(this.checked)"> Centre of mass and support area</label><label class="lm dgck"><input type="checkbox" id="dgshowtri" checked onchange="dg.showtri(this.checked)"> Leg triangle</label>'
+ +'<h4>Status</h4><div class="lck in" id="dgstat"></div><label class="lm dgck"><input type="checkbox" id="dgreal" onchange="dg.real(this.checked)"> Real-world mode (servos are not perfect)</label>'
+ +'<h4>Challenge</h4><div id="dgdays"></div>';
+ buildJoints();syncSliders();setWalkBtn();kitStatus();daysUI()}
+function buildJoints(){Qd('dgjoints').innerHTML=LEGS.map(l=>'<div class="dgleg"><b>'+LEGN[l]+'</b>'+['h','k'].map(j=>'<label class="dgl2">'+(j=='h'?'hip':'knee')+'<span class="dgv" id="dgv_'+l+j+'"></span></label><input type="range" id="dgs_'+l+j+'" oninput="dg.joint(\''+l+'\',\''+j+'\',this.value)" aria-label="'+LEGN[l]+(j=='h'?' hip':' knee')+'">').join('')+'</div>').join('')}
+function syncSliders(){LEGS.forEach(l=>['h','k'].forEach(j=>{const s=Qd('dgs_'+l+j);if(!s)return;s.min=DOG.limits[j][0];s.max=DOG.limits[j][1];s.step=1;s.value=Math.round(DOG.pose[l][j]);const v=Qd('dgv_'+l+j);if(v)v.textContent=Math.round(DOG.pose[l][j])+'°'}));
+ [['dgbx',DOG.battery.x,' cm'],['dgbz',DOG.battery.z,' cm'],['dgpay',DOG.payload,' g'],['dgwh',DOG.walk.h,' cm'],['dgws',DOG.walk.s,' cm'],['dgwf',DOG.walk.f,' /s'],['dgwb',DOG.walk.bodyH,' cm'],['dgwt',DOG.walk.turn,''],['dgwd',DOG.walk.duty,''],['dgwx',DOG.walk.shift,'']].forEach(a=>{const s=Qd(a[0]);if(s){s.value=a[1];const v=Qd(a[0]+'_v');if(v)v.textContent=(Math.round(a[1]*100)/100)+a[2]}});
+ [['dglh0',DOG.limits.h[0]],['dglh1',DOG.limits.h[1]],['dglk0',DOG.limits.k[0]],['dglk1',DOG.limits.k[1]]].forEach(a=>{const s=Qd(a[0]);if(s&&document.activeElement!==s)s.value=a[1]});
+ const r=Qd('dgreal');if(r)r.checked=!!DOG.real.on}
+function setWalkBtn(){const b=Qd('dgwalk');if(b){b.textContent=MODE=='walk'?'Stop':'Walk';b.classList.toggle('stop',MODE=='walk')}}
+function startWalk(){if(TIP.on)resetDog();tw.on=0;MODE='walk';UI.walking=true;setWalkBtn()}
+function uiUpdate(st,cmd){
+ if(MODE=='walk'){LEGS.forEach(l=>['h','k'].forEach(j=>{const s=Qd('dgs_'+l+j);if(s&&document.activeElement!==s)s.value=Math.round(cmd[l][j]);const v=Qd('dgv_'+l+j);if(v)v.textContent=Math.round(cmd[l][j])+'°'}))}
+ else if(tw.on)LEGS.forEach(l=>['h','k'].forEach(j=>{const s=Qd('dgs_'+l+j);if(s)s.value=Math.round(DOG.pose[l][j]);const v=Qd('dgv_'+l+j);if(v)v.textContent=Math.round(DOG.pose[l][j])+'°'}));
+ const c=st.com,m=st.margin,tipped=TIP.on&&TIP.ang>1.0,stat=Qd('dgstat');
+ if(stat){stat.className='lck '+(tipped||W.fell?'no':m<0?'wn':'ok');stat.textContent=tipped||W.fell?'Fell over. Press Reset dog.':MODE=='walk'?'Walking. Distance '+Math.round(W.dist)+' cm. Off-centre '+(Math.round(W.off*10)/10)+' + sway '+(Math.round(W.sway*10)/10)+' cm (limit '+(Math.round(W.allow*10)/10)+').':m>=0?'Stable. The dot is '+(Math.round(m*10)/10)+' cm inside the green area.':'Tipping! The dot is outside the area.'}
+ const b=Qd('dgbal');if(b)b.textContent='Weight '+Math.round(c.mass)+' g. Centre of mass: '+(Math.round(c.x*10)/10)+' cm forward, '+(Math.round(c.z*10)/10)+' cm to the right. '+(m>=0?'Inside by '+(Math.round(m*10)/10)+' cm: stable.':'Outside by '+(Math.round(-m*10)/10)+' cm: tips over.');
+ const ws=Qd('dgwst');if(ws)ws.textContent=MODE=='walk'?'Distance '+Math.round(W.dist)+' cm. Feet down: '+W.contact+'. Weight off-centre '+(Math.round(W.off*10)/10)+' + sway '+(Math.round(W.sway*10)/10)+' = '+(Math.round((W.off+W.sway)*10)/10)+' cm. Limit '+(Math.round(W.allow*10)/10)+' cm. Tip meter '+Math.round(Math.min(1,W.bad)*100)+'%.':'Press Walk to start. Total distance so far: '+Math.round(W.dist)+' cm.';
+ if(!tipped&&m>0&&MODE=='pose'&&st.contact.length==3&&SAVE.moved&&!SAVE.days[3])day(3);
+ if(MODE=='walk'&&W.dist>100&&!W.fell&&!SAVE.days[4]&&!DOG.real.on)day(4)}
+
+/* ---------- actions ---------- */
+function moveFoot(l,x,y,now){const a=ik(x,y),ls=cp(DOG.pose),targets=linked(l);targets.forEach(t=>{ls[t]={h:limit(t,'h',a.h),k:limit(t,'k',a.k)}});
+ if(now)setPoseNow(ls);else tweenTo(ls,0.35);syncSliders();const r=Qd('dgikr');if(r)r.textContent='Hip '+Math.round(a.h)+'°, knee '+Math.round(a.k)+'°.'+(a.ok?'':' The foot is out of reach, so the leg stretched as far as it could.');
+ if(!SAVE.days[1]){SAVE.ikN=(SAVE.ikN||0)+1;if(SAVE.ikN>=3)day(1)}return a}
+function linked(l){const L=Qd('dglink')?Qd('dglink').value:'off';if(L=='all')return LEGS;if(L=='side')return LEGS.filter(x=>x[0]==l[0]);return [l]}
+function kitStatus(){const el=Qd('dgkit');if(!el)return;const c=window.ctrl?ctrl():null,has2=id=>{const p=(window.PARTS||[]).filter(x=>x.id==id)[0];return p&&p.on};
+ const rows=[['ESP32 controller',c=='esp'],['8 servo motors',has2('srv8')],['Servo driver board',has2('pca')],['Robot Dog frame (4 legs)',has2('dogfr')]];
+ el.innerHTML=rows.map(r=>'<div class="lck '+(r[1]?'ok':'wn')+'">'+(r[1]?'✓ ':'+ ')+r[0]+'</div>').join('')}
+
+/* ---------- the dg object that buttons call ---------- */
+window.dg={
+ tab(s){[].forEach.call(document.querySelectorAll('#dgtabs button'),b=>b.classList.toggle('on',b.dataset.s==s));[].forEach.call(document.querySelectorAll('.dgs'),e=>e.classList.toggle('on',e.dataset.s==s));if(s=='prog')progInit();if(s=='train')trainInit()},
+ joint(l,j,v){stopWalk();if(TIP.on&&TIP.ang<0.3)clearTip();v=limit(l,j,+v);linked(l).forEach(t=>{DOG.pose[t][j]=v});tw.on=0;UI.hot=l+'.'+j;clearTimeout(dg._h);dg._h=setTimeout(()=>UI.hot=null,900);UI.sel=l;if(Qd('dgleg'))Qd('dgleg').value=l;syncSliders()},
+ link(v){UI.link=v},sel(l){UI.sel=l},
+ limits(){const g=id=>+Qd(id).value;DOG.limits.h=[Math.min(g('dglh0'),g('dglh1')),Math.max(g('dglh0'),g('dglh1'))];DOG.limits.k=[Math.max(0,Math.min(g('dglk0'),g('dglk1'))),Math.min(150,Math.max(g('dglk0'),g('dglk1')))];LEGS.forEach(l=>{DOG.pose[l].h=limit(l,'h',DOG.pose[l].h);DOG.pose[l].k=limit(l,'k',DOG.pose[l].k)});saveAll();syncSliders();say('Limits set. Sliders and foot targets now stop at these angles.')},
+ foot(){stopWalk();if(TIP.on&&TIP.ang<0.3)clearTip();moveFoot(UI.sel,+Qd('dgfx').value,+Qd('dgfy').value)},
+ pose(n){stopWalk();if(TIP.on)resetDog();if(n=='lift'){UI.sel=Qd('dgleg')?Qd('dgleg').value:'FL'}tweenTo(POSES[n](),0.6);say(n=='lift'?'Lifted the '+LEGN[UI.sel]+' leg. Does the dot stay in the green triangle?':'Pose: '+n)},
+ bat(v){DOG.battery.x=+v;syncSliders();saveAll();if(!SAVE.days[3]&&Math.abs(+v)>3)SAVE.moved=1;chk3()},
+ batz(v){DOG.battery.z=+v;syncSliders();saveAll();if(Math.abs(+v)>2)SAVE.moved=1;chk3()},
+ pay(v){DOG.payload=+v;syncSliders();saveAll()},
+ w_h(v){DOG.walk.h=+v;wsync()},w_s(v){DOG.walk.s=+v;wsync()},w_f(v){DOG.walk.f=+v;wsync()},w_b(v){DOG.walk.bodyH=+v;wsync()},w_t(v){DOG.walk.turn=+v;wsync()},w_d(v){DOG.walk.duty=+v;wsync()},w_x(v){DOG.walk.shift=+v;wsync()},
+ walk(){if(MODE=='walk'){stopWalk()}else startWalk()},
+ resetpos(){resetDog()},
+ showcom(v){UI.showCom=v},showtri(v){UI.showTri=v;tri.style.display=v?'block':'none'},
+ real(v){DOG.real.on=v?1:0;saveAll();say(v?'Real-world mode: every servo has a small hidden error. Calibrate before walking!':'Perfect servos.')},
+ kit(){const need=['mcu','bat','mot','chs','whl'];need.forEach(i=>{const p=(window.PARTS||[]).filter(x=>x.id==i)[0];if(p)p.on=1});['srv8','pca','dogfr'].forEach(i=>{const p=(window.PARTS||[]).filter(x=>x.id==i)[0];if(p)p.on=1});if(window.autoWire){autoWire();drawParts();update();save()}kitStatus();say('Dog parts added to your kit.')}
+};
+function wsync(){syncSliders();saveAll()}
+function chk3(){}
+function daysUI(){const el=Qd('dgdays');if(!el)return;const names=['Make a leg move','Stand and balance','Fix the weight','Walk straight','Train and share'];el.innerHTML=names.map((n,i)=>'<div class="lck '+(SAVE.days[i+1]?'ok':'in')+'">Day '+(i+1)+': '+n+(SAVE.days[i+1]?' ✓':'')+'</div>').join('')}
+setInterval(()=>{daysUI();kitStatus();if(UI.sel&&MODE=='pose'&&lastSt&&lastSt.contact.length==3&&!TIP.on)SAVE.liftTried=1},1200);
+
+
+/* ===== Train it: a simple evolution game ===== */
+const TR={gen:0,pop:[],rr:mulberry(11),w:{fwd:5,fall:5,energy:2},n:30,res:[],best:-1,busy:0,A:null,B:null,note:''};
+function trainInit(){if(TR.built){trainDraw(1);return}TR.built=1;const el=Qd('dgtrain');
+ el.innerHTML='<p class="lm">Give the dogs rewards and watch them learn. Many dogs try. The best ones are copied with small changes, and the next round starts. This is a simple evolution game, not real robot learning, but wrong rewards give strange walking, just like on real robots.</p>'
+ +Sl('dgr1',0,10,1,5,'dg.r_fwd','Reward for moving forward')+Sl('dgr2',0,10,1,5,'dg.r_fall','Penalty for falling over')+Sl('dgr3',0,10,1,2,'dg.r_en','Penalty for using energy')
+ +'<label class="ll" for="dgn">Dogs per round</label><select id="dgn" onchange="dg.n(this.value)"><option>20</option><option selected>30</option><option>50</option></select>'
+ +'<div class="lbar"><button class="lb pri" onclick="dg.round()">Run a round</button><button class="lb" onclick="dg.rounds(10)">Run 10 rounds</button><button class="lb" onclick="dg.again()">Start again</button></div>'
+ +'<canvas id="dgtc" width="320" height="180" aria-label="Dogs racing" style="width:100%;border-radius:8px;background:#0a0f1c"></canvas><div class="lck in" id="dgtst">Press Run a round.</div><div class="lm" id="dgtcoach"></div>'
+ +'<h4>Models (best dog of each round)</h4><div class="dgscroll"><table class="dgt" id="dgtmod"></table></div><div id="dgcmp"></div>';
+ trainSync();trainDraw(1);modelsUI()}
+function trainSync(){[['dgr1',TR.w.fwd],['dgr2',TR.w.fall],['dgr3',TR.w.energy]].forEach(a=>{const s=Qd(a[0]);if(s){s.value=a[1];Qd(a[0]+'_v').textContent=a[1]}})}
+function seedPop(){TR.pop=[];for(let i=0;i<TR.n;i++)TR.pop.push(randGenome(TR.rr))}
+function evaluate(){TR.res=TR.pop.map(g=>{const r=trial(g,8);return{g:g,r:r,f:score(r,TR.w)}});TR.res.sort((a,b)=>b.f-a.f)}
+function nextPop(){const R=TR.res,el=Math.max(2,Math.round(TR.n*0.2)),np=R.slice(0,el).map(x=>x.g);
+ while(np.length<TR.n){if(TR.rr()<0.1)np.push(randGenome(TR.rr));else{const a=R[Math.floor(TR.rr()*Math.min(R.length,Math.round(TR.n*0.4)))].g;np.push(mutate(a,TR.rr,0.12))}}TR.pop=np}
+function oneRound(){if(!TR.pop.length||TR.pop.length!=TR.n)seedPop();evaluate();TR.gen++;const b=TR.res[0],fallPct=Math.round(100*TR.res.filter(x=>x.r.fell).length/TR.res.length);
+ const m={n:TR.gen,g:b.g,dist:Math.round(b.r.dist),fell:b.r.fell?1:0,energy:Math.round(b.r.energy*10)/10,fit:Math.round(b.f*10)/10,w:Object.assign({},TR.w),fallPct:fallPct};SAVE.models.push(m);if(SAVE.models.length>60)SAVE.models.shift();saveAll();
+ TR.anim={t0:performance.now(),dur:2200,res:TR.res.slice()};const note=coach(fallPct,b);TR.note=note;nextPop();if(TR.gen>=5)day(5);return m}
+function coach(fallPct,b){const w=TR.w;
+ if(w.fwd==0)return 'No reward for moving forward, so the dogs have no reason to walk. They stand still or wiggle.';
+ if(fallPct>50&&w.fall<3)return 'Most dogs fall over ('+fallPct+'%) but they still score well, because falling costs almost nothing. Raise the penalty for falling.';
+ if(w.energy==0&&b.r.energy>14)return 'No energy penalty, so the best dogs make big, wasteful steps. Add a little energy penalty.';
+ if(w.energy>=8&&b.r.dist<60)return 'Using energy costs so much that the best dog hardly moves. Lower the energy penalty.';
+ if(fallPct<20&&b.r.dist>150)return 'Most dogs walk well now. Try changing the rewards and compare the new models.';
+ return 'Round '+TR.gen+': '+fallPct+'% of the dogs fell over.'}
+function trainDraw(still){const c=Qd('dgtc');if(!c)return;const x=c.getContext('2d'),W2=c.width,H2=c.height;x.clearRect(0,0,W2,H2);x.fillStyle='#0a0f1c';x.fillRect(0,0,W2,H2);
+ const a=TR.anim;if(!a){x.fillStyle='#8ea0ba';x.font='12px sans-serif';x.fillText('Each lane is one dog. They start on the left.',10,20);return}
+ const N=a.res.length,lh=(H2-8)/N,steps=a.res[0].r.xs.length;let k=still||(performance.now()-a.t0>=a.dur)?1:(performance.now()-a.t0)/a.dur;
+ let mx=100;a.res.forEach(q=>q.r.xs.forEach(v=>{if(Math.abs(v)>mx)mx=Math.abs(v)}));const sc=(W2-30)/mx,fi=Math.min(steps-1,Math.floor(k*(steps-1)));
+ a.res.forEach((q,i)=>{const y=4+i*lh,xv=q.r.xs[fi],fell=xv<0||(q.r.fell&&fi*0.25>=q.r.fellAt),px=8+Math.abs(xv)*sc;x.fillStyle=i==0?'rgba(255,207,26,.18)':'rgba(255,255,255,.04)';x.fillRect(4,y,W2-8,Math.max(1,lh-1));
+  x.fillStyle=i==0?'#ffcf1a':fell?'#ff5a4f':'#3ddc84';x.fillRect(px,y+lh*0.15,Math.max(3,Math.min(9,lh*0.8)),Math.max(2,lh*0.7))});
+ if(!still&&k<1)requestAnimationFrame(()=>trainDraw());else if(k>=1){const b=a.res[0];const s=Qd('dgtst');if(s){const f=TR.res&&TR.res[0];s.textContent='Round '+TR.gen+' done. Best dog (gold): '+Math.round(b.r.dist)+' cm'+(b.r.fell?', fell over':', stayed up')+', reward '+(Math.round(b.f*10)/10)+'.';Qd('dgtcoach').textContent=TR.note}modelsUI()}}
+function modelsUI(){const t=Qd('dgtmod');if(!t)return;const M=SAVE.models.slice(-12);t.innerHTML='<tr><th>Model</th><th>cm</th><th>Fell</th><th>Energy</th><th></th></tr>'+(M.map(m=>'<tr class="'+((TR.A==m.n||TR.B==m.n)?'sel':'')+'"><td>Model '+m.n+'</td><td>'+m.dist+'</td><td>'+(m.fell?'yes':'no')+'</td><td>'+m.energy+'</td><td><button onclick="dg.pick(\'A\','+m.n+')">A</button><button onclick="dg.pick(\'B\','+m.n+')">B</button></td></tr>').join('')||'<tr><td colspan="5" class="lm">No models yet.</td></tr>');cmpUI()}
+function modelN(n){return SAVE.models.filter(m=>m.n==n)[0]}
+function cmpUI(){const el=Qd('dgcmp');if(!el)return;const a=modelN(TR.A),b=modelN(TR.B);if(!a&&!b){el.innerHTML='<p class="lm">Pick Model A and Model B to compare, for example Model 1 and your newest model.</p>';return}
+ const row=(l,m)=>m?'<tr><td><b>'+l+'</b> Model '+m.n+'</td><td>'+m.dist+' cm</td><td>'+(m.fell?'fell':'stayed up')+'</td><td>reward '+m.fit+'</td><td>step '+Math.round(m.g.s*10)/10+' cm, height '+Math.round(m.g.h*10)/10+', '+Math.round(m.g.f*10)/10+'/s</td><td><button onclick="dg.watch('+m.n+')">Watch</button></td></tr>':'';
+ el.innerHTML='<h4>Compare</h4><div class="dgscroll"><table class="dgt">'+row('A',a)+row('B',b)+'</table></div>'+(a&&b?'<div class="lm">Rewards when Model '+a.n+' was made: forward '+a.w.fwd+', falling '+a.w.fall+', energy '+a.w.energy+'. Model '+b.n+': forward '+b.w.fwd+', falling '+b.w.fall+', energy '+b.w.energy+'.</div>':'')}
+Object.assign(dg,{
+ r_fwd(v){TR.w.fwd=+v;trainSync()},r_fall(v){TR.w.fall=+v;trainSync()},r_en(v){TR.w.energy=+v;trainSync()},
+ n(v){TR.n=+v;TR.pop=[]},
+ round(){if(TR.busy)return;oneRound();trainDraw()},
+ rounds(k){if(TR.busy)return;TR.busy=1;let i=0;(function nx(){if(i>=k){TR.busy=0;return}i++;oneRound();TR.anim.dur=500;trainDraw();setTimeout(nx,650)})()},
+ again(){TR.gen=0;TR.pop=[];TR.anim=null;TR.res=[];TR.A=TR.B=null;SAVE.models=[];saveAll();Qd('dgtst').textContent='Press Run a round.';Qd('dgtcoach').textContent='';trainDraw(1);modelsUI()},
+ pick(w,n){TR[w]=n;modelsUI()},
+ watch(n){const m=modelN(n);if(!m)return;resetDog();Object.assign(DOG.walk,{h:m.g.h,s:m.g.s,f:m.g.f,duty:m.g.duty,bodyH:m.g.bodyH,shift:m.g.shift,turn:0});syncSliders();startWalk();say('Watching Model '+n+'. Distance in the test: '+m.dist+' cm.')}
+});
+
+
+/* ===== Calibration challenge ===== */
+function calUI(){const el=Qd('dgcal');if(!el||el.dataset.b)return;el.dataset.b=1;
+ el.innerHTML='<p class="lm">Real servos are never perfect. Each one is a few degrees off, and they wobble a little. Switch on real-world mode and the dog stands crooked and walks off course. Fix it with <b>trims</b> before it can walk straight.</p>'
+ +'<label class="lm dgck"><input type="checkbox" id="dgreal2" onchange="dg.real(this.checked);Qd(\'dgreal\').checked=this.checked"> Real-world mode</label><div class="lbar"><button class="lb" onclick="dg.newrobot()">Give me another robot</button><button class="lb" onclick="dg.pose(\'stand\')">Stand</button></div>'
+ +'<div id="dgtrims"></div><div class="lbar"><button class="lb pri" onclick="dg.caltest()">Test walk (5 seconds)</button><button class="lb" onclick="dg.trimzero()">Clear trims</button></div><div class="lck in" id="dgcalr">Look at the legs standing. They should all look the same. Then run the test.</div>'
+ +'<p class="lm">Tip: on a real kit you do the same thing: put every servo at its middle position and adjust until the legs look straight.</p>';
+ Qd('dgtrims').innerHTML=LEGS.map(l=>'<div class="dgleg"><b>'+LEGN[l]+'</b>'+['h','k'].map(j=>'<label class="dgl2">'+(j=='h'?'hip trim':'knee trim')+'<span class="dgv" id="dgtv_'+l+j+'"></span></label><input type="range" id="dgts_'+l+j+'" min="-12" max="12" step="0.5" value="'+DOG.trim[l][j]+'" oninput="dg.trim(\''+l+'\',\''+j+'\',this.value)">').join('')+'</div>').join('');trimUI()}
+function trimUI(){LEGS.forEach(l=>['h','k'].forEach(j=>{const v=Qd('dgtv_'+l+j),s=Qd('dgts_'+l+j);if(v)v.textContent=DOG.trim[l][j]+'°';if(s)s.value=DOG.trim[l][j]}));const r=Qd('dgreal2');if(r)r.checked=!!DOG.real.on}
+function calTest(){const save={on:DOG.real.on,trim:cp(DOG.trim)},P=Object.assign({},DOG.walk,{turn:0});
+ const run=()=>{const w=newWalker();for(let i=0;i<200;i++)walkStep(w,P,0.025,true);return w};
+ DOG.real.on=1;const a=run();DOG.real.on=0;DOG.trim=cp({FL:{h:0,k:0},FR:{h:0,k:0},RL:{h:0,k:0},RR:{h:0,k:0}});const ref=run();DOG.real.on=save.on;DOG.trim=save.trim;
+ const psi=Math.round(a.psi*DEG*10)/10,eff=ref.dist>1?a.dist/ref.dist:0,drift=Math.round(a.Z*10)/10,pass=Math.abs(psi)<4&&eff>0.8;
+ const r=Qd('dgcalr');r.className='lck '+(pass?'ok':'wn');r.textContent=(pass?'Walks straight! ':'Not straight yet. ')+'It turned '+psi+'° and went '+Math.round(a.dist)+' cm of a possible '+Math.round(ref.dist)+' cm ('+Math.round(eff*100)+'%). Sideways drift '+drift+' cm.'+(pass?' Great calibration.':' Look for legs that are shorter, longer or turned more than the others, then trim them.');
+ if(pass){day(4);SAVE.calib=1;saveAll()}return pass}
+Object.assign(dg,{trim(l,j,v){DOG.trim[l][j]=+v;trimUI();saveAll()},trimzero(){LEGS.forEach(l=>{DOG.trim[l]={h:0,k:0}});trimUI();saveAll()},
+ newrobot(){DOG.real.seed=(DOG.real.seed%97)+1;DOG.real.off=seedOffsets(DOG.real.seed);DOG.real.on=1;trimUI();syncSliders();saveAll();say('A new robot with different servo errors.')},caltest(){stopWalk();calTest()}});
+
+/* ===== Program: dog blocks, run them, see the code ===== */
+const PR={ws:null,stop:0,run:0,pending:[],lang:'py'};
+const BLK=[
+ {type:'dg_start',message0:'when dog starts',nextStatement:null,colour:45},
+ {type:'dg_stand',message0:'stand up',previousStatement:null,nextStatement:null,colour:200},
+ {type:'dg_crouch',message0:'crouch',previousStatement:null,nextStatement:null,colour:200},
+ {type:'dg_lie',message0:'lie down',previousStatement:null,nextStatement:null,colour:200},
+ {type:'dg_joint',message0:'set %1 %2 angle to %3 °',args0:[{type:'field_dropdown',name:'LEG',options:[['front left','FL'],['front right','FR'],['rear left','RL'],['rear right','RR'],['all legs','ALL']]},{type:'field_dropdown',name:'J',options:[['hip','h'],['knee','k']]},{type:'input_value',name:'ANG',check:'Number'}],inputsInline:true,previousStatement:null,nextStatement:null,colour:200},
+ {type:'dg_foot',message0:'move %1 foot to x %2 y %3',args0:[{type:'field_dropdown',name:'LEG',options:[['front left','FL'],['front right','FR'],['rear left','RL'],['rear right','RR'],['all legs','ALL']]},{type:'input_value',name:'X',check:'Number'},{type:'input_value',name:'Y',check:'Number'}],inputsInline:true,previousStatement:null,nextStatement:null,colour:200},
+ {type:'dg_walk',message0:'walk for %1 s: step height %2 length %3 speed %4',args0:[{type:'input_value',name:'SEC',check:'Number'},{type:'input_value',name:'H',check:'Number'},{type:'input_value',name:'S',check:'Number'},{type:'input_value',name:'F',check:'Number'}],inputsInline:true,previousStatement:null,nextStatement:null,colour:160},
+ {type:'dg_turn',message0:'turn %1 for %2 s',args0:[{type:'field_dropdown',name:'DIR',options:[['left','left'],['right','right']]},{type:'input_value',name:'SEC',check:'Number'}],inputsInline:true,previousStatement:null,nextStatement:null,colour:160},
+ {type:'dg_wait',message0:'wait %1 s',args0:[{type:'input_value',name:'SEC',check:'Number'}],inputsInline:true,previousStatement:null,nextStatement:null,colour:290},
+ {type:'dg_say',message0:'say %1',args0:[{type:'input_value',name:'T'}],inputsInline:true,previousStatement:null,nextStatement:null,colour:290},
+ {type:'dg_balanced',message0:'dog is balanced?',output:'Boolean',colour:20},
+ {type:'dg_dist',message0:'distance walked (cm)',output:'Number',colour:20}];
+function sh(n){return {shadow:{type:'math_number',fields:{NUM:n}}}}
+function bl(type,ins){const o={kind:'block',type:type};if(ins){o.inputs={};for(const k in ins)o.inputs[k]=sh(ins[k])}return o}
+function progInit(){const el=Qd('dgprog');if(el.dataset.b){if(PR.ws)Blockly.svgResize(PR.ws);return}el.dataset.b=1;
+ el.innerHTML='<p class="lm">Program the dog with blocks. The blocks turn into Python and JavaScript, and into code for a real ESP32.</p><div id="dgblk" class="dgblk"><div class="lm" style="padding:10px">Loading the blocks editor...</div></div><div class="lbar"><button class="lb pri" onclick="dg.runprog()">Run program</button><button class="lb" onclick="dg.stopprog()">Stop</button><button class="lb" onclick="dg.example()">Show an example</button></div><div class="lck in" id="dgprst">Ready.</div>'
+ +'<div class="dgcodeh"><b>Your blocks as code</b><span><button id="dgcp" class="on" onclick="dg.lang(\'py\')">Python</button><button id="dgcj" onclick="dg.lang(\'js\')">JavaScript</button><button id="dgce" onclick="dg.lang(\'esp\')">ESP32</button></span></div><pre id="dgcode" class="dgcode"></pre><div class="lbar"><button class="lb" onclick="dg.copycode()">Copy code</button><button class="lb" onclick="dg.dlcode()">Download .py file</button></div><div class="lm" id="dgcodem"></div>';
+ const tryBuild=n=>{if(window.Blockly&&Blockly.inject&&Blockly.Blocks&&Blockly.Blocks['math_number']&&Blockly.Blocks['controls_if']&&Blockly.Msg&&Blockly.Msg['CONTROLS_IF_MSG_IF']){build()}else{if(n==0&&window.progOpen)progOpen();if(n<200)setTimeout(()=>tryBuild(n+1),150)}};tryBuild(0)}
+function build(){if(PR.ws)return;Blockly.defineBlocksWithJsonArray(BLK);
+ const tb={kind:'categoryToolbox',contents:[{kind:'category',name:'DOG',colour:200,contents:[bl('dg_start'),bl('dg_stand'),bl('dg_crouch'),bl('dg_lie'),bl('dg_joint',{ANG:30}),bl('dg_foot',{X:0,Y:11})]},
+  {kind:'category',name:'WALK',colour:160,contents:[bl('dg_walk',{SEC:3,H:3,S:6,F:2}),bl('dg_turn',{SEC:2})]},{kind:'category',name:'OTHER',colour:290,contents:[bl('dg_wait',{SEC:1}),{kind:'block',type:'dg_say',inputs:{T:{shadow:{type:'text',fields:{TEXT:'Hello'}}}}},bl('dg_balanced'),bl('dg_dist')]},
+  {kind:'category',name:'CONTROL',colour:120,contents:[bl('controls_repeat_ext',{TIMES:4}),{kind:'block',type:'controls_if'},{kind:'block',type:'logic_compare',inputs:{A:sh(0),B:sh(0)}},{kind:'block',type:'logic_negate'},{kind:'block',type:'math_number'}]}]};
+ const sc=document.querySelector('script[src*="blockly_compressed"]'),media=sc&&/libs\/blockly\//.test(sc.src)?sc.src.replace(/blockly_compressed\.js.*$/,''):null;
+ PR.ws=Blockly.inject('dgblk',Object.assign({toolbox:tb,renderer:'zelos',sounds:false,trashcan:false,zoom:{controls:false,wheel:true,startScale:0.8,minScale:0.4,maxScale:1.6},move:{scrollbars:true,drag:true,wheel:false}},media?{media:media}:{}));
+ let s=null;try{s=JSON.parse(localStorage.getItem('kitbench.dogws.v1')||'null')}catch(e){}
+ if(s)try{Blockly.serialization.workspaces.load(s,PR.ws)}catch(e){example()}else example();
+ PR.ws.addChangeListener(e=>{if(!e.isUiEvent){try{localStorage.setItem('kitbench.dogws.v1',JSON.stringify(Blockly.serialization.workspaces.save(PR.ws)))}catch(x){}codeShow()}});codeShow()}
+function example(){if(!PR.ws)return;const n=v=>({shadow:{type:'math_number',fields:{NUM:v}}});
+ Blockly.serialization.workspaces.load({blocks:{languageVersion:0,blocks:[{type:'dg_start',x:30,y:30,next:{block:{type:'dg_stand',next:{block:{type:'dg_wait',inputs:{SEC:n(1)},next:{block:{type:'dg_foot',fields:{LEG:'FL'},inputs:{X:n(3),Y:n(8)},next:{block:{type:'dg_wait',inputs:{SEC:n(1.5)},next:{block:{type:'dg_stand',next:{block:{type:'dg_walk',inputs:{SEC:n(4),H:n(3),S:n(6),F:n(2)}}}}}}}}}}}}}}]}},PR.ws);codeShow()}
+const sleepS=sec=>new Promise(res=>{const t0=simT,iv=setInterval(()=>{if(PR.stop||simT-t0>=sec){clearInterval(iv);res()}},30);PR.pending.push(()=>{clearInterval(iv);res()})});
+const poseTo=(p,d)=>new Promise(res=>{stopWalk();tweenTo(p,d||0.6,res);PR.pending.push(res)});
+async function exec(b){while(b&&!PR.stop){await stepB(b);b=b.getNextBlock()}}
+function val(b,n){const t=b.getInputTargetBlock(n);return t?ev(t):0}
+function ev(t){switch(t.type){case 'math_number':return +t.getFieldValue('NUM');case 'text':return t.getFieldValue('TEXT');case 'logic_boolean':return t.getFieldValue('BOOL')=='TRUE';
+ case 'dg_balanced':return !!(lastSt&&lastSt.margin>0&&!TIP.on);case 'dg_dist':return Math.round(W.dist);
+ case 'logic_negate':{const i=t.getInputTargetBlock('BOOL');return !(i?ev(i):false)}
+ case 'logic_compare':{const a=val(t,'A'),b=val(t,'B'),o=t.getFieldValue('OP');return o=='EQ'?a==b:o=='NEQ'?a!=b:o=='LT'?a<b:o=='LTE'?a<=b:o=='GT'?a>b:a>=b}}return 0}
+async function stepB(b){const t=b.type;if(PR.stop)return;
+ if(t=='dg_stand')await poseTo(POSES.stand());else if(t=='dg_crouch')await poseTo(POSES.crouch());else if(t=='dg_lie')await poseTo(POSES.lie());
+ else if(t=='dg_joint'){const l=b.getFieldValue('LEG'),j=b.getFieldValue('J'),v=val(b,'ANG'),p=cp(DOG.pose);(l=='ALL'?LEGS:[l]).forEach(x=>{p[x][j]=limit(x,j,v)});await poseTo(p,0.4)}
+ else if(t=='dg_foot'){const l=b.getFieldValue('LEG'),a=ik(val(b,'X'),val(b,'Y')),p=cp(DOG.pose);(l=='ALL'?LEGS:[l]).forEach(x=>{p[x]={h:limit(x,'h',a.h),k:limit(x,'k',a.k)}});await poseTo(p,0.4)}
+ else if(t=='dg_walk'){Object.assign(DOG.walk,{h:val(b,'H'),s:val(b,'S'),f:Math.max(0.3,val(b,'F')),turn:0});syncSliders();startWalk();await sleepS(val(b,'SEC'));stopWalk()}
+ else if(t=='dg_turn'){const d=b.getFieldValue('DIR')=='left'?-0.9:0.9;DOG.walk.turn=d;syncSliders();startWalk();await sleepS(val(b,'SEC'));DOG.walk.turn=0;stopWalk()}
+ else if(t=='dg_wait')await sleepS(val(b,'SEC'));
+ else if(t=='dg_say')say(String(val(b,'T')));
+ else if(t=='controls_repeat_ext'){const n=Math.min(200,Math.floor(val(b,'TIMES')));for(let i=0;i<n&&!PR.stop;i++)await exec(b.getInputTargetBlock('DO'))}
+ else if(t=='controls_if'){let k=0,done=false;while(b.getInput('IF'+k)){const c=b.getInputTargetBlock('IF'+k);if(c&&ev(c)){await exec(b.getInputTargetBlock('DO'+k));done=true;break}k++}if(!done&&b.getInput('ELSE'))await exec(b.getInputTargetBlock('ELSE'))}}
+Object.assign(dg,{
+ async runprog(){if(!PR.ws||PR.run)return;const tops=PR.ws.getTopBlocks(true).filter(b=>b.type=='dg_start');if(!tops.length){Qd('dgprst').textContent='Add a "when dog starts" block first.';return}
+  PR.stop=0;PR.run=1;PR.pending=[];Qd('dgprst').textContent='Running...';if(TIP.on)resetDog();try{for(const t of tops){if(PR.stop)break;await exec(t.getNextBlock())}}catch(e){Qd('dgprst').textContent='Error: '+e.message}
+  PR.run=0;stopWalk();Qd('dgprst').textContent=PR.stop?'Stopped.':TIP.on?'The dog fell over. That is useful: what changed before it fell?':'Finished.'},
+ stopprog(){PR.stop=1;PR.pending.splice(0).forEach(f=>f());stopWalk();tw.on=0},
+ example(){example()},
+ lang(l){PR.lang=l;[['dgcp','py'],['dgcj','js'],['dgce','esp']].forEach(a=>{const e=Qd(a[0]);if(e)e.classList.toggle('on',a[1]==l)});codeShow()},
+ copycode(){const t=codeText();try{navigator.clipboard.writeText(t).then(()=>{Qd('dgcodem').textContent='Copied.'},()=>{Qd('dgcodem').textContent='Select the code and press Ctrl+C.'})}catch(e){Qd('dgcodem').textContent='Select the code and press Ctrl+C.'}},
+ dlcode(){const t=PR.lang=='esp'?codeText():esp32Code();dlFile('robot-dog-esp32.py',t,'text/x-python');Qd('dgcodem').textContent='Downloaded robot-dog-esp32.py. Copy it to the ESP32 as main.py.'}
+});
+/* blocks -> text */
+function tcode(py){if(!PR.ws)return '';const tops=PR.ws.getTopBlocks(true).filter(b=>b.type=='dg_start'),pad=n=>'  '.repeat(n),q=s=>JSON.stringify(String(s)),N=(b,n)=>{const t=b.getInputTargetBlock(n);return t?E(t):'0'};
+ function E(t){switch(t.type){case 'math_number':return String(+t.getFieldValue('NUM'));case 'text':return q(t.getFieldValue('TEXT'));case 'logic_boolean':return t.getFieldValue('BOOL')=='TRUE'?(py?'True':'true'):(py?'False':'false');
+  case 'dg_balanced':return py?'dog.balanced()':'dog.balanced()';case 'dg_dist':return 'dog.distance()';
+  case 'logic_negate':{const i=t.getInputTargetBlock('BOOL');return (py?'not ':'!')+'('+(i?E(i):'False')+')'}
+  case 'logic_compare':return '('+N(t,'A')+' '+{EQ:'==',NEQ:'!=',LT:'<',LTE:'<=',GT:'>',GTE:'>='}[t.getFieldValue('OP')]+' '+N(t,'B')+')'}return '0'}
+ function S(b,d){let o='';while(b){const t=b.type,p=pad(d),e=py?'':';',C=(x)=>p+x+e+'\n';
+  if(t=='dg_stand')o+=C('dog.stand()');else if(t=='dg_crouch')o+=C('dog.crouch()');else if(t=='dg_lie')o+=C('dog.lie_down()');
+  else if(t=='dg_joint')o+=C('dog.joint('+q(b.getFieldValue('LEG'))+', '+q(b.getFieldValue('J')=='h'?'hip':'knee')+', '+N(b,'ANG')+')');
+  else if(t=='dg_foot')o+=C('dog.foot('+q(b.getFieldValue('LEG'))+', '+N(b,'X')+', '+N(b,'Y')+')');
+  else if(t=='dg_walk')o+=C('dog.walk('+N(b,'SEC')+', '+N(b,'H')+', '+N(b,'S')+', '+N(b,'F')+')');
+  else if(t=='dg_turn')o+=C('dog.turn('+q(b.getFieldValue('DIR'))+', '+N(b,'SEC')+')');
+  else if(t=='dg_wait')o+=C('dog.wait('+N(b,'SEC')+')');else if(t=='dg_say')o+=C('dog.say('+N(b,'T')+')');
+  else if(t=='controls_repeat_ext'){const body=S(b.getInputTargetBlock('DO'),d+1);o+=py?p+'for _ in range(int('+N(b,'TIMES')+')):\n'+(body||pad(d+1)+'pass\n'):p+'for (let i = 0; i < '+N(b,'TIMES')+'; i++) {\n'+body+p+'}\n'}
+  else if(t=='controls_if'){let k=0;while(b.getInput('IF'+k)){const c=b.getInputTargetBlock('IF'+k),body=S(b.getInputTargetBlock('DO'+k),d+1);o+=py?p+(k?'elif ':'if ')+(c?E(c):'False')+':\n'+(body||pad(d+1)+'pass\n'):p+(k?'} else if (':'if (')+(c?E(c):'false')+') {\n'+body;k++}
+   if(b.getInput('ELSE')){const body=S(b.getInputTargetBlock('ELSE'),d+1);o+=py?p+'else:\n'+(body||pad(d+1)+'pass\n'):p+'} else {\n'+body}if(!py)o+=p+'}\n'}
+  b=b.getNextBlock()}return o}
+ const body=tops.map(t=>S(t.getNextBlock(),0)).join('\n');
+ return py?'# Made from your blocks. dog is the KitBench Robot Dog.\nimport dog\n\n'+(body||'pass\n'):'// Made from your blocks. dog is the KitBench Robot Dog.\n'+(body||'')}
+function codeText(){return PR.lang=='esp'?esp32Code():tcode(PR.lang=='py')}
+function codeShow(){const e=Qd('dgcode');if(e)e.textContent=codeText()}
+
+
+/* ===== Sharing, the real ESP32 dog, phone remote, journal and start-up ===== */
+function dlFile(name,text,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:type||'text/plain'}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
+function esp32Code(){const prog=tcode(true).replace(/^import dog\n\n?/m,'').replace('# Made from your blocks. dog is the KitBench Robot Dog.\n','').trim()||'dog.stand()\ndog.wait(1)',G=DOG.walk,fx=v=>Math.round(v*100)/100;
+return `# KitBench Robot Dog on an ESP32 (MicroPython)
+# 1. Wire the 8 servos to the pins below (or to a PCA9685 and change Servo).
+# 2. In Thonny, save this file on the ESP32 as main.py.
+# 3. Stand the dog on a box with its legs in the air the first time.
+# 4. Change TRIM until the legs stand straight (this is the calibration you practised).
+import math
+import time
+from machine import Pin, PWM
+
+L1 = ${DG.L1}
+L2 = ${DG.L2}
+LIMITS = {"h": (${DOG.limits.h[0]}, ${DOG.limits.h[1]}), "k": (${DOG.limits.k[0]}, ${DOG.limits.k[1]})}
+TRIM = ${JSON.stringify(LEGS.reduce((o,l)=>{o[l]=[DOG.trim[l].h,DOG.trim[l].k];return o},{})).replace(/\[/g,'(').replace(/\]/g,')')}
+SERVO_PINS = {"FL": (13, 12), "FR": (14, 27), "RL": (26, 25), "RR": (33, 32)}
+MIRROR = {"FL": 1, "FR": -1, "RL": 1, "RR": -1}
+GAIT = {"h": ${fx(G.h)}, "s": ${fx(G.s)}, "f": ${fx(G.f)}, "duty": ${fx(G.duty)}, "bodyH": ${fx(G.bodyH)}, "shift": ${fx(G.shift)}, "turn": 0.0}
+SHIFT = {"FL": 0.0, "RR": 0.0, "FR": 0.5, "RL": 0.5}
+
+
+class Servo:
+    def __init__(self, pin):
+        self.pwm = PWM(Pin(pin), freq=50)
+
+    def angle(self, deg):
+        deg = max(0, min(180, deg))
+        self.pwm.duty(int(26 + deg / 180 * 102))
+
+
+SERVOS = {}
+for _leg in SERVO_PINS:
+    SERVOS[_leg] = (Servo(SERVO_PINS[_leg][0]), Servo(SERVO_PINS[_leg][1]))
+
+
+def clamp(v, a, b):
+    return max(a, min(b, v))
+
+
+def ik(x, y):
+    d = math.sqrt(x * x + y * y)
+    top = L1 + L2 - 0.01
+    low = abs(L1 - L2) + 0.6
+    if d > top:
+        x = x * top / d
+        y = y * top / d
+        d = top
+    if d < low:
+        k = low / (d if d > 0 else 0.000001)
+        x = x * k
+        y = y * k
+        d = low
+    c_knee = (L1 * L1 + L2 * L2 - d * d) / (2 * L1 * L2)
+    interior = math.acos(clamp(c_knee, -1, 1))
+    c_hip = (L1 * L1 + d * d - L2 * L2) / (2 * L1 * d)
+    beta = math.acos(clamp(c_hip, -1, 1))
+    phi = math.atan2(x, y)
+    return math.degrees(phi + beta), math.degrees(math.pi - interior)
+
+
+def set_leg(leg, hip, knee):
+    hip = clamp(hip, LIMITS["h"][0], LIMITS["h"][1]) + TRIM[leg][0]
+    knee = clamp(knee, LIMITS["k"][0], LIMITS["k"][1]) + TRIM[leg][1]
+    m = MIRROR[leg]
+    SERVOS[leg][0].angle(90 + m * hip)
+    SERVOS[leg][1].angle(90 + m * (knee - 70))
+
+
+def foot(leg, x, y):
+    hip, knee = ik(x, y)
+    set_leg(leg, hip, knee)
+
+
+def all_feet(x, y):
+    for leg in SERVO_PINS:
+        foot(leg, x, y)
+
+
+def foot_target(leg, u):
+    swing = 1 - GAIT["duty"]
+    side = 1 + GAIT["turn"] * 0.6 * (1 if leg in ("FL", "RL") else -1)
+    s = GAIT["s"] * side
+    if u < swing:
+        m = u / swing
+        e = (1 - math.cos(math.pi * m)) / 2
+        return -s / 2 + s * e, GAIT["bodyH"] - GAIT["h"] * math.sin(math.pi * m)
+    m = (u - swing) / GAIT["duty"]
+    return s / 2 - s * m, GAIT["bodyH"]
+
+
+class Dog:
+    def __init__(self):
+        self.phase = 0.0
+        self.walked = 0.0
+
+    def stand(self):
+        all_feet(0, 11)
+        time.sleep(0.6)
+
+    def crouch(self):
+        all_feet(0, 7.5)
+        time.sleep(0.6)
+
+    def lie_down(self):
+        all_feet(0, 4.5)
+        time.sleep(0.6)
+
+    def joint(self, leg, joint, deg):
+        legs = list(SERVO_PINS) if leg == "ALL" else [leg]
+        for l in legs:
+            if joint == "hip":
+                set_leg(l, deg, 40)
+            else:
+                set_leg(l, 20, deg)
+        time.sleep(0.4)
+
+    def foot(self, leg, x, y):
+        legs = list(SERVO_PINS) if leg == "ALL" else [leg]
+        for l in legs:
+            foot(l, x, y)
+        time.sleep(0.4)
+
+    def tick(self, dt):
+        self.phase = (self.phase + GAIT["f"] * dt) % 1
+        for leg in SERVO_PINS:
+            u = (self.phase + SHIFT[leg] * GAIT["shift"] * 2) % 1
+            x, y = foot_target(leg, u)
+            foot(leg, x, y)
+        self.walked += GAIT["s"] * GAIT["f"] / GAIT["duty"] * dt
+
+    def walk(self, seconds, step_height, step_length, speed):
+        GAIT["h"] = step_height
+        GAIT["s"] = step_length
+        GAIT["f"] = max(0.3, speed)
+        end = time.ticks_add(time.ticks_ms(), int(seconds * 1000))
+        last = time.ticks_ms()
+        while time.ticks_diff(end, time.ticks_ms()) > 0:
+            now = time.ticks_ms()
+            self.tick(time.ticks_diff(now, last) / 1000)
+            last = now
+            time.sleep(0.02)
+        GAIT["turn"] = 0.0
+
+    def turn(self, direction, seconds):
+        GAIT["turn"] = -0.9 if direction == "left" else 0.9
+        self.walk(seconds, GAIT["h"], GAIT["s"], GAIT["f"])
+
+    def wait(self, seconds):
+        time.sleep(seconds)
+
+    def say(self, text):
+        print(text)
+
+    def balanced(self):
+        return True
+
+    def distance(self):
+        return int(self.walked)
+
+
+dog = Dog()
+
+
+def run_program():
+${prog.split('\n').map(l=>'    '+l).join('\n')}
+
+
+PAGE = """<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Robot Dog remote</title><style>body{font-family:sans-serif;text-align:center;background:#0a0f1c;color:#fff}
+button{width:44%;height:90px;margin:2%;font-size:22px;border-radius:16px;border:0;background:#1798d4;color:#fff}
+.stop{background:#e53935}</style></head><body><h2>Robot Dog</h2>
+<button ontouchstart="c(1,0)" ontouchend="c(0,0)">Forward</button><button ontouchstart="c(1,-1)" ontouchend="c(0,0)">Forward left</button>
+<button ontouchstart="c(1,1)" ontouchend="c(0,0)">Forward right</button><button class="stop" onclick="c(0,0)">Stop</button>
+<script>function c(f,t){fetch('/c?f='+f+'&t='+t)}<\/script></body></html>"""
+
+
+def remote():
+    import network
+    import socket
+    ap = network.WLAN(network.AP_IF)
+    ap.active(True)
+    ap.config(essid="KitBench-Dog", password="change-me-123")
+    srv = socket.socket()
+    srv.bind(("0.0.0.0", 80))
+    srv.listen(2)
+    srv.settimeout(0.02)
+    fwd = 0.0
+    turn = 0.0
+    last = time.ticks_ms()
+    print("Join the Wi-Fi KitBench-Dog, then open http://192.168.4.1 on your phone")
+    while True:
+        try:
+            conn, addr = srv.accept()
+            req = conn.recv(512).decode()
+            if "GET /c?" in req:
+                q = req.split("GET /c?")[1].split(" ")[0]
+                for part in q.split("&"):
+                    k, v = part.split("=")
+                    if k == "f":
+                        fwd = float(v)
+                    if k == "t":
+                        turn = float(v)
+            conn.send("HTTP/1.1 200 OK\\r\\nContent-Type: text/html\\r\\nConnection: close\\r\\n\\r\\n" + PAGE)
+            conn.close()
+        except OSError:
+            pass
+        now = time.ticks_ms()
+        dt = time.ticks_diff(now, last) / 1000
+        last = now
+        if fwd > 0.5:
+            GAIT["turn"] = turn * 0.9
+            dog.tick(dt)
+        else:
+            all_feet(0, 11)
+
+
+run_program()
+# remote()   # take the # off this line to drive the dog from your phone
+`}
+
+
+/* ===== Share panel, remote, journal, missions and projects links, start-up ===== */
+function b64(o){return btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
+function unb64(s){return JSON.parse(decodeURIComponent(escape(atob(s.replace(/-/g,'+').replace(/_/g,'/')))))}
+function shareState(){const s={v:1,w:DOG.walk,l:DOG.limits,t:DOG.trim,b:DOG.battery,p:DOG.payload,r:[DOG.real.on,DOG.real.seed],m:SAVE.models.slice(-3)};if(PR.ws){try{const j=JSON.stringify(Blockly.serialization.workspaces.save(PR.ws));if(j.length<5000)s.ws=JSON.parse(j)}catch(e){}}return s}
+function shareLink(){return location.origin+location.pathname+'#dog='+b64(shareState())}
+function numIn(v,a,b,d){v=Number(v);return isFinite(v)?clampN(v,a,b):d}
+function applyShare(s){if(!s||typeof s!=='object'||s.v!=1)return;/* the link comes from outside, so every value is checked and kept inside its range */
+ const w=s.w||{};DOG.walk={h:numIn(w.h,0,6,3),s:numIn(w.s,0,14,6),f:numIn(w.f,0.5,4,2),duty:numIn(w.duty,0.45,0.85,0.5),bodyH:numIn(w.bodyH,9,13,11),shift:numIn(w.shift,0.3,0.7,0.5),turn:numIn(w.turn,-1,1,0)};
+ const l=s.l||{h:[-60,60],k:[0,140]};DOG.limits={h:[numIn(l.h&&l.h[0],-90,90,-60),numIn(l.h&&l.h[1],-90,90,60)],k:[numIn(l.k&&l.k[0],0,150,0),numIn(l.k&&l.k[1],0,150,140)]};
+ const t=s.t||{};LEGS.forEach(g=>{const o=t[g]||{};DOG.trim[g]={h:numIn(o.h,-12,12,0),k:numIn(o.k,-12,12,0)}});
+ const b=s.b||{};DOG.battery={x:numIn(b.x,-12,12,0),z:numIn(b.z,-6,6,0)};DOG.payload=numIn(s.p,0,250,0);
+ if(Array.isArray(s.r)){DOG.real.on=s.r[0]?1:0;DOG.real.seed=Math.round(numIn(s.r[1],1,97,1));DOG.real.off=seedOffsets(DOG.real.seed)}
+ if(Array.isArray(s.m)&&!SAVE.models.length)SAVE.models=s.m.slice(0,3).map((m,i)=>{m=m||{};const g=m.g||{},w2=m.w||{};return{n:i+1,g:{h:numIn(g.h,0,6,3),s:numIn(g.s,0,14,6),f:numIn(g.f,0.5,4,2),duty:numIn(g.duty,0.45,0.85,0.5),bodyH:numIn(g.bodyH,9,13,11),shift:numIn(g.shift,0.3,0.7,0.5),turn:0},dist:Math.round(numIn(m.dist,-1000,5000,0)),fell:m.fell?1:0,energy:numIn(m.energy,0,500,0),fit:numIn(m.fit,-500,500,0),w:{fwd:numIn(w2.fwd,0,10,5),fall:numIn(w2.fall,0,10,5),energy:numIn(w2.energy,0,10,2)},fallPct:0}});
+ if(s.ws&&typeof s.ws==='object'){try{localStorage.setItem('kitbench.dogws.v1',JSON.stringify(s.ws))}catch(e){}}syncSliders();trimUI&&trimUI()}
+function shareUI(){const el=Qd('dgshare');el.innerHTML='<p class="lm">Share what your dog can do. A share link holds your walking settings, trims, battery position, best models and program. It never holds your name.</p>'
+ +'<div class="lbar"><button class="lb pri" onclick="dg.copylink()">Copy share link</button><button class="lb" onclick="dg.record()">Record a video clip</button><button class="lb" onclick="dg.journal()">Add to my journal</button></div><div class="lck in" id="dgshm">Ready.</div>'
+ +'<p class="lm">The clip is saved as a WebM video file. Instagram and some phones need MP4: open the file in a free converter or video editor first.</p>'
+ +'<h4>Real robot</h4><p class="lm">Download the MicroPython code for a real ESP32 dog. It contains your program, your gait, your limits and your trims, and a phone remote you switch on by removing one #.</p><div class="lbar"><button class="lb" onclick="dg.lang(\'esp\');dg.tab(\'prog\');dg.dlcode()">Download ESP32 code</button></div>'
+ +'<h4>Phone remote</h4><p class="lm">Drag the dot like a game controller. On a real dog the ESP32 makes its own Wi-Fi and your phone opens the same kind of page. To try it on a phone, open <b>'+esc(location.origin+location.pathname)+'#remote</b> next to this page on the same device.</p><div id="dgjoy" class="dgjoy"><i id="dgknob"></i></div><div class="lm" id="dgjoyt">Drag the dot up to walk. Left and right to turn.</div>'}
+function say2(t){const e=Qd('dgshm');if(e)e.textContent=t}
+let REC=null;
+Object.assign(dg,{
+ copylink(){const l=shareLink();try{navigator.clipboard.writeText(l).then(()=>say2('Link copied ('+l.length+' characters). Send it to a friend: it opens the dog with your settings.'),()=>say2('Copy blocked. Select this link: '+l))}catch(e){say2('Select this link: '+l)}},
+ record(){if(!window.MediaRecorder||!renderer.domElement.captureStream){say2('Video recording is not supported in this browser. Try Chrome on a laptop or an Android phone.');return}
+  if(REC){say2('Already recording.');return}resetDog();Qd('dgshowtri')&&0;startWalk();const st=renderer.domElement.captureStream(30),mime=['video/webm;codecs=vp9','video/webm;codecs=vp8','video/webm'].filter(m=>MediaRecorder.isTypeSupported(m))[0];
+  const ch=[];REC=new MediaRecorder(st,mime?{mimeType:mime}:{});REC.ondataavailable=e=>{if(e.data.size)ch.push(e.data)};REC.onstop=()=>{const b=new Blob(ch,{type:'video/webm'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='robot-dog.webm';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},800);REC=null;say2('Saved robot-dog.webm ('+Math.round(b.size/1024)+' KB).')};
+  REC.start();say2('Recording 8 seconds...');setTimeout(()=>{if(REC)REC.stop()},8000)},
+ journal(){const P=window.pjCur?pjCur():null;let p=P&&P.cat=='dg'?P:(window.PJ?PJ.list.filter(x=>x.cat=='dg')[0]:null);if(!p){pjNew('dg');p=pjCur()}else{PJ.cur=p.id}
+  const g=DOG.walk,fell=W.fell||TIP.on,res=fell?'The dog fell over. Oops! That is useful.':'Walked '+Math.round(W.dist)+' cm without falling.';
+  p.log.push([new Date().toISOString().slice(0,10),'Step height '+g.h+' cm, length '+g.s+' cm, speed '+g.f+'/s, body '+g.bodyH+' cm, battery ('+DOG.battery.x+', '+DOG.battery.z+')'+(DOG.real.on?', real-world mode':''),res,'']);if(fell){SAVE.oops=(SAVE.oops||0)+1;saveAll()}pjSave();say2('Added to your journal in the Projects tab. '+(fell?'Falling over is data. Write what you learned next to it.':'')) }});
+/* the on-screen controller */
+(function(){const j=Qd('dgjoy');if(!j)return;const k=Qd('dgknob');let on=false;
+ const mv=e=>{const r=j.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;let dx=(e.clientX-cx)/(r.width/2),dy=(e.clientY-cy)/(r.height/2);const l=Math.hypot(dx,dy);if(l>1){dx/=l;dy/=l}k.style.transform='translate('+dx*40+'px,'+dy*40+'px)';remote.fwd=-dy;remote.turn=dx;remote.on=true;if(chan)chan.postMessage({fwd:-dy,turn:dx})};
+ j.addEventListener('pointerdown',e=>{on=true;j.setPointerCapture(e.pointerId);mv(e)});j.addEventListener('pointermove',e=>{if(on)mv(e)});
+ const up=()=>{on=false;k.style.transform='';remote.fwd=remote.turn=0;remote.on=false;if(MODE=='walk')stopWalk()};j.addEventListener('pointerup',up);j.addEventListener('pointercancel',up)})();
+let chan=null;try{chan=new BroadcastChannel('kitbench-dog-remote');chan.onmessage=e=>{const d=e.data||{};remote.fwd=+d.fwd||0;remote.turn=+d.turn||0;remote.on=Math.abs(remote.fwd)>0.15||Math.abs(remote.turn)>0.15;if(!remote.on&&MODE=='walk')stopWalk()}}catch(e){}
+/* a stand-alone phone controller page: #remote */
+function remotePage(){const o=document.createElement('div');o.id='dgremote';o.innerHTML='<h2>Robot Dog remote</h2><p>Drag the dot. This sends commands to a KitBench Robot Dog open in another tab on this device. A real ESP32 dog serves its own page.</p><div id="dgjoy2" class="dgjoy big"><i id="dgknob2"></i></div><p id="dgrt">Ready</p>';document.body.appendChild(o);
+ const j=Qd('dgjoy2'),k=Qd('dgknob2');let on=false;const send=(f,t)=>{if(chan)chan.postMessage({fwd:f,turn:t});Qd('dgrt').textContent='Forward '+Math.round(f*100)+'%, turn '+Math.round(t*100)+'%'};
+ const mv=e=>{const r=j.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;let dx=(e.clientX-cx)/(r.width/2),dy=(e.clientY-cy)/(r.height/2);const l=Math.hypot(dx,dy);if(l>1){dx/=l;dy/=l}k.style.transform='translate('+dx*70+'px,'+dy*70+'px)';send(-dy,dx)};
+ j.addEventListener('pointerdown',e=>{on=true;j.setPointerCapture(e.pointerId);mv(e)});j.addEventListener('pointermove',e=>{if(on)mv(e)});const up=()=>{on=false;k.style.transform='';send(0,0)};j.addEventListener('pointerup',up);j.addEventListener('pointercancel',up)}
+
+/* ---------- Robot Dog challenge inside the Projects tab ---------- */
+if(window.PJT){PJT.dg={n:'Robot Dog challenge',sub:'Five days. Build, break, fix and train a robot dog. Failed tries are the best part: write them down.',ages:[['all','Ages 9 to 17']],
+ secs:[['d1','Day 1: Make a leg move','Use the Joints tab and the foot target. Which angles make the foot go forward? Write what you learned about the hip and the knee.'],['d2','Day 2: Stand and balance','Make the dog stand, then make it tip over on purpose. Where was the red dot when it tipped?'],['d3','Day 3: Fix the weight','Lift one leg and balance on three. Where did you put the battery, and why?'],['d4','Day 4: Walk straight','Walk 100 cm. Switch on real-world mode and calibrate until it walks straight.'],['d5','Day 5: Train and share','Train the dogs. Compare Model 1 with a later model. Record a clip or copy a share link.']],
+ rub:[['Understanding','Can you explain how the hip and knee move the foot, and where the weight must be?'],['Trying and fixing','Did you test, fail, and improve?'],['Sharing','Can someone else follow what you did?']],
+ chk:['Moved a leg with the sliders','Used the foot target (inverse kinematics)','Made the dog tip over and explained why','Balanced on three legs','Walked 100 cm','Calibrated a real-world dog','Trained at least 5 rounds','Compared two models','Recorded a clip or made a share link'],
+ logn:'Attempt log (failed tries count!)',logcols:['Date','What I tried','What happened','What I learned'],rubnote:'Be honest. A failed try with a clear lesson is worth more than a lucky win.'}}
+if(window.pjIntro){const _pi=window.pjIntro;window.pjIntro=function(){return _pi().replace('</div><p class="mu" style="margin-top:12px">These pages','<div class="pjcard"><h3>Robot Dog challenge</h3><p class="mu">A five-day build-and-break challenge. Make a robot dog\'s legs move, balance it, walk it straight, train it and share it. Failed tries are celebrated.</p><button class="pri" onclick="pjNew(\'dg\')" style="padding:8px 14px;border-radius:8px;border:1px solid var(--ac);background:var(--ac);color:var(--bg);font:inherit;cursor:pointer">Start the Robot Dog challenge</button></div></div><p class="mu" style="margin-top:12px">These pages')}}
+if(window.pjRender){const _pr=window.pjRender;window.pjRender=function(){_pr();const p=window.pjCur&&pjCur(),el=document.getElementById('pjmain');if(p&&p.cat=='dg'&&el&&!el.querySelector('.dgcard')){const row=el.querySelector('.pjrow'),h='<div class="pjcard dgcard" style="margin-bottom:14px"><h3>Robot Dog lab</h3><p class="mu">Do the work in the Robot Dog lab, then add what happened to the attempt log below. Oops badges so far: <b>'+(SAVE.oops||0)+'</b>.</p><div class="r" style="margin:0"><button onclick="tab(10)">Open the Robot Dog lab</button></div></div>';if(row)row.insertAdjacentHTML('afterend',h)}}}
+/* ---------- the challenge on the Missions page ---------- */
+if(window.mpRender){const _mr=window.mpRender;window.mpRender=function(){_mr();const el=document.getElementById('mpmain'),K2=window.KBM;if(!el||!K2||K2.MP.lv=='e'||el.querySelector('.dgmp'))return;
+ const names=['Make a leg move','Stand and balance','Fix the weight','Walk straight','Train and share'],sec=['joints','balance','balance','walk','train'],n=Object.keys(SAVE.days).length;
+ el.insertAdjacentHTML('beforeend','<div class="mpbanner dgmp" style="margin-top:16px"><svg class="bolt" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true"><rect x="8" y="24" width="48" height="18" rx="8" fill="#1798d4"/><circle cx="14" cy="22" r="8" fill="#1380b5"/><rect x="12" y="40" width="5" height="16" rx="2" fill="#9fb3c8"/><rect x="22" y="40" width="5" height="16" rx="2" fill="#9fb3c8"/><rect x="38" y="40" width="5" height="16" rx="2" fill="#9fb3c8"/><rect x="48" y="40" width="5" height="16" rx="2" fill="#9fb3c8"/></svg><div class="mpbt"><h2>Robot Dog challenge</h2><p>Five days to build, break, fix and train a robot dog. '+n+' of 5 days done.</p><div class="mpprog"><i style="width:'+n*20+'%"></i></div></div></div><div class="mpgrid dgmp">'+names.map((t,i)=>'<button class="mpcard'+(SAVE.days[i+1]?' done':'')+'" onclick="tab(10);dg.tab(\''+sec[i]+'\')"><span class="mpnum">'+(i+1)+'</span><span class="mpic">'+['&#x1F9BF;','&#x2696;','&#x1F50B;','&#x1F43E;','&#x1F3C6;'][i]+'</span><b>Day '+(i+1)+': '+t+'</b><small>'+['Hip and knee, and the foot target.','Make it tip over on purpose.','Balance on three legs.','Walk 100 cm, calibrated.','Evolve walkers and share.'][i]+'</small><em>'+(SAVE.days[i+1]?'Done. Play again':'Open')+'</em></button>').join('')+'</div>')}}
+
+/* ---------- start-up ---------- */
+loadSave();buildUI();calUI();shareUI();Qd('dgreal').checked=!!DOG.real.on;setPoseNow(POSES.stand());syncSliders();setWalkBtn();frame();
+if(location.hash=='#remote'){remotePage()}
+else if(location.hash.indexOf('#dog=')==0){try{applyShare(unb64(location.hash.slice(5)));setTimeout(()=>{if(window.tab)tab(10)},400)}catch(e){}}
+
+</script>
 </body></html>
+
+
+
 
 
 
