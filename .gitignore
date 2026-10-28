@@ -1,4 +1,4 @@
-*.zip
 Thumbs.db
 .DS_Store
-
+# release zips in the repo root only; offline/libs needs python_stdlib.zip
+/*.zip

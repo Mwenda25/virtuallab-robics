@@ -1,9 +1,9 @@
 /* KitBench service worker: keeps the app and its libraries so it opens with no connection. */
-const V = 'kitbench-v1';
+const V = 'kitbench-v2';
 const SHELL = [
   './', 'index.html', 'manifest.webmanifest',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png',
-  'offline/libs/blockly/blockly_compressed.js', 'offline/libs/blockly/blocks_compressed.js', 'offline/libs/blockly/msg/en.js',
+  'offline/libs/blockly/blockly_compressed.js', 'offline/libs/blockly/blocks_compressed.js', 'offline/libs/blockly/msg/en.js', 'offline/libs/blockly/sprites.png', 'offline/libs/blockly/click.mp3', 'offline/libs/blockly/delete.mp3', 'offline/libs/blockly/disconnect.mp3', 'favicon.ico',
   'offline/libs/three/three.module.js', 'offline/libs/three/addons/controls/OrbitControls.js',
   'offline/libs/three/addons/environments/RoomEnvironment.js', 'offline/libs/three/addons/geometries/RoundedBoxGeometry.js'
 ];

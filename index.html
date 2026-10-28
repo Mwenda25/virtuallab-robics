@@ -2392,7 +2392,7 @@ var ios=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==='Ma
 var PY=['pyodide.js','pyodide.asm.js','pyodide.asm.wasm','pyodide-lock.json','python_stdlib.zip'];
 function savePy(){
   if(st('py')||!window.caches)return;bp.hidden=true;show('Saving Python for offline use...');
-  caches.open('kitbench-v1').then(function(c){var i=0;return(function next(){if(i>=PY.length)return;var f=PY[i++];return c.match('offline/libs/pyodide/'+f).then(function(m){return m||c.add('offline/libs/pyodide/'+f)}).then(next)})()})
+  caches.open('kitbench-v2').then(function(c){var i=0;return(function next(){if(i>=PY.length)return;var f=PY[i++];return c.match('offline/libs/pyodide/'+f).then(function(m){return m||c.add('offline/libs/pyodide/'+f)}).then(next)})()})
   .then(function(){st('py','1');show('Python is saved. KitBench now works fully offline.')},function(){bp.hidden=false;show('Could not save Python. Check your connection and try again.')});
 }
 function ready(){
