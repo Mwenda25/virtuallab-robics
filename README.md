@@ -4,6 +4,8 @@ A browser-based virtual robotics lab for schools. Pick parts from a real kit, wi
 
 **Live version: [https://mwenda25.github.io/virtuallab-robics/](https://mwenda25.github.io/virtuallab-robics/)** (opens in your browser)
 
+**Safe by design:** no server, no tracking, and the page loads code only from itself. See [PRIVACY.md](PRIVACY.md) and [SECURITY.md](SECURITY.md).
+
 ## For schools
 
 - **Three levels:** Explorer (ages 6 to 8), Builder (9 to 12) and Engineer (13 to 17). The level changes which tabs, blocks and tools learners see.

@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; worker-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>KitBench: build and test a school robot kit</title>
 <style>
@@ -1828,7 +1829,7 @@ function guide(){return '<section class="tppage"><div class="tph"><small>KitBenc
 +'<h3>A 40-minute lesson</h3><table class="tpt"><tr><td><b>5 min</b></td><td>Warm-up. A question or an unplugged activity (see each lesson plan).</td></tr><tr><td><b>5 min</b></td><td>Demonstrate the new idea on one screen.</td></tr><tr><td><b>20 min</b></td><td>Learners work in pairs on the mission. One is the <b>driver</b> (moves blocks) and one is the <b>navigator</b> (reads the goal and hints). Swap roles each mission.</td></tr><tr><td><b>5 min</b></td><td>Share. Ask the check questions on the lesson plan.</td></tr><tr><td><b>5 min</b></td><td>Record stars on the class score sheet and tidy up.</td></tr></table>'
 +'<h3>How stars work</h3><p>&#9733; for finishing the mission. &#9733; for finishing without opening a hint. &#9733; for finishing under the target time. Hints are for help, not a penalty: encourage learners to use them after trying for a few minutes.</p>'
 +'<h3>If something goes wrong</h3><table class="tpt"><tr><td><b>The robot does not move</b></td><td>Open Build the kit (Builder and Engineer) and look for the red or yellow message. Or tap the mission again: it repairs the kit and wiring.</td></tr><tr><td><b>Python will not run</b></td><td>Python needs to be saved once with internet. Block programs and JavaScript always work.</td></tr><tr><td><b>Learners lost their blocks</b></td><td>Work is saved on the device and browser in use. Each mission keeps its own blocks.</td></tr><tr><td><b>Shared device shows another learner\'s stars</b></td><td>On the Missions page choose <b>Clear my stars</b>, or use the score sheet to record stars first.</td></tr><tr><td><b>Page looks old after an update</b></td><td>Open KitBench once with internet, close it, and open it again.</td></tr></table>'
-+'<h3>Good practice</h3><ul><li>Pair a confident reader with a learner who is still learning to read, and swap roles.</li><li>Let learners predict before they press play: "What will the robot do?"</li><li>Celebrate trying again. Fixing a mistake is the main skill in programming.</li></ul></section>'}
++'<h3>Privacy and safety</h3><p>KitBench has no server, no advertising and no tracking. Learner names, PINs, stars and blocks are stored only in the browser on this device, and nothing is sent to any website. Use first names or nicknames only. The PIN is a simple lock to stop classmates changing each other\'s stars, not strong security, so never use a real password. Clearing the browser data deletes the stars: use Teacher, then Download backup, to keep a copy.</p>'+'<h3>Good practice</h3><ul><li>Pair a confident reader with a learner who is still learning to read, and swap roles.</li><li>Let learners predict before they press play: "What will the robot do?"</li><li>Celebrate trying again. Fixing a mistake is the main skill in programming.</li></ul></section>'}
 
 /* ---------- lesson plans ---------- */
 function plan(m,i){var d=TD[m.id]||{};
@@ -3078,6 +3079,7 @@ Q('lsnd').checked=!!S.snd;
 buildCtl();sync3d();uiAll();frame();
 </script>
 </body></html>
+
 
 
 
