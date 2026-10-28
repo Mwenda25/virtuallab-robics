@@ -371,6 +371,28 @@ body>*:not(#tp){display:none!important}
 .tpcert{page-break-inside:avoid}
 .tpsheet tr{page-break-inside:avoid}
 }
+.pfov{z-index:130}
+.pfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin:14px 0}
+.pfc{display:flex;flex-direction:column;align-items:center;gap:4px;padding:14px 8px;border:2px solid var(--bd);border-radius:18px;background:var(--card);color:var(--tx);font:inherit;cursor:pointer}
+.pfc:hover{border-color:var(--ac)}
+.pfc b{font-size:17px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pfc small{color:var(--mu);font-size:12px}
+.pfa{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;color:#fff;font-size:26px;font-weight:700}
+.pfa.sm{width:26px;height:26px;font-size:14px;vertical-align:middle}
+.pfnew .pfa{background:var(--acbg);color:var(--ac)}
+.pfdots{display:flex;gap:14px;justify-content:center;margin:16px 0}
+.pfdots i{width:20px;height:20px;border-radius:50%;border:2px solid var(--ac);display:block}
+.pfdots i.on{background:var(--ac)}
+.pfdots.bad{animation:pfshake .4s}
+@keyframes pfshake{0%,100%{transform:translateX(0)}25%{transform:translateX(-10px)}75%{transform:translateX(10px)}}
+.pfpad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:320px;margin:0 auto}
+.pfpad button{padding:16px 0;font:inherit;font-size:24px;font-weight:700;border-radius:16px;border:2px solid var(--bd);background:var(--card);color:var(--tx);cursor:pointer}
+.pfpad button:active{background:var(--acbg)}
+.pfpad button.al{font-size:15px;font-weight:600}
+.pfscroll{max-height:40vh;overflow:auto;margin:10px 0}
+.pft{width:100%;border-collapse:collapse;font-size:14px}
+.pft th,.pft td{border-bottom:1px solid var(--bd);padding:6px 8px;text-align:left}
+.pft button{padding:4px 10px;border-radius:8px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:inherit;font-size:13px;cursor:pointer}
 </style></head>
 <body><div class="w">
 <div class="hd"><div><h1>KitBench</h1><p class="s" id="hsub">Build, program and test your own robot.</p></div><button id="lvchip" class="lvchip" onclick="mpLevelOpen()" aria-label="Change level"></button></div>
@@ -1587,12 +1609,12 @@ build();show();
 <script>
 (function(){
 /* ===== Levels, missions, stars and the Bolt helper ===== */
-var MPK='kitbench.mp.v1';
+var MPK='kitbench.mp.v1';window.KBM_KEY=function(k){if(k)MPK=k;return MPK};
 var MP={lv:'',name:'',stars:{},best:{},snd:1,cur:'',hints:0,wsKey:''};
 function mpLoad(){try{var j=JSON.parse(localStorage.getItem(MPK)||'null');if(j&&typeof j=='object'){for(var k in j)MP[k]=j[k];MP.hints=0}}catch(e){}}
 function mpSave(){try{localStorage.setItem(MPK,JSON.stringify({lv:MP.lv,name:MP.name,stars:MP.stars,best:MP.best,snd:MP.snd,cur:MP.cur,wsKey:MP.wsKey}))}catch(e){}}
-function wsGet(k){try{return JSON.parse(localStorage.getItem('kitbench.mpws.'+k)||'null')}catch(e){return null}}
-function wsPut(k,v){try{localStorage.setItem('kitbench.mpws.'+k,JSON.stringify(v))}catch(e){}}
+function wsGet(k){try{return JSON.parse(localStorage.getItem((window.KB_WSP||'kitbench.mpws.')+k)||'null')}catch(e){return null}}
+function wsPut(k,v){try{localStorage.setItem((window.KB_WSP||'kitbench.mpws.')+k,JSON.stringify(v))}catch(e){}}
 
 var LV={e:{n:'Explorer',age:'Ages 6 to 8',ic:'&#x1F9ED;',d:'Big and simple. Drag a few blocks, press play and watch your robot go.',sub:'Pick a mission, drag the blocks, press play and watch your robot go!'},
 b:{n:'Builder',age:'Ages 9 to 12',ic:'&#x1F527;',d:'Build the kit, wire the sensors and write programs with blocks. See your blocks turn into Python and JavaScript.',sub:'Pick a mission, build your robot, and program it with blocks. Peek at the real code too.'},
@@ -1711,7 +1733,7 @@ var next=null;for(var i=0;i<v.length;i++)if(open_(i)&&!stars(v[i].id)){next=v[i]
 var say=!MP.lv?'':done==v.length?'You finished every mission, '+who()+'! Try for three stars on all of them.':next?'Hi '+who()+'! Ready for "'+next.t+'"?':'Hi '+who()+'!';
 var h='<div class="mpbanner">'+bolt(done==v.length?'wow':'happy',84)+'<div class="mpbt"><h2>'+(done==v.length?'Champion!':'Missions')+'</h2><p>'+say+'</p><div class="mpprog"><i style="width:'+Math.round(tot/(v.length*3)*100)+'%"></i></div><small>'+tot+' of '+v.length*3+' stars &middot; '+done+' of '+v.length+' missions</small></div></div>';
 h+='<div class="mpgrid">'+v.map(function(m,i){var op=open_(i),s=stars(m.id);return '<button class="mpcard'+(op?'':' lock')+(s?' done':'')+'" '+(op?'':'disabled ')+'onclick="mpStart(\''+m.id+'\')"><span class="mpnum">'+(i+1)+'</span><span class="mpic">'+(op?m.ic:'&#128274;')+'</span><b>'+esc(m.t)+'</b><small>'+esc(m.story)+'</small><span class="mpstars">'+starStr(s)+'</span><em>'+(op?(s?'Play again':'Start'):'Finish the last mission to unlock')+'</em></button>'}).join('')+'</div>';
-h+='<div class="r mpfoot"><button onclick="mpLevelOpen()">Change level or name</button><button onclick="tpOpen()">Teacher pack</button><label class="mu"><input type="checkbox" id="mpsnd" '+(MP.snd?'checked':'')+' onchange="mpSnd(this.checked)"> Sounds</label>'+(MP.lv=='g'?'<button onclick="tab(5)">Free play</button>':'')+'<button id="mpreset" onclick="mpReset()">Clear my stars</button></div>';
+h+='<div class="r mpfoot"><button onclick="mpLevelOpen()">Change level or name</button><button onclick="pfSwitch()">Switch learner</button><button onclick="tpOpen()">Teacher pack</button><label class="mu"><input type="checkbox" id="mpsnd" '+(MP.snd?'checked':'')+' onchange="mpSnd(this.checked)"> Sounds</label>'+(MP.lv=='g'?'<button onclick="tab(5)">Free play</button>':'')+'<button id="mpreset" onclick="mpReset()">Clear my stars</button></div>';
 el.innerHTML=h};
 window.mpSnd=function(v){MP.snd=v?1:0;mpSave();if(v)cheer()};
 window.mpReset=function(){var b=$('mpreset');if(!b.dataset.sure){b.dataset.sure=1;b.textContent='Click again to clear';setTimeout(function(){if(b){b.dataset.sure='';b.textContent='Clear my stars'}},3000);return}MP.stars={};MP.best={};mpSave();mpRender()};
@@ -1722,7 +1744,7 @@ if(mini){mini.width=320;mini.height=200;mini.onclick=function(){mini.classList.t
 var _pd=window.progDraw;window.progDraw=function(){if(_pd)_pd.apply(this,arguments);var p5=$('p5');if(window.innerWidth>760||!p5||p5.classList.contains('hid')){mini.style.display='none';return}mini.style.display='block';if(!mini.classList.contains('min'))mini.getContext('2d').drawImage($('cv'),0,0,320,200)}}
 
 /* ---------- start-up ---------- */
-window.KBM={MS:MS,MP:MP,LV:LV,RANK:RANK,bolt:bolt};mpLoad();applyLevel();
+window.KBM={MS:MS,MP:MP,LV:LV,RANK:RANK,bolt:bolt,save:mpSave,reload:function(){MP.stars={};MP.best={};MP.name="";MP.lv="";MP.cur="";MP.wsKey="";MP.hints=0;mpLoad();applyLevel();if(window.mpRender)mpRender()}};mpLoad();applyLevel();
 if(!MP.lv){mpLevelOpen(true);tab(9)}else tab(9);
 })();
 </script>
@@ -1829,9 +1851,10 @@ $q('tcOut').innerHTML='<div class="tpcert"><div class="tpcb">'+K.bolt('happy',72
 function certSec(){var lv=MP.lv||'g';return '<section class="tppage"><div class="tpctl"><div class="tph"><small>KitBench teacher pack</small><h2>Certificate</h2></div><p>Fill in the boxes, then press <b>Print this page</b> (choose "Save as PDF" to keep a copy). The stars come from the stars saved on this device for the chosen level.</p>'
 +'<div class="tpform"><label>Learner name<input id="tcName" maxlength="40" value="'+E(MP.name)+'" oninput="tpCert()"></label><label>Level<select id="tcLv" onchange="tpCert()">'+lvOpts(lv)+'</select></label><label>School (optional)<input id="tcSch" maxlength="50" oninput="tpCert()"></label><label>Teacher (optional)<input id="tcTch" maxlength="40" oninput="tpCert()"></label><label>Date<input id="tcDt" type="date" onchange="tpCert()"></label></div></div><div id="tcOut"></div></section>'}
 function sheet(){var lv=$q('tsLv').value,n=Math.max(5,Math.min(60,+$q('tsN').value||30)),cls=$q('tsCls').value.trim(),v=vis(lv),rows='';
-for(var i=1;i<=n;i++)rows+='<tr><td>'+i+'</td><td class="tpnm"></td>'+v.map(function(){return '<td class="tpst">&#9734;&#9734;&#9734;</td>'}).join('')+'<td></td></tr>';
+var LR=($q('tsFill')&&$q('tsFill').checked&&window.pfLearners)?pfLearners():[];if(LR.length>n)n=LR.length;
+for(var i=1;i<=n;i++){var Lr=LR[i-1];rows+='<tr><td>'+i+'</td><td class="tpnm">'+(Lr?E(Lr.name):'')+'</td>'+v.map(function(m){var s=Lr?(Lr.stars[m.id]||0):0,g='';for(var k=0;k<3;k++)g+=k<s?'&#9733;':'&#9734;';return '<td class="tpst">'+g+'</td>'}).join('')+'<td>'+(Lr?v.reduce(function(a,m){return a+(Lr.stars[m.id]||0)},0):'')+'</td></tr>'}
 $q('tsOut').innerHTML='<div class="tph"><small>KitBench class score sheet</small><h2>'+E(LV[lv].n)+' missions'+(cls?' &middot; '+E(cls):'')+'</h2><div class="tpmeta">Date: ______________ &nbsp; Teacher: ______________________ &nbsp; Colour in a star for each star earned.</div></div><table class="tpt tpsheet"><tr><th>#</th><th>Learner name</th>'+v.map(function(m,i){return '<th><span class="tpm">'+(i+1)+'</span>'+E(m.t)+'</th>'}).join('')+'<th>Total</th></tr>'+rows+'</table>'}
-function sheetSec(){var lv=MP.lv||'g';return '<section class="tppage tpland"><div class="tpctl"><div class="tph"><small>KitBench teacher pack</small><h2>Class score sheet</h2></div><p>A blank sheet to print. Learners or the teacher colour in stars after each mission.</p><div class="tpform"><label>Level<select id="tsLv" onchange="tpSheet()">'+lvOpts(lv)+'</select></label><label>Number of learners<input id="tsN" type="number" min="5" max="60" value="30" onchange="tpSheet()"></label><label>Class name (optional)<input id="tsCls" maxlength="30" oninput="tpSheet()"></label></div></div><div id="tsOut"></div></section>'}
+function sheetSec(){var lv=MP.lv||'g';return '<section class="tppage tpland"><div class="tpctl"><div class="tph"><small>KitBench teacher pack</small><h2>Class score sheet</h2></div><p>A blank sheet to print. Learners or the teacher colour in stars after each mission.</p><div class="tpform"><label>Level<select id="tsLv" onchange="tpSheet()">'+lvOpts(lv)+'</select></label><label>Number of learners<input id="tsN" type="number" min="5" max="60" value="30" onchange="tpSheet()"></label><label>Names and stars<span style="font-weight:400"><input id="tsFill" type="checkbox" onchange="tpSheet()"> Fill with learners on this device</span></label><label>Class name (optional)<input id="tsCls" maxlength="30" oninput="tpSheet()"></label></div></div><div id="tsOut"></div></section>'}
 function planSec(){var lv=MP.lv||'g';return '<section class="tpctl2"><div class="tpctl"><div class="tph"><small>KitBench teacher pack</small><h2>Lesson plans</h2></div><p>One page per mission, with the answer and check questions. Choose the level, then press <b>Print this page</b>.</p><div class="tpform"><label>Show missions for<select id="tpLv" onchange="tpPlans()">'+lvOpts(lv)+'</select></label></div></div><div id="tpPl">'+plans(lv)+'</div></section>'}
 
 /* ---------- shell ---------- */
@@ -1855,9 +1878,97 @@ var done=function(){var o=$q('tpPage');if(o)o.remove();window.removeEventListene
 function $q(i){return document.getElementById(i)}
 window.mpExit=function(){try{if(typeof stop=='function')stop()}catch(e){}try{if(window.kb3d&&kb3d.stopProgram)kb3d.stopProgram()}catch(e){}
 var nm='';try{nm=(JSON.parse(localStorage.getItem('kitbench.mp.v1')||'{}').name||'')}catch(e){}
-var o=$q('mplv');o.innerHTML='<div class="mpbox mpc2"><div class="mpbolt">'+(window.KBM?KBM.bolt('happy',96):'')+'</div><h2>Bye'+(nm?', '+esc(nm):'')+'!</h2><p>Your stars and blocks are saved on this device. See you next time!</p><div class="mpact"><button class="pri" onclick="mpClose(\'mplv\')">Stay and keep playing</button><button onclick="mpLeave()">Close KitBench</button></div><p class="mu" id="mpbyem"></p></div>';o.hidden=false};
+var o=$q('mplv');o.innerHTML='<div class="mpbox mpc2"><div class="mpbolt">'+(window.KBM?KBM.bolt('happy',96):'')+'</div><h2>Bye'+(nm?', '+esc(nm):'')+'!</h2><p>Your stars and blocks are saved on this device. See you next time!</p><div class="mpact"><button class="pri" onclick="mpClose(\'mplv\')">Stay and keep playing</button><button onclick="mpClose(\'mplv\');pfSwitch()">Switch learner</button><button onclick="mpLeave()">Close KitBench</button></div><p class="mu" id="mpbyem"></p></div>';o.hidden=false};
 window.mpLeave=function(){var m=$q('mpbyem');try{window.close()}catch(e){}
 setTimeout(function(){if(m)m.textContent='Your browser keeps this window open. Please close this tab, or swipe the app away. Your work is saved.'},400)};
+})();
+</script>
+<script>
+(function(){
+/* ===== Learner profiles with a PIN, saved on this device. Teacher panel for the class. ===== */
+var K=window.KBM;if(!K||!window.KBM_KEY)return;
+var PK='kitbench.profiles.v1',TK='kitbench.teacher.v1';
+var P={list:[],cur:'',guest:0};
+function ld(){try{var j=JSON.parse(localStorage.getItem(PK)||'null');if(j&&Array.isArray(j.list))P=j}catch(e){}}
+function sv(){try{localStorage.setItem(PK,JSON.stringify(P))}catch(e){}}
+function Q(i){return document.getElementById(i)}
+function hash(s){s='kitbench|'+s;try{if(window.crypto&&crypto.subtle&&window.TextEncoder)return crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)).then(function(b){return 's'+[].map.call(new Uint8Array(b),function(x){return ('0'+x.toString(16)).slice(-2)}).join('')})}catch(e){}
+var h=5381;for(var i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return Promise.resolve('d'+(h>>>0).toString(16))}
+function same(stored,pin){if(!stored)return Promise.resolve(true);return hash(pin).then(function(h){if(h===stored)return true;if(stored.charAt(0)=='d'&&h.charAt(0)=='s'){var x=5381,s='kitbench|'+pin;for(var i=0;i<s.length;i++)x=((x<<5)+x+s.charCodeAt(i))|0;return stored==='d'+(x>>>0).toString(16)}return false})}
+var COL=['#e53935','#1e88e5','#43a047','#fb8c00','#8e24aa','#00897b','#d81b60','#6d4c41'];
+function col(i){return COL[i%COL.length]}
+function blob(id){try{return JSON.parse(localStorage.getItem('kitbench.mp.p.'+id)||'null')||{}}catch(e){return {}}}
+function totalStars(b){var t=0;for(var k in (b.stars||{}))t+=b.stars[k]||0;return t}
+
+/* ---------- entering a profile ---------- */
+function enter(id,init){var key=id?'kitbench.mp.p.'+id:'kitbench.mp.v1';KBM_KEY(key);window.KB_WSP=id?'kitbench.mpws.p'+id+'.':'kitbench.mpws.';
+if(init){try{localStorage.setItem(key,JSON.stringify({lv:init.lv,name:init.name,stars:{},best:{},snd:1,cur:'',wsKey:''}))}catch(e){}}
+P.cur=id||'';P.guest=id?0:1;sv();K.reload();close();if(K.MP.lv)tab(9)}
+function close(){var o=Q('pflg');if(o)o.hidden=true}
+function shell(inner){var o=Q('pflg');if(!o){o=document.createElement('div');o.id='pflg';o.className='mpov pfov';document.body.appendChild(o)}o.innerHTML='<div class="mpbox">'+inner+'</div>';o.hidden=false;return o}
+
+/* ---------- login screen ---------- */
+window.pfLogin=function(){var cards=P.list.map(function(p,i){var b=blob(p.id);return '<button class="pfc" onclick="pfPick(\''+p.id+'\')"><span class="pfa" style="background:'+col(i)+'">'+esc((p.name||'?').charAt(0).toUpperCase())+'</span><b>'+esc(p.name)+'</b><small>'+(K.LV[p.lv||b.lv]?K.LV[p.lv||b.lv].n:'')+' &middot; '+totalStars(b)+' &#9733;'+(p.pin?'':'')+'</small></button>'}).join('');
+shell('<div class="mphead">'+K.bolt('happy',72)+'<div><h2>Who is playing?</h2><p>'+(P.list.length?'Tap your name.':'Make a profile so KitBench remembers your stars.')+'</p></div></div><div class="pfgrid">'+cards+'<button class="pfc pfnew" onclick="pfNew()"><span class="pfa">+</span><b>New learner</b><small>Make a profile</small></button></div>'
++'<div class="mpact"><button onclick="pfGuest()">Play without a login</button><button onclick="pfTeacher()">Teacher</button></div>')};
+window.pfGuest=function(){enter('')};
+
+/* ---------- PIN pad ---------- */
+var PIN='',SEL='',MODE='';
+function dots(){var d='';for(var i=0;i<4;i++)d+='<i class="'+(i<PIN.length?'on':'')+'"></i>';return d}
+function pad(title,sub,onDone,back){PIN='';var keys='';[1,2,3,4,5,6,7,8,9].forEach(function(n){keys+='<button onclick="pfKey(\''+n+'\')">'+n+'</button>'});
+shell('<div class="mphead">'+K.bolt('happy',60)+'<div><h2>'+title+'</h2><p id="pfsub">'+sub+'</p></div></div><div class="pfdots" id="pfdots">'+dots()+'</div><div class="pfpad">'+keys+'<button class="al" onclick="pfBack()">&#9003;</button><button onclick="pfKey(\'0\')">0</button><button class="al" onclick="'+back+'">Back</button></div>');window.__pfDone=onDone}
+window.pfKey=function(n){if(PIN.length>=4)return;PIN+=n;Q('pfdots').innerHTML=dots();if(PIN.length==4){var p=PIN;setTimeout(function(){window.__pfDone(p)},120)}};
+window.pfBack=function(){PIN=PIN.slice(0,-1);Q('pfdots').innerHTML=dots()};
+function wrong(){var d=Q('pfdots');d.classList.add('bad');Q('pfsub').textContent='That PIN is not right. Try again.';setTimeout(function(){PIN='';d.classList.remove('bad');d.innerHTML=dots()},600)}
+window.pfPick=function(id){var p=P.list.filter(function(x){return x.id==id})[0];if(!p)return;if(!p.pin){enter(id);return}
+SEL=id;pad('Hi '+esc(p.name)+'!','Type your 4-digit PIN.',function(pin){same(p.pin,pin).then(function(ok){if(ok)enter(id);else wrong()})},'pfLogin()')};
+
+/* ---------- new learner ---------- */
+var NEW={name:'',lv:'',nopin:0};
+window.pfNew=function(){NEW={name:'',lv:'',nopin:0};newForm()};
+function newForm(){shell('<div class="mphead">'+K.bolt('happy',60)+'<div><h2>New learner</h2><p>Type your name, pick a level and make a PIN.</p></div></div><label class="mpl" for="pfname">My name</label><input id="pfname" class="mpin" maxlength="20" autocomplete="off" value="'+esc(NEW.name)+'" placeholder="Type your name">'
++'<div class="mplv">'+['e','b','g'].map(function(k){return '<button class="mplc'+(NEW.lv==k?' on':'')+'" onclick="pfLv(\''+k+'\')"><span class="mpic">'+K.LV[k].ic+'</span><b>'+K.LV[k].n+'</b><em>'+K.LV[k].age+'</em></button>'}).join('')+'</div>'
++'<p class="mu" id="pfmsg"></p><div class="mpact"><button class="pri" onclick="pfMakePin()">Next: make a PIN</button><button onclick="pfLogin()">Back</button></div>');var n=Q('pfname');if(n)n.focus()}
+window.pfLv=function(k){var n=Q('pfname');if(n)NEW.name=n.value;NEW.lv=k;newForm()};
+window.pfMakePin=function(){var n=Q('pfname');NEW.name=n?n.value.trim():NEW.name;var m=Q('pfmsg');
+if(!NEW.name){m.textContent='Please type your name.';return}if(!NEW.lv){m.textContent='Please pick a level.';return}
+if(P.list.some(function(p){return p.name.toLowerCase()==NEW.name.toLowerCase()})){m.textContent='That name is already used. Add a letter or a number.';return}
+pad('Make a PIN','Choose 4 numbers you will remember.',function(p1){PIN='';pad('Type it again','Type the same 4 numbers.',function(p2){if(p1!==p2){PIN='';Q('pfsub').textContent='They did not match. Start again.';setTimeout(window.pfMakePin,900);return}finish(p1)},'pfMakePin()')},'newForm0()')};
+window.newForm0=function(){newForm()};
+function finish(pin){hash(pin).then(function(h){var id='p'+Date.now().toString(36)+Math.random().toString(36).slice(2,5);P.list.push({id:id,name:NEW.name,lv:NEW.lv,pin:h,created:new Date().toISOString().slice(0,10)});enter(id,{lv:NEW.lv,name:NEW.name})})}
+
+/* ---------- teacher panel ---------- */
+function tget(){try{return localStorage.getItem(TK)||''}catch(e){return ''}}
+window.pfTeacher=function(){var t=tget();if(!t){pad('Teacher PIN','Make a teacher PIN (4 numbers). It protects the class list.',function(p1){PIN='';pad('Type it again','Type the same 4 numbers.',function(p2){if(p1!==p2){PIN='';Q('pfsub').textContent='They did not match.';setTimeout(window.pfTeacher,900);return}hash(p1).then(function(h){try{localStorage.setItem(TK,h)}catch(e){}tpanel()})},'pfLogin()')},'pfLogin()');return}
+pad('Teacher','Type the teacher PIN.',function(p){same(t,p).then(function(ok){if(ok)tpanel();else wrong()})},'pfLogin()')};
+function tpanel(msg){var rows=P.list.map(function(p,i){var b=blob(p.id);return '<tr><td><span class="pfa sm" style="background:'+col(i)+'">'+esc((p.name||'?').charAt(0).toUpperCase())+'</span> '+esc(p.name)+'</td><td>'+(K.LV[p.lv]?K.LV[p.lv].n:'')+'</td><td>'+totalStars(b)+'</td><td><button onclick="pfReset(\''+p.id+'\')">New PIN</button> <button onclick="pfDel(\''+p.id+'\')" id="pfd'+p.id+'">Delete</button></td></tr>'}).join('')||'<tr><td colspan="4" class="mu">No learners yet.</td></tr>';
+shell('<div class="mphead">'+K.bolt('happy',60)+'<div><h2>Class list</h2><p>Learners on this device. '+(msg?esc(msg):'')+'</p></div></div><div class="pfscroll"><table class="pft"><tr><th>Name</th><th>Level</th><th>Stars</th><th></th></tr>'+rows+'</table></div>'
++'<div class="mpact"><button onclick="pfCsv()">Download class list (CSV)</button><button onclick="pfBackup()">Download backup</button><button onclick="Q_pfimp.click()">Restore backup</button><button onclick="pfTpin()">Change teacher PIN</button><button class="pri" onclick="pfLogin()">Done</button></div><input type="file" id="Q_pfimp" accept=".json,application/json" hidden onchange="pfImport(this)">');
+window.Q_pfimp=Q('Q_pfimp')}
+window.pfTpin=function(){tget();pad('New teacher PIN','Choose 4 numbers.',function(p1){hash(p1).then(function(h){try{localStorage.setItem(TK,h)}catch(e){}tpanel('Teacher PIN changed.')})},'pfTeacher()')};
+window.pfReset=function(id){var p=P.list.filter(function(x){return x.id==id})[0];if(!p)return;pad('New PIN for '+esc(p.name),'Choose 4 numbers.',function(p1){hash(p1).then(function(h){p.pin=h;sv();tpanel('PIN changed for '+p.name+'.')})},'pfTeacherBack()')};
+window.pfTeacherBack=function(){tpanel()};
+window.pfDel=function(id){var b=Q('pfd'+id);if(!b.dataset.sure){b.dataset.sure=1;b.textContent='Sure?';setTimeout(function(){if(b){b.dataset.sure='';b.textContent='Delete'}},3000);return}
+try{localStorage.removeItem('kitbench.mp.p.'+id);var pre='kitbench.mpws.p'+id+'.',dead=[];for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k.indexOf(pre)==0)dead.push(k)}dead.forEach(function(k){localStorage.removeItem(k)})}catch(e){}
+P.list=P.list.filter(function(x){return x.id!=id});if(P.cur==id)P.cur='';sv();tpanel('Learner deleted.')};
+function dl(name,text,type){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:type}));a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500)}
+window.pfCsv=function(){var q=function(s){return '"'+String(s).replace(/"/g,'""')+'"'},h=['Name','Level'].concat(K.MS.map(function(m){return m.t})).concat(['Total stars']),r=[h.map(q).join(',')];
+P.list.forEach(function(p){var b=blob(p.id);r.push([p.name,K.LV[p.lv]?K.LV[p.lv].n:''].concat(K.MS.map(function(m){return (b.stars||{})[m.id]||0})).concat([totalStars(b)]).map(q).join(','))});dl('kitbench-class-list.csv',r.join('\r\n'),'text/csv')};
+window.pfBackup=function(){var d={app:'kitbench',v:1,profiles:P.list,mp:{},ws:{}};P.list.forEach(function(p){d.mp[p.id]=blob(p.id);var pre='kitbench.mpws.p'+p.id+'.';for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k.indexOf(pre)==0)d.ws[k]=localStorage.getItem(k)}});dl('kitbench-backup.json',JSON.stringify(d),'application/json')};
+window.pfImport=function(inp){var f=inp.files&&inp.files[0];if(!f)return;var r=new FileReader();r.onload=function(){try{var d=JSON.parse(r.result);if(d.app!='kitbench'||!Array.isArray(d.profiles))throw 0;var n=0;d.profiles.forEach(function(p){if(!p.id||!p.name)return;var i=-1;P.list.forEach(function(x,j){if(x.id==p.id)i=j});if(i<0)P.list.push(p);else P.list[i]=p;try{localStorage.setItem('kitbench.mp.p.'+p.id,JSON.stringify(d.mp[p.id]||{}))}catch(e){}n++});
+for(var k in (d.ws||{}))try{localStorage.setItem(k,d.ws[k])}catch(e){}sv();tpanel(n+' learner(s) restored.')}catch(e){tpanel('That file is not a KitBench backup.')}};r.readAsText(f)};
+
+/* learners for the class score sheet */
+window.pfLearners=function(){return P.list.map(function(p){return {name:p.name,lv:p.lv,stars:blob(p.id).stars||{}}})};
+
+/* switch learner from other screens */
+window.pfSwitch=function(){pfLogin()};
+
+/* ---------- start-up ---------- */
+ld();
+if(P.list.length){var cur=P.list.filter(function(x){return x.id==P.cur})[0];KBM_KEY('kitbench.mp.v1');pfLogin()}
+else if(!P.guest&&!K.MP.lv&&!K.MP.name){pfLogin()}
 })();
 </script>
 <script type="importmap">{"imports":{"three":"./libs/three/three.module.js","three/addons/":"./libs/three/addons/"}}</script>
@@ -2967,6 +3078,7 @@ Q('lsnd').checked=!!S.snd;
 buildCtl();sync3d();uiAll();frame();
 </script>
 </body></html>
+
 
 
 

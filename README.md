@@ -9,6 +9,8 @@ A browser-based virtual robotics lab for schools. Pick parts from a real kit, wi
 - **Three levels:** Explorer (ages 6 to 8), Builder (9 to 12) and Engineer (13 to 17). The level changes which tabs, blocks and tools learners see.
 - **Missions:** 11 short missions with hints, up to 3 stars each, and a celebration from the robot helper Bolt.
 - **Phones and laptops:** a bottom tab bar and a small robot view on phones. It installs on Android, iPhone, iPad and laptops and then works offline.
+- **Learner logins:** each learner makes a profile with a name and a 4-digit PIN. Stars and blocks are saved per learner on the device, so shared phones and laptops work and everything stays offline. There is also a Play without a login option. The PIN keeps classmates from changing each other's stars; it is not strong security. No learner data leaves the device.
+- **Teacher panel:** choose **Teacher** on the login screen (make a teacher PIN the first time) to reset PINs, delete learners, download the class list as CSV, and download or restore a backup file to move learners to another device. The class score sheet can fill in names and stars from the learners on the device.
 - **Teacher pack:** on the Missions page choose **Teacher pack** for a teacher guide, one printable lesson plan per mission with answers and check questions, a certificate, and a blank class score sheet. Use Print and choose Save as PDF to keep copies.
 
 ## What it does
