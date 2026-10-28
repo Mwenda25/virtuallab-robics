@@ -394,6 +394,14 @@ body>*:not(#tp){display:none!important}
 .pft{width:100%;border-collapse:collapse;font-size:14px}
 .pft th,.pft td{border-bottom:1px solid var(--bd);padding:6px 8px;text-align:left}
 .pft button{padding:4px 10px;border-radius:8px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:inherit;font-size:13px;cursor:pointer}
+#p3d{margin:0 0 8px}
+#p3d.hid{display:none}
+#p4.emb{height:280px;min-height:0;border-radius:12px}
+#p4.emb #panel,#p4.emb #help,#p4.emb #log,#p4.emb #dpanel,#p4.emb #dpad,#p4.emb #bRun,#p4.emb #bEdit,#p4.emb #bClaw,#p4.emb #bLift,#p4.emb #bBox,#p4.emb #bCone{display:none}
+#p4.emb #scorebox{top:6px;right:6px;padding:4px 10px;min-width:0}
+#p4.emb #scorebox .big{font-size:20px}
+#p4.emb #controls{bottom:6px;padding:4px;gap:4px;flex-wrap:nowrap;max-width:calc(100% - 12px);left:50%;right:auto;transform:translateX(-50%)}
+#p4.emb button{padding:6px 8px;font-size:11.5px;white-space:nowrap}
 </style></head>
 <body><div class="w">
 <div class="hd"><div><h1>KitBench</h1><p class="s" id="hsub">Build, program and test your own robot.</p></div><button id="lvchip" class="lvchip" onclick="mpLevelOpen()" aria-label="Change level"></button></div>
@@ -459,8 +467,8 @@ body>*:not(#tp){display:none!important}
 <div class="pbar"><button onclick="progUndo()" aria-label="Undo" title="Undo">&#x21B6;</button><button onclick="progRedo()" aria-label="Redo" title="Redo">&#x21B7;</button><button onclick="progZoom(-1)" aria-label="Zoom out" title="Zoom out">&#x2212;</button><button onclick="progZoom(1)" aria-label="Zoom in" title="Zoom in">&#x2B;</button><button onclick="progZoom(0)" aria-label="Fit" title="Reset view">&#x2316;</button></div>
 <button id="prun" class="prun" onclick="progRun()" aria-label="Run">&#9654;</button>
 <div id="pload" class="pload">Open this tab to load the blocks editor.</div></div><div class="pview" id="pview"><div class="pvh"><b>Your blocks as code</b><span class="pvt"><button id="pv_py" class="on" onclick="progView('py')">Python</button><button id="pv_js" onclick="progView('js')">JavaScript</button></span><span class="pvr"><span class="mu" id="pvmsg"></span><button onclick="progCopyCode()">Copy</button><button onclick="progOpenCode()">Edit as code</button></span></div><pre id="pvcode" aria-label="Your blocks translated to code"></pre></div></div>
-<div class="pside"><div class="c"><h2>Robot view</h2><div id="pconn" class="pconn" onclick="progConn()" role="button" tabindex="0"><i></i><span>connect</span></div><canvas id="cv2" width="640" height="400" aria-label="Robot view"></canvas>
-<select id="prunon" aria-label="Run on" style="margin-bottom:8px"><option value="2d">Run on the 2D test mat</option><option value="3d">Run on the 3D RoboMission</option></select><div class="r"><button onclick="progReset()">Reset robot</button><label class="mu"><input type="checkbox" id="pobs" onchange="$('obs').checked=this.checked;draw()"> Obstacle</label></div>
+<div class="pside"><div class="c"><h2>Robot view</h2><div id="pconn" class="pconn" onclick="progConn()" role="button" tabindex="0"><i></i><span>connect</span></div><canvas id="cv2" width="640" height="400" aria-label="Robot view"></canvas><div id="p3d" class="hid"></div>
+<select id="prunon" aria-label="Run on" style="margin-bottom:8px" onchange="mp3dSync(5)"><option value="2d">Run on the 2D test mat</option><option value="3d">Run on the 3D RoboMission</option></select><div class="r"><button onclick="progReset()">Reset robot</button><label class="mu"><input type="checkbox" id="pobs" onchange="$('obs').checked=this.checked;draw()"> Obstacle</label></div>
 <div class="r" style="margin-top:0"><select id="ples" onchange="$('les').value=this.value;setLesson()"></select><select id="pfld" onchange="$('fld').value=this.value;reset()"><option value="track">Line track</option><option value="sumo">Sumo ring</option><option value="mat">RoboMission mat</option><option value="sports">RoboSports pitch</option></select></div>
 <div id="pout" class="mu" role="status" aria-live="polite" style="min-height:20px"></div><div id="ptel" class="mu"></div><div id="pdisp" class="pdisp" aria-label="Display"></div></div>
 <div class="c"><h2>Lesson</h2><div id="plt" class="mu"></div><div id="phelp" class="mu" style="margin-top:8px"></div></div></div>
@@ -616,7 +624,7 @@ $('checks').innerHTML=c.join('');drawWire();sensNote()}
 function tab(n){var pn=n==6?4:n;for(var i=1;i<=9;i++){var p=$('p'+i);if(p)p.className=i==pn?(i==1?'g':''):'hid';var t=$('t'+i);if(t)t.className=i==n?'on':''}
 $('p4').classList.toggle('dm',n==6);var sim=n==3||n==4||n==8;document.querySelector('.w').classList.toggle('wide',n==8);if(sim)window.simLast=n;$('t3').className=sim?'on':'';$('simbar').classList.toggle('hid',!sim);$('sm3').className=n==3?'on':'';$('sm4').className=n==4?'on':'';$('sm8').className=n==8?'on':'';
 if(n==3){sensNote();reset();if(!PY&&!PYFAIL&&!PYLOAD)PYLOAD=loadPy()}
-if(n==5&&window.progOpen)progOpen();if(n==9&&window.mpRender)mpRender();if(n==5&&window.mpBar)mpBar();
+if(n==5&&window.progOpen)progOpen();if(window.mp3dSync)mp3dSync(n);if(n==9&&window.mpRender)mpRender();if(n==5&&window.mpBar)mpBar();
 if(n==6){if(window.desUI)desUI();if(window.kb3d&&kb3d.applyDesign)kb3d.applyDesign()}
 if(n==7&&window.projOpen)projOpen()}
 
@@ -1016,7 +1024,7 @@ function progActive(){return running||!!(window.kb3d&&kb3d.ext&&kb3d.ext())}
 function progRun(){if(progActive()){if(running)stop();if(window.kb3d&&kb3d.ext&&kb3d.ext())kb3d.stopProgram();PB.on=0;return}if(PB.mode&&PB.mode!='bl'){progRunCode();return}if(!PB.ws)return;
 var tops=progTops();
 if(!tops.length){out('Add a "when program starts" block from EVENTS and snap your blocks under it.');return}
-if($('prunon').value=='3d'&&window.kb3d){tab(4);kb3d.runProgram();return}
+if($('prunon').value=='3d'&&window.kb3d){mpRun3d();return}
 if($('man').checked){$('man').checked=false;if($('man').onchange)$('man').onchange()}
 KNew();R=init();var d=$('pdisp');if(d)d.textContent='';
 KS.gen=progGen(tops);
@@ -1052,7 +1060,7 @@ async function progRunCode(){var lang=PB.mode=='py'?'py':'js',code=$('pcode').va
 if($('man').checked){$('man').checked=false;if($('man').onchange)$('man').onchange()}
 var d=$('pdisp');if(d)d.textContent='';
 await run(code,lang);
-if($('prunon').value=='3d'&&window.kb3d){if(!running)return;PB.codeFn=fn;running=false;PB.use='code';tab(4);kb3d.runProgram()}}
+if($('prunon').value=='3d'&&window.kb3d){if(!running)return;PB.codeFn=fn;running=false;PB.use='code';mpRun3d()}}
 function codeStep(s){try{var o=PB.codeFn(s);var r={l:clamp1(o[0]),r:clamp1(o[1]),fin:false,claw:null,arm:null,msg:null,auto:null};
 if(o.length>2&&o[2]!=null)r.claw=o[2]?1:0;if(o.length>3&&o[3]!=null)r.arm=o[3]?1:0;return r}
 catch(e){PB.codeFn=null;return{l:0,r:0,fin:true,claw:null,arm:null,msg:'Error: '+errTxt(e),auto:null}}}
@@ -1232,11 +1240,11 @@ if($('man').checked){$('man').checked=false;if($('man').onchange)$('man').onchan
 var d=$('pdisp');if(d)d.textContent='';
 if(!/(\bdef\s+loop\s*\(|\bfunction\s+loop\s*\()/.test(code)){
 if(lang=='py'){if(!PY&&!PYFAIL&&!PYLOAD)PYLOAD=loadPy();if(!PY&&PYLOAD){out('Loading Python (about 10 MB, first time only)...');await PYLOAD}}
-if($('prunon').value=='3d'&&window.kb3d){PB.script={lang:lang,code:code};PB.use='blocks';tab(4);kb3d.runProgram();return}
+if($('prunon').value=='3d'&&window.kb3d){PB.script={lang:lang,code:code};PB.use='blocks';mpRun3d();return}
 R=init();var st=startScript(lang,code,'2d');if(!st.ok){out(st.msg);return}
 fn=bFn;running=true;PB.on=1;var why=driveWhy();out(why?'Running, but the robot cannot move: '+why+'.':'Running your '+(lang=='py'?'Python':'JavaScript')+' steps');return}
 await run(code,lang);
-if($('prunon').value=='3d'&&window.kb3d){if(!running)return;PB.codeFn=fn;running=false;PB.use='code';tab(4);kb3d.runProgram()}}
+if($('prunon').value=='3d'&&window.kb3d){if(!running)return;PB.codeFn=fn;running=false;PB.use='code';mpRun3d()}}
 window.progOpen=progOpen;window.progRun=progRun;window.progSync=progSync;window.progDraw=progDraw;
 window.progUndo=function(){if(PB.ws)PB.ws.undo(false)};window.progRedo=function(){if(PB.ws)PB.ws.undo(true)};
 window.progZoom=function(k){if(!PB.ws)return;if(k==0){PB.ws.setScale(0.9);PB.ws.scrollCenter()}else PB.ws.zoomCenter(k)};
@@ -1742,7 +1750,7 @@ window.mpReset=function(){var b=$('mpreset');if(!b.dataset.sure){b.dataset.sure=
 /* small robot view that follows you on phones */
 var mini=$('cvmini');
 if(mini){mini.width=320;mini.height=200;mini.onclick=function(){mini.classList.toggle('min')};
-var _pd=window.progDraw;window.progDraw=function(){if(_pd)_pd.apply(this,arguments);var p5=$('p5');if(window.innerWidth>760||!p5||p5.classList.contains('hid')){mini.style.display='none';return}mini.style.display='block';if(!mini.classList.contains('min'))mini.getContext('2d').drawImage($('cv'),0,0,320,200)}}
+var _pd=window.progDraw;window.progDraw=function(){if(_pd)_pd.apply(this,arguments);var p5=$('p5');if(window.innerWidth>760||!p5||p5.classList.contains('hid')||$('prunon').value=='3d'){mini.style.display='none';return}mini.style.display='block';if(!mini.classList.contains('min'))mini.getContext('2d').drawImage($('cv'),0,0,320,200)}}
 
 /* ---------- start-up ---------- */
 window.KBM={MS:MS,MP:MP,LV:LV,RANK:RANK,bolt:bolt,save:mpSave,reload:function(){MP.stars={};MP.best={};MP.name="";MP.lv="";MP.cur="";MP.wsKey="";MP.hints=0;mpLoad();applyLevel();if(window.mpRender)mpRender()}};mpLoad();applyLevel();
@@ -1970,6 +1978,20 @@ window.pfSwitch=function(){pfLogin()};
 ld();
 if(P.list.length){var cur=P.list.filter(function(x){return x.id==P.cur})[0];KBM_KEY('kitbench.mp.v1');pfLogin()}
 else if(!P.guest&&!K.MP.lv&&!K.MP.name){pfLogin()}
+})();
+</script>
+<script>
+(function(){
+function $q(i){return document.getElementById(i)}
+var HOME=null;
+/* Show the 3D mission inside the Program tab's Robot view, or put it back in its own tab */
+window.mp3dSync=function(n){var p4=$q('p4'),box=$q('p3d'),sel=$q('prunon');if(!p4||!box)return;
+var want=n==5&&sel&&sel.value=='3d'&&window.kb3d;
+if(want){if(p4.parentNode!==box){if(!HOME)HOME={parent:p4.parentNode,next:p4.nextSibling};box.appendChild(p4)}
+p4.classList.remove('hid','dm');p4.classList.add('emb');box.classList.remove('hid');$q('cv2').style.display='none';
+setTimeout(function(){window.dispatchEvent(new Event('resize'))},50)}
+else{if(HOME&&p4.parentNode===box)HOME.parent.insertBefore(p4,HOME.next);p4.classList.remove('emb');if(n!=4&&n!=6)p4.classList.add('hid');box.classList.add('hid');$q('cv2').style.display=''}};
+window.mpRun3d=function(){var p5=$q('p5'),sel=$q('prunon');if(p5&&!p5.classList.contains('hid')&&sel&&sel.value=='3d')mp3dSync(5);else tab(4);kb3d.runProgram()};
 })();
 </script>
 <script type="importmap">{"imports":{"three":"./libs/three/three.module.js","three/addons/":"./libs/three/addons/"}}</script>
@@ -3079,6 +3101,7 @@ Q('lsnd').checked=!!S.snd;
 buildCtl();sync3d();uiAll();frame();
 </script>
 </body></html>
+
 
 
 
