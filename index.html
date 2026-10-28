@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="manifest" href="manifest.webmanifest">
@@ -224,9 +224,7 @@ select{padding:8px;border-radius:8px;border:1px solid var(--bd);background:var(-
 <div id="p1" class="g">
 <div class="c"><h2>Parts</h2><div id="parts"></div>
 <div class="r" style="margin:8px 0 0"><button onclick="resetKit()">Reset to default kit</button></div>
-<div class="tot"><span>Estimated cost</span><span id="tot">$0</span></div>
-<div class="bar"><i id="bar"></i></div>
-<div class="mu" id="tgt">Target: about $65 per kit. Prices are rough estimates, so verify with suppliers.</div></div>
+</div>
 <div class="c"><h2>Circuit and kit checks</h2><div id="checks"></div></div>
 </div>
 
@@ -411,9 +409,9 @@ if(i=='us')return (e&&raw('us'))||(c=='ev3'&&raw('ev3d'))||(c=='spk'&&raw('spd')
 if(i=='imu')return (c&&raw('imu'))||c=='spk'?1:0;
 if(i=='srv')return (e&&raw('srv'))||(L&&raw('lmm'))?1:0;
 return raw(i)}
-function drawParts(){var h='',lg='';PARTS.forEach(function(x,i){if(x.g!=lg){lg=x.g;h+='<div class="lh" style="margin:10px 0 2px">'+lg+'</div>'}h+='<label class="p"><input type="checkbox" '+(x.on?'checked':'')+' onchange="PARTS['+i+'].on=this.checked?1:0;update()"><span class="n">'+x.n+'<small>'+x.d+'</small></span><span class="pr">$'+x.p+'</span></label>'});$('parts').innerHTML=h}
+function drawParts(){var h='',lg='';PARTS.forEach(function(x,i){if(x.g!=lg){lg=x.g;h+='<div class="lh" style="margin:10px 0 2px">'+lg+'</div>'}h+='<label class="p"><input type="checkbox" '+(x.on?'checked':'')+' onchange="PARTS['+i+'].on=this.checked?1:0;update()"><span class="n">'+x.n+'<small>'+x.d+'</small></span></label>'});$('parts').innerHTML=h}
 function update(){var t=0;PARTS.forEach(function(x){if(x.on)t+=x.p});
-$('tot').textContent='$'+t;var b=$('bar');b.style.width=Math.min(100,t/TARGET*100)+'%';b.style.background=t>TARGET?'#E24B4A':'#185FA5';
+
 var c=[];function add(k,m){c.push('<div class="ck '+k+'">'+m+'</div>')}
 var nc=['mcu','ev3','spk'].filter(raw).length,cc=ctrl();
 if(nc>1)add('er','More than one controller is selected. Keep one: the ESP32 board, the EV3 brick or the SPIKE Prime hub.');
@@ -429,7 +427,7 @@ if(ctrl()=='esp'&&has('srv')&&has('bat')&&has('mot'))add('wn','Servo and two mot
 if(has('mot')&&!has('imu'))add('wn','No IMU. Turns rely on encoders only, which drift on rough floors.');
 if(!has('ir')&&!has('us')&&!has('col'))add('wn','No sensors. This kit can only run fixed routines.');
 if(!has('box'))add('wn','No storage box. Lost parts are a common cause of kit failure in schools.');
-if(t>TARGET)add('wn','Over the $'+TARGET+' component target by $'+(t-TARGET)+'. Drop an optional part or find a cheaper source.'+(lego()?' LEGO parts are priced as separate items here. If your school already owns the sets, the real extra cost is lower.':''));
+
 if(c.join('').indexOf('class="ck er"')<0)c.unshift('<div class="ck ok">Core build is complete: controller, drive, power and wheels are all present.</div>');
 $('checks').innerHTML=c.join('');drawWire();sensNote()}
 function tab(n){var pn=n==6?4:n;for(var i=1;i<=8;i++){var p=$('p'+i);if(p)p.className=i==pn?(i==1?'g':''):'hid';var t=$('t'+i);if(t)t.className=i==n?'on':''}
@@ -1093,7 +1091,7 @@ $('dcols').innerHTML=DCOL.map(function(c){return '<button type="button" class="'
 $('dbump').checked=!!DES.bumper;$('dplate').checked=!!DES.plate;$('drule').value=DES.rule;
 $('dchecks').innerHTML=desChecks(DES.rule).map(function(c){return '<div class="ck '+c[0]+'">'+c[1]+'</div>'}).join('');
 var c=ctrl();
-$('dstats').innerHTML='<div>Size</div><div>'+e.w.toFixed(1)+' × '+e.l.toFixed(1)+' × '+e.h.toFixed(1)+' cm</div><div>Weight</div><div>about '+g+' g</div><div>Parts cost</div><div>$'+desCost()+'</div><div>Top speed</div><div>'+desSpeed()+' cm/s</div><div>Controller</div><div>'+(c?CN[c]:'none')+'</div>'}
+$('dstats').innerHTML='<div>Size</div><div>'+e.w.toFixed(1)+' × '+e.l.toFixed(1)+' × '+e.h.toFixed(1)+' cm</div><div>Weight</div><div>about '+g+' g</div><div>Top speed</div><div>'+desSpeed()+' cm/s</div><div>Controller</div><div>'+(c?CN[c]:'none')+'</div>'}
 function desSet(k,v){DES[k]=v;desSave();desUI();if(window.kb3d&&kb3d.applyDesign)kb3d.applyDesign()}
 function desReset(){DES=desDefaults();desSave();desUI();if(window.kb3d&&kb3d.applyDesign)kb3d.applyDesign()}
 
@@ -1143,7 +1141,7 @@ function pjLogDel(r){pjCur().log.splice(r,1);pjSave();pjRender()}
 function pjWords(s){var m=String(s||'').trim().match(/\S+/g);return m?m.length:0}
 function pjCount(){var p=pjCur();if(!p)return;PJT[p.cat].secs.forEach(function(s){var e=$('wc_'+s[0]);if(e)e.textContent=pjWords(p.f[s[0]])+' words'});var all=0;PJT[p.cat].secs.forEach(function(s){all+=pjWords(p.f[s[0]])});if($('wc_all'))$('wc_all').textContent='All sections together: '+all+' words'}
 function pjKitText(){var c=ctrl(),e=desEnv(),names=PARTS.filter(function(x){return x.on}).map(function(x){return x.n});
-return 'Robot name: '+DES.name+'\nController: '+(c?CN[c]:'none')+'\nParts: '+names.join(', ')+'\nEstimated parts cost: $'+desCost()+'\nSize: '+e.w.toFixed(1)+' x '+e.l.toFixed(1)+' x '+e.h.toFixed(1)+' cm\nWeight: about '+desWeight()+' g\nWheels: '+DES.wheel.toFixed(1)+' cm across, track '+DES.track.toFixed(1)+' cm\n\n'+bomText()}
+return 'Robot name: '+DES.name+'\nController: '+(c?CN[c]:'none')+'\nParts: '+names.join(', ')+'\nSize: '+e.w.toFixed(1)+' x '+e.l.toFixed(1)+' x '+e.h.toFixed(1)+' cm\nWeight: about '+desWeight()+' g\nWheels: '+DES.wheel.toFixed(1)+' cm across, track '+DES.track.toFixed(1)+' cm\n\n'+bomText()}
 function pjKit(k){var p=pjCur(),t=(p.f[k]?p.f[k]+'\n\n':'')+pjKitText();p.f[k]=t;$('pf_'+k).value=t;pjSave();pjCount()}
 function pjPractice(title){var i=LES.map(function(l){return l.t}).indexOf(title);if(i<0)return;$('les').value=i;setLesson();var s=$('prunon');if(s)s.value='2d';tab(5)}
 function pjExport(){var p=pjCur(),T=PJT[p.cat],o=[];o.push(p.name+' ('+T.n+')');o.push('Team: '+(p.team||'-')+'   Age group: '+p.age+'   Started: '+p.created);o.push('');
@@ -2414,6 +2412,7 @@ if(ios&&!standalone&&!st('x')&&'serviceWorker' in navigator)show('To install on 
 })();
 </script>
 </body></html>
+
 
 
 
