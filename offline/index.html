@@ -214,11 +214,115 @@ select{padding:8px;border-radius:8px;border:1px solid var(--bd);background:var(-
 .psr code{font:12px ui-monospace,Menlo,Consolas,monospace;word-break:break-word}
 .psr span{color:var(--mu)}
 @media(max-width:600px){.psr{grid-template-columns:1fr}}
+.hd{display:flex;gap:12px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+.lvchip{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 8px;border:1px solid var(--bd);border-radius:999px;background:var(--card);color:var(--tx);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.lvchip:hover{border-color:var(--ac)}
+.tabs button{display:flex;align-items:center;justify-content:center;gap:6px}
+.tabs button i{font-style:normal;font-size:18px;line-height:1}
+.tabs button b{font-weight:inherit}
+body.lv-e #t1,body.lv-e #t6,body.lv-e #t2,body.lv-e #t3,body.lv-e #t7{display:none}
+body.lv-b #t6,body.lv-b #t7,body.lv-b #sm8{display:none}
+body.lv-e #pm_py,body.lv-e #pm_js,body.lv-e #psnip,body.lv-e .pview,body.lv-e #ples,body.lv-e #pfld,body.lv-e #prunon,body.lv-e .pside .c:nth-child(2){display:none!important}
+body.lv-e .pmodes{display:none}
+/* missions page */
+.mpbanner{display:flex;gap:14px;align-items:center;padding:14px;border:1px solid var(--bd);border-radius:16px;background:var(--card);margin-bottom:14px}
+.mpbt{flex:1;min-width:0}
+.mpbt h2{margin:0;font-size:22px}
+.mpbt p{margin:2px 0 8px;font-size:16px}
+.mpprog{height:12px;border-radius:999px;background:var(--bd);overflow:hidden}
+.mpprog i{display:block;height:100%;background:linear-gradient(90deg,#ffcf1a,#ff9800);border-radius:999px;transition:width .5s}
+.mpbt small{color:var(--mu)}
+.mpgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.mpcard{position:relative;display:flex;flex-direction:column;gap:6px;align-items:flex-start;text-align:left;padding:16px;min-height:200px;border:2px solid var(--bd);border-radius:18px;background:var(--card);color:var(--tx);font:inherit;cursor:pointer;transition:transform .12s,border-color .12s}
+.mpcard:hover:not(:disabled){transform:translateY(-3px);border-color:var(--ac)}
+.mpcard.done{border-color:#e0b500}
+.mpcard.lock{opacity:.55;cursor:not-allowed}
+.mpcard b{font-size:18px;line-height:1.25}
+.mpcard small{color:var(--mu);font-size:14px;line-height:1.4;flex:1}
+.mpcard em{font-style:normal;font-weight:700;color:var(--ac);font-size:14px}
+.mpnum{position:absolute;top:10px;right:12px;width:28px;height:28px;border-radius:50%;background:var(--acbg);color:var(--ac);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+.mpic{font-size:40px;line-height:1}
+.mpstars i,.mpbig i,.mpst i{font-style:normal;color:var(--bd)}
+.mpstars i.on,.mpbig i.on,.mpst i.on{color:#ffb300}
+.mpstars{font-size:22px;letter-spacing:2px}
+.mpfoot{margin-top:16px;gap:12px;align-items:center;flex-wrap:wrap}
+.mpfoot button{padding:8px 14px;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:inherit;cursor:pointer}
+/* bar on the Program tab */
+.mpbar{margin:0 0 12px;padding:10px 12px;border:2px solid var(--ac);border-radius:16px;background:var(--acbg);color:var(--tx)}
+.mpbar.hid{display:none}
+.mpt{display:flex;gap:10px;align-items:center}
+.mptx{flex:1;min-width:0;line-height:1.35}
+.mpn{display:inline-block;padding:1px 10px;border-radius:999px;background:var(--ac);color:var(--bg);font-size:12px;font-weight:700}
+.mps{font-size:15px;margin-top:2px}
+.mpg2{font-size:13px;color:var(--mu)}
+.mpst{font-size:24px;letter-spacing:1px;white-space:nowrap}
+.mpbtn{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.mpbtn button{padding:8px 14px;border-radius:10px;border:1px solid var(--ac);background:var(--bg);color:var(--ac);font:inherit;font-weight:600;cursor:pointer}
+.mpbtn button:disabled{opacity:.5;cursor:default}
+.mph{margin:8px 0 0;padding-left:22px;font-size:15px}
+.mph li{margin:3px 0}
+/* overlays */
+.mpov{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(10,15,28,.62);overflow:auto}
+.mpov[hidden]{display:none}
+#mpconf{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.mpbox{position:relative;width:min(640px,100%);max-height:100%;overflow:auto;padding:20px;border-radius:22px;background:var(--bg);color:var(--tx);border:1px solid var(--bd);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.bolt{flex:none}
+.mphead{display:flex;gap:14px;align-items:center}
+.mphead h2,.mpc2 h2{margin:0;font-size:24px}
+.mphead p{margin:4px 0 0}
+.mpl{display:block;margin:14px 0 4px;font-weight:600}
+.mpin{width:100%;padding:12px;border-radius:12px;border:2px solid var(--bd);background:var(--card);color:var(--tx);font:inherit;font-size:18px}
+.mplv{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+.mplc{display:flex;flex-direction:column;gap:4px;align-items:center;text-align:center;padding:14px 10px;border:2px solid var(--bd);border-radius:18px;background:var(--card);color:var(--tx);font:inherit;cursor:pointer}
+.mplc:hover,.mplc.on{border-color:var(--ac);background:var(--acbg)}
+.mplc .mpic{font-size:44px}
+.mplc b{font-size:20px}
+.mplc em{font-style:normal;color:var(--ac);font-weight:700;font-size:13px}
+.mplc small{color:var(--mu);font-size:13px;line-height:1.35}
+.mpc2{text-align:center}
+.mpbolt{animation:mpbounce .7s ease infinite alternate}
+@keyframes mpbounce{from{transform:translateY(0)}to{transform:translateY(-10px)}}
+.mpbig{font-size:56px;letter-spacing:6px;line-height:1.1;margin:4px 0}
+.mpbig i.on{animation:mppop .5s ease both}
+.mpbig i:nth-child(2).on{animation-delay:.2s}.mpbig i:nth-child(3).on{animation-delay:.4s}
+@keyframes mppop{0%{transform:scale(0)}70%{transform:scale(1.4)}100%{transform:scale(1)}}
+.mpwhy{list-style:none;margin:6px 0;padding:0;text-align:left;display:inline-block;font-size:15px}
+.mpwhy li{padding:2px 0 2px 26px;position:relative;color:var(--mu)}
+.mpwhy li:before{content:"\25CB";position:absolute;left:0}
+.mpwhy li.y{color:var(--tx)}.mpwhy li.y:before{content:"\2605";color:#ffb300}
+.mpact{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.mpact button{padding:12px 20px;border-radius:12px;border:2px solid var(--bd);background:var(--card);color:var(--tx);font:inherit;font-size:16px;font-weight:600;cursor:pointer}
+.mpact button.pri{background:var(--ac);border-color:var(--ac);color:var(--bg)}
+@media(prefers-reduced-motion:reduce){.mpbolt,.mpbig i.on{animation:none}}
+/* phones: bottom navigation and a robot that stays in view */
+@media(max-width:760px){
+.w{padding:12px 12px 90px}
+h1{font-size:22px}
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:60;margin:0;gap:4px;padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));background:var(--card);border-top:1px solid var(--bd);overflow-x:auto;flex-wrap:nowrap}
+.tabs button{flex:1 0 auto;min-width:62px;flex-direction:column;gap:0;padding:4px 6px;border:0;border-radius:10px;background:none;font-size:11.5px}
+.tabs button.on{background:var(--acbg)}
+.tabs button i{font-size:22px}
+.simbar{flex-wrap:wrap}
+.pwabar{bottom:84px}
+.pg{display:flex;flex-direction:column}
+.pws{height:60vh;min-height:360px}
+.blocklyTreeLabel{font-size:12px!important}
+.blocklyToolboxCategory{padding:1px 4px!important}
+#cvmini{display:none;position:fixed;top:8px;right:8px;z-index:55;width:36vw;max-width:190px;aspect-ratio:8/5;border:2px solid var(--ac);border-radius:12px;background:#F1EFE8;box-shadow:0 4px 16px rgba(0,0,0,.35);cursor:pointer}
+#cvmini.min{width:48px;height:30px;aspect-ratio:auto;opacity:.85}
+.mplv{grid-template-columns:1fr}
+.mplc{flex-direction:row;text-align:left;gap:12px}
+.mplc small{display:none}
+.mpgrid{grid-template-columns:1fr 1fr}
+.mpcard{min-height:170px;padding:12px}
+.mpcard small{display:none}
+.mpbanner{padding:10px}
+}
+@media(pointer:coarse){.mpbtn button,.pmodes button,.simbar button,.mpfoot button{min-height:44px}}
 </style></head>
 <body><div class="w">
-<h1>KitBench</h1>
-<p class="s">Pick parts, wire them pin to pin, then program the robot with Scratch-style blocks or Python on a track, a sumo ring, a RoboMission mat or a RoboSports pitch.</p>
-<div class="tabs"><button id="t1" class="on" onclick="tab(1)">1. Build the kit</button><button id="t6" onclick="tab(6)">2. Design robot</button><button id="t2" onclick="tab(2)">3. Wire it</button><button id="t5" onclick="tab(5)">4. Program</button><button id="t3" onclick="tab(window.simLast||3)">5. Simulator</button><button id="t7" onclick="tab(7)">6. Projects</button></div>
+<div class="hd"><div><h1>KitBench</h1><p class="s" id="hsub">Build, program and test your own robot.</p></div><button id="lvchip" class="lvchip" onclick="mpLevelOpen()" aria-label="Change level"></button></div>
+<div class="tabs"><button id="t9" onclick="tab(9)"><i>&#x1F3AF;</i><b>Missions</b></button><button id="t1" onclick="tab(1)"><i>&#x1F9E9;</i><b>Build</b></button><button id="t6" onclick="tab(6)"><i>&#x1F3A8;</i><b>Design</b></button><button id="t2" onclick="tab(2)"><i>&#x1F50C;</i><b>Wire</b></button><button id="t5" onclick="tab(5)"><i>&#x1F9F1;</i><b>Program</b></button><button id="t3" onclick="tab(window.simLast||3)"><i>&#x1F579;</i><b>Simulator</b></button><button id="t7" onclick="tab(7)"><i>&#x1F4D8;</i><b>Projects</b></button></div>
 <div id="simbar" class="simbar hid" role="tablist" aria-label="Simulator view"><span class="mu">View</span><button id="sm3" onclick="tab(3)">2D practice track</button><button id="sm4" onclick="tab(4)">3D mission mat</button><button id="sm8" onclick="tab(8)">Project lab (3D)</button></div>
 
 <div id="p1" class="g">
@@ -266,12 +370,13 @@ select{padding:8px;border-radius:8px;border:1px solid var(--bd);background:var(-
 <label class="lm lsndl"><input type="checkbox" id="lsnd" onchange="lab.snd(this.checked)"> Play buzzer sound</label>
 </div>
 </div>
+<div id="p9" class="hid"><div id="mpmain"></div></div>
 <div id="p7" class="hid"><div class="pj">
 <div class="c"><h2>Projects</h2><div id="pjlist"></div>
 <div class="r"><button onclick="pjNew('fi')">+ Future Innovators</button><button onclick="pjNew('rs')">+ RoboSports</button></div></div>
 <div class="c" id="pjmain"></div>
 </div></div>
-<div id="p5" class="hid"><div class="pg">
+<div id="p5" class="hid"><div id="mpbar" class="mpbar hid"></div><div class="pg">
 <div class="pwrap" id="pwrap"><div class="pmodes"><button id="pm_bl" class="on" onclick="progMode('bl')" aria-pressed="true">Blocks</button><button id="pm_py" onclick="progMode('py')" aria-pressed="false">Python</button><button id="pm_js" onclick="progMode('js')" aria-pressed="false">JavaScript</button><button class="mu rs prc" onclick="progResetCode()" title="Restore this lesson's starting code">Reset code</button></div><div class="psnip" id="psnip"><div class="psnr"><label for="psn_sel"><b>Ready-made code</b></label><select id="psn_sel" onchange="psnShow()" aria-label="Ready-made code"></select><button id="psn_use" class="pri" onclick="psnUse()">Use this program</button><span class="mu" id="psn_msg" role="status"></span></div>
 <div class="mu" id="psn_d"></div><pre id="psn_pre" aria-label="Preview of the code"></pre>
 <details><summary>All commands</summary><div id="psn_ref"></div></details></div>
@@ -433,10 +538,10 @@ if(!has('box'))add('wn','No storage box. Lost parts are a common cause of kit fa
 
 if(c.join('').indexOf('class="ck er"')<0)c.unshift('<div class="ck ok">Core build is complete: controller, drive, power and wheels are all present.</div>');
 $('checks').innerHTML=c.join('');drawWire();sensNote()}
-function tab(n){var pn=n==6?4:n;for(var i=1;i<=8;i++){var p=$('p'+i);if(p)p.className=i==pn?(i==1?'g':''):'hid';var t=$('t'+i);if(t)t.className=i==n?'on':''}
+function tab(n){var pn=n==6?4:n;for(var i=1;i<=9;i++){var p=$('p'+i);if(p)p.className=i==pn?(i==1?'g':''):'hid';var t=$('t'+i);if(t)t.className=i==n?'on':''}
 $('p4').classList.toggle('dm',n==6);var sim=n==3||n==4||n==8;document.querySelector('.w').classList.toggle('wide',n==8);if(sim)window.simLast=n;$('t3').className=sim?'on':'';$('simbar').classList.toggle('hid',!sim);$('sm3').className=n==3?'on':'';$('sm4').className=n==4?'on':'';$('sm8').className=n==8?'on':'';
 if(n==3){sensNote();reset();if(!PY&&!PYFAIL&&!PYLOAD)PYLOAD=loadPy()}
-if(n==5&&window.progOpen)progOpen();
+if(n==5&&window.progOpen)progOpen();if(n==9&&window.mpRender)mpRender();if(n==5&&window.mpBar)mpBar();
 if(n==6){if(window.desUI)desUI();if(window.kb3d&&kb3d.applyDesign)kb3d.applyDesign()}
 if(n==7&&window.projOpen)projOpen()}
 
@@ -797,7 +902,7 @@ fontStyle:{family:'system-ui, -apple-system, Segoe UI, Roboto, sans-serif',weigh
 componentStyles:{workspaceBackgroundColour:'#fafbfc',toolboxBackgroundColour:'#ffffff',flyoutBackgroundColour:'#f2f5f8',flyoutOpacity:1,scrollbarColour:'#c9d0d8',insertionMarkerColour:'#000',insertionMarkerOpacity:0.25}})}
 function sh(v){return typeof v=='string'?{shadow:{type:'text',fields:{TEXT:v}}}:{shadow:{type:'math_number',fields:{NUM:v}}}}
 function B(type,ins,fields,extra){var o={kind:'block',type:type};if(ins){o.inputs={};for(var k in ins)o.inputs[k]=sh(ins[k])}if(fields)o.fields=fields;if(extra)for(var e in extra)o[e]=extra[e];return o}
-function toolbox(){return{kind:'categoryToolbox',contents:[
+function toolbox0(){return{kind:'categoryToolbox',contents:[
 {kind:'category',name:'MOTORS',colour:C.motor,contents:[B('motor_run_for',{AMT:1}),B('motor_start'),B('motor_stop'),B('motor_speed_set',{AMT:75}),B('motor_reset'),B('motor_deg'),B('motor_spd')]},
 {kind:'category',name:'MOVEMENT',colour:C.move,contents:[B('move_for',{AMT:2}),B('move_steer_for',{STEER:0,AMT:1}),B('move_start',{STEER:0}),B('move_stop'),B('move_speed',{SPEED:75})]},
 {kind:'category',name:'DISPLAY',colour:C.disp,contents:[B('disp_write',{TEXT:'Hello'}),B('disp_clear')]},
@@ -812,6 +917,9 @@ B('math_arithmetic',{A:0,B:0}),B('math_random_int',{FROM:1,TO:10}),B('logic_comp
 {kind:'category',name:'VARIABLES',colour:C.vr,contents:[B('var_set',{VALUE:0}),B('var_change',{VALUE:1}),B('var_get')]},
 {kind:'category',name:'MY BLOCKS',colour:C.my,custom:'PROCEDURE'}]}}
 
+function toolbox(){var t=toolbox0();if(window.KB_LV=='e')t.contents=t.contents.filter(function(c){return {MOVEMENT:1,DISPLAY:1,SOUND:1,EVENTS:1,CONTROL:1,SENSORS:1}[c.name]});return t}
+window.progToolbox=function(){if(PB.ws)try{PB.ws.updateToolbox(toolbox())}catch(e){}};
+window.progWs=function(j){if(!PB.ws)return null;if(j===undefined)return Blockly.serialization.workspaces.save(PB.ws);try{Blockly.serialization.workspaces.load(j||{blocks:{languageVersion:0,blocks:[{type:'event_start',x:40,y:40}]}},PB.ws);saveWs();viewSoon()}catch(e){}return 1};
 /* ---------- editor ---------- */
 function starter(){return{blocks:{languageVersion:0,blocks:[{type:'event_start',x:40,y:40,next:{block:{type:'move_for',fields:{DIR:'forward',UNIT:'rotations'},inputs:{AMT:{shadow:{type:'math_number',fields:{NUM:2}}}}}}}]}}}
 function saveWs(){try{localStorage.setItem(PB.SK,JSON.stringify(Blockly.serialization.workspaces.save(PB.ws)))}catch(e){}}
@@ -1421,6 +1529,149 @@ if(!document.execCommand||!document.execCommand('insertText',false,txt)){ta.setR
 var m=$('psn_msg');m.textContent='Added.';setTimeout(function(){m.textContent=''},1800)};
 var _pm=window.progMode;window.progMode=function(m){_pm(m);build();show()};
 build();show();
+})();
+</script>
+<div id="mplv" class="mpov" hidden></div><div id="mpcel" class="mpov" hidden></div><canvas id="cvmini" aria-label="Small robot view. Tap to show or hide."></canvas>
+<script>
+(function(){
+/* ===== Levels, missions, stars and the Bolt helper ===== */
+var MPK='kitbench.mp.v1';
+var MP={lv:'',name:'',stars:{},best:{},snd:1,cur:'',hints:0,wsKey:''};
+function mpLoad(){try{var j=JSON.parse(localStorage.getItem(MPK)||'null');if(j&&typeof j=='object'){for(var k in j)MP[k]=j[k];MP.hints=0}}catch(e){}}
+function mpSave(){try{localStorage.setItem(MPK,JSON.stringify({lv:MP.lv,name:MP.name,stars:MP.stars,best:MP.best,snd:MP.snd,cur:MP.cur,wsKey:MP.wsKey}))}catch(e){}}
+function wsGet(k){try{return JSON.parse(localStorage.getItem('kitbench.mpws.'+k)||'null')}catch(e){return null}}
+function wsPut(k,v){try{localStorage.setItem('kitbench.mpws.'+k,JSON.stringify(v))}catch(e){}}
+
+var LV={e:{n:'Explorer',age:'Ages 6 to 8',ic:'&#x1F9ED;',d:'Big and simple. Drag a few blocks, press play and watch your robot go.',sub:'Pick a mission, drag the blocks, press play and watch your robot go!'},
+b:{n:'Builder',age:'Ages 9 to 12',ic:'&#x1F527;',d:'Build the kit, wire the sensors and write programs with blocks. See your blocks turn into Python and JavaScript.',sub:'Pick a mission, build your robot, and program it with blocks. Peek at the real code too.'},
+g:{n:'Engineer',age:'Ages 13 to 17',ic:'&#x1F680;',d:'Everything is open: Python, JavaScript, 3D missions, robot design, Project lab and your own projects.',sub:'Build, wire, program in blocks, Python or JavaScript, then test in 2D and 3D and start your own project.'}};
+var RANK={e:1,b:2,g:3};
+
+/* extra lessons used by the missions */
+LES.push({b:'Mission',t:'Hello, robot!',f:'mat',need:['mcu','bat','mot','whl'],task:'Show a message on the robot display.',
+ py:'import runloop\n\nasync def main():\n    display_write("Hello!")\n\nrunloop.run(main())\n',goal:function(){var d=$('pdisp');return !!(d&&d.textContent.trim())}});
+LES.push({b:'Mission',t:'Roll forward',f:'mat',need:['mcu','bat','mot','whl'],task:'Drive past the middle of the mat and stop.',
+ py:'import runloop\n\nasync def main():\n    await move_for("forward", 6, "rotations")\n\nrunloop.run(main())\n',goal:function(){return R.stopT>1&&R.x>260}});
+LES.push({b:'Mission',t:'Reach the red zone',f:'mat',need:['mcu','bat','mot','whl'],task:'Drive to the red zone. You need to turn.',
+ py:'import runloop\n\nasync def main():\n    await move_for("forward", 6, "rotations")\n    await move_for("left", 0.5, "rotations")\n    await move_for("forward", 6, "rotations")\n\nrunloop.run(main())\n',goal:function(){return R.stopT>1&&col(R.x,R.y)=='red'}});
+
+var MS=[
+{id:'hello',lv:'e',ic:'&#x1F44B;',t:'Hello, robot!',les:'Hello, robot!',story:'Wake up your robot and make it say hello on its screen.',goal:'Show a message on the robot screen.',par:10,
+ hints:['Look for the DISPLAY blocks. They are on the left.','Drag a "write Hello" block under "when program starts".','Press the round play button.']},
+{id:'roll',lv:'e',ic:'&#x1F6DE;',t:'Roll forward',les:'Roll forward',story:'Make your robot roll past the middle of the mat and stop.',goal:'Drive past the middle and stop.',par:8,
+ hints:['Open the MOVEMENT blocks.','Use "move forward for 3 rotations". Change the number to go further.','3 turns is too short. Try 6 rotations.']},
+{id:'blue',lv:'e',ic:'&#x1F699;',t:'Park in the blue zone',les:'Drive to the blue zone',story:'Park your robot in the blue square, like a car in a garage.',goal:'Stop inside the blue square.',par:10,
+ hints:['The blue square is far away on the right.','Use one "move forward" block with a big number.','Try 12 rotations. Your robot stops by itself.']},
+{id:'red',lv:'e',ic:'&#x1F6A9;',t:'Reach the red zone',les:'Reach the red zone',story:'Now find the red square. You will need to turn!',goal:'Stop inside the red square.',par:12,
+ hints:['Go forward first, then turn left, then go forward again.','Use "move left" to turn. About 0.5 rotations is a quarter turn.','Try: forward 6, left 0.5, forward 6.']},
+{id:'wall',lv:'b',ic:'&#x1F4CF;',t:'Stop before the wall',les:'Stop before the wall',story:'Use the distance sensor to stop near the wall, like a car parking sensor.',goal:'Stop 8 to 15 cm from the wall.',par:10,
+ hints:['The distance sensor tells you how far the wall is, in cm.','Start moving, then wait until the distance is small, then stop.','Blocks: when program starts, start moving steering 0, wait until distance in cm < 12, stop moving.']},
+{id:'line',lv:'b',ic:'&#x1F6E3;',t:'Follow the line',les:'Follow the line for one lap',story:'Make your robot follow the black line all the way round the track.',goal:'Complete one lap.',par:30,
+ hints:['The line sensors tell you if the line is under the left or right side.','Put everything in a "repeat forever". If the left sensor sees the line, steer left. If the right one does, steer right.','Blocks: forever, if reflected light left < 50 then start moving steering -40, else if reflected light right < 50 then start moving steering 40, else start moving steering 0.']},
+{id:'box',lv:'b',ic:'&#x1F4E6;',t:'Stop at the box',les:'From blocks to Python: stop at the obstacle',story:'An orange box is in the way. Stop before you touch it.',goal:'Stop just before the box.',par:8,
+ hints:['Tick Obstacle to see the box.','Drive forward and stop when the distance is under 15 cm.','Blocks: forever, if distance in cm < 15 then stop moving, else start moving steering 0.']},
+{id:'green',lv:'g',ic:'&#x1F7E9;',t:'Find the green square',les:'Find the green square',story:'Drive east, turn left using the gyro, then find the green square.',goal:'Stop on the green square.',par:60,
+ hints:['The gyro (yaw) says which way you face. Turning right is positive.','Drive east, turn until yaw is -90, then drive until the colour sensor sees green.','Use "wait until" with the yaw and colour blocks, and stop when you see green.']},
+{id:'sumo',lv:'g',ic:'&#x1F94B;',t:'Sumo: push it out',les:'Sumo: push it out',story:'Stay inside the white edge and push the red robot out of the ring.',goal:'Push the opponent out.',par:40,
+ hints:['Your edge sensors see the white line. The distance sensor sees the opponent.','If you see the edge, back away. If the opponent is close, charge. Otherwise spin and look.','Decide which matters more when both are true.']},
+{id:'ball',lv:'g',ic:'&#x26BD;',t:'Find the ball',les:'Find and touch the ball',story:'RoboSports: spin until the camera sees the ball, then drive up to it.',goal:'Stop within 5 cm of the ball.',par:30,
+ hints:['The ball camera says "ball in view" when it sees the ball.','If the ball is not in view, spin. If it is, drive forward.','Stop when the ball distance is small.']},
+{id:'goal',lv:'g',ic:'&#x1F945;',t:'Score a goal',les:'Score a goal',story:'Line up behind the ball and push it into the goal.',goal:'Score a goal.',par:45,
+ hints:['Steer towards the ball using its angle.','A positive angle means the ball is on your right.','Aim a little to one side of the ball to change where it goes.']}
+];
+LES.forEach(function(l){l.m=null;MS.forEach(function(m){if(m.les==l.t)l.m=m})});
+if(window.lessonOpts)lessonOpts();
+
+function ms(id){for(var i=0;i<MS.length;i++)if(MS[i].id==id)return MS[i];return null}
+function visible(){var r=RANK[MP.lv]||3;return MS.filter(function(m){return RANK[m.lv]<=r})}
+function stars(id){return MP.stars[id]||0}
+function open_(i){if(MP.lv=='g')return true;var v=visible();return i==0||stars(v[i-1].id)>0}
+function starStr(n,tot){var s='';for(var i=0;i<(tot||3);i++)s+='<i class="'+(i<n?'on':'')+'">&#9733;</i>';return s}
+
+/* ---------- Bolt ---------- */
+function bolt(mood,sz){mood=mood||'happy';var eye=mood=='wow'?5:4,m=mood=='think'?'<line x1="26" y1="38" x2="38" y2="38" stroke="#7be0ff" stroke-width="3" stroke-linecap="round"/>':mood=='wow'?'<circle cx="32" cy="38" r="4" fill="none" stroke="#7be0ff" stroke-width="3"/>':'<path d="M24 36 Q32 44 40 36" stroke="#7be0ff" stroke-width="3" fill="none" stroke-linecap="round"/>';
+return '<svg class="bolt" viewBox="0 0 64 64" width="'+sz+'" height="'+sz+'" aria-hidden="true"><line x1="32" y1="7" x2="32" y2="15" stroke="#8a8f98" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="6" r="4.5" fill="#ffcf1a"/><rect x="10" y="14" width="44" height="36" rx="12" fill="#1798d4"/><rect x="16" y="20" width="32" height="22" rx="8" fill="#0a0f1c"/><circle cx="25" cy="29" r="'+eye+'" fill="#7be0ff"/><circle cx="39" cy="29" r="'+eye+'" fill="#7be0ff"/>'+m+'<rect x="4" y="26" width="6" height="12" rx="3" fill="#cfd8e3"/><rect x="54" y="26" width="6" height="12" rx="3" fill="#cfd8e3"/><rect x="20" y="52" width="24" height="8" rx="4" fill="#1798d4"/></svg>'}
+function who(){return MP.name?esc(MP.name):'friend'}
+
+/* ---------- sound and confetti ---------- */
+var AC=null;
+function tone(f,t,d){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state=='suspended')AC.resume();var o=AC.createOscillator(),g=AC.createGain();o.type='triangle';o.frequency.value=f;g.gain.setValueAtTime(0.0001,AC.currentTime+t);g.gain.exponentialRampToValueAtTime(0.18,AC.currentTime+t+0.02);g.gain.exponentialRampToValueAtTime(0.0001,AC.currentTime+t+d);o.connect(g);g.connect(AC.destination);o.start(AC.currentTime+t);o.stop(AC.currentTime+t+d+0.05)}catch(e){}}
+function cheer(){if(!MP.snd)return;[523,659,784,1047].forEach(function(f,i){tone(f,i*0.12,0.25)})}
+function confetti(){var c=$('mpconf');if(!c)return;var w=c.width=c.clientWidth||600,h=c.height=c.clientHeight||400,x=c.getContext('2d'),P=[],cols=['#ffcf1a','#1798d4','#e53935','#3ddc84','#ce93d8','#ff8a65'];
+for(var i=0;i<90;i++)P.push({x:Math.random()*w,y:-20-Math.random()*h*0.5,vx:(Math.random()-0.5)*2.4,vy:2+Math.random()*3,r:3+Math.random()*4,c:cols[i%cols.length],a:Math.random()*6});
+var t0=performance.now();(function f(n){var dt=n-t0;x.clearRect(0,0,w,h);P.forEach(function(p){p.x+=p.vx;p.y+=p.vy;p.a+=0.12;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillStyle=p.c;x.fillRect(-p.r,-p.r/2,p.r*2,p.r);x.restore()});if(dt<3200&&!$('mpcel').hidden)requestAnimationFrame(f);else x.clearRect(0,0,w,h)})(t0)}
+
+/* ---------- levels ---------- */
+function applyLevel(){var lv=MP.lv||'g';document.body.className=document.body.className.replace(/\blv-\w\b/g,'').trim()+' lv-'+lv;window.KB_LV=lv;
+var chip=$('lvchip');if(chip)chip.innerHTML=bolt('happy',26)+'<span>'+LV[lv].n+(MP.name?' &middot; '+esc(MP.name):'')+'</span>';
+var sub=$('hsub');if(sub)sub.textContent=LV[lv].sub;
+if(window.progToolbox)progToolbox();if(lv=='e'&&window.progMode)try{progMode('bl')}catch(e){}}
+window.mpLevelOpen=function(first){var h='<div class="mpbox"><div class="mphead">'+bolt('happy',72)+'<div><h2>'+(first?'Hi! I am Bolt.':'Choose your level')+'</h2><p>'+(first?'I will help you build and program robots. What is your name, and which level fits you?':'You can change this any time. Your stars stay saved.')+'</p></div></div>'
++'<label class="mpl" for="mpname">My name (optional)</label><input id="mpname" class="mpin" maxlength="20" autocomplete="off" value="'+esc(MP.name)+'" placeholder="Type your name">'
++'<div class="mplv">'+['e','b','g'].map(function(k){return '<button class="mplc'+(MP.lv==k?' on':'')+'" onclick="mpSetLevel(\''+k+'\')"><span class="mpic">'+LV[k].ic+'</span><b>'+LV[k].n+'</b><em>'+LV[k].age+'</em><small>'+LV[k].d+'</small></button>'}).join('')+'</div>'
++(first?'':'<div class="r" style="justify-content:flex-end"><button onclick="mpClose(\'mplv\')">Close</button></div>')+'</div>';
+var o=$('mplv');o.innerHTML=h;o.hidden=false;var n=$('mpname');if(n&&first)setTimeout(function(){n.focus()},50)};
+window.mpClose=function(id){var o=$(id);if(o)o.hidden=true};
+window.mpSetLevel=function(k){var n=$('mpname');if(n)MP.name=n.value.trim();var first=!MP.lv;MP.lv=k;mpSave();applyLevel();mpClose('mplv');
+if(first||MP.lv=='e')tab(9);else mpRender()};
+
+/* ---------- kit set-up for a mission ---------- */
+function partOn(id){var p=PARTS.filter(function(x){return x.id==id})[0];if(p)p.on=1}
+function mpKit(need){var c=ctrl();if(!c){partOn('mcu');c='esp'}
+if(c=='esp'){['bat','whl','mot','chs'].forEach(function(i){partOn(i)})}
+(need||[]).forEach(function(n){if(has(n))return;var map={esp:{},ev3:{ir:'ev3c',col:'ev3c',us:'ev3d',mot:'ev3m'},spk:{ir:'spc',col:'spc',us:'spd',mot:'spm'}};partOn((map[c]&&map[c][n])||n)});
+autoWire();drawParts();update();save()}
+
+/* ---------- starting a mission ---------- */
+function waitWs(cb,n){n=n||0;if(window.progWs&&progWs()!==null){cb();return}if(n>150)return;setTimeout(function(){waitWs(cb,n+1)},100)}
+window.mpStart=function(id){var m=ms(id);if(!m)return;var li=-1;LES.forEach(function(l,i){if(l.t==m.les)li=i});if(li<0)return;
+mpKit(LES[li].need);$('les').value=li;
+if($('prunon'))$('prunon').value='2d';
+setLesson();MP.cur=id;MP.hints=0;mpSave();tab(5);if(window.progMode)try{progMode('bl')}catch(e){}
+waitWs(function(){if(MP.wsKey!=id){if(MP.wsKey)wsPut(MP.wsKey,progWs());progWs(wsGet(id));MP.wsKey=id;mpSave()}mpBar()})};
+
+/* the bar on the Program tab */
+function curM(){return window.L&&L.m?L.m:null}
+function mpBar(){var b=$('mpbar');if(!b)return;var m=curM();if(!m){b.className='mpbar hid';b.innerHTML='';return}
+var i=visible().indexOf(m),n=MP.hints,shown='';
+for(var k=0;k<n&&k<m.hints.length;k++)shown+='<li>'+esc(m.hints[k])+'</li>';
+b.className='mpbar';b.innerHTML='<div class="mpt">'+bolt(n?'think':'happy',44)+'<div class="mptx"><span class="mpn">Mission '+(i+1)+'</span> <b>'+esc(m.t)+'</b><div class="mps">'+esc(m.story)+'</div><div class="mpg2">Goal: '+esc(m.goal)+'</div></div><div class="mpst">'+starStr(stars(m.id))+'</div></div>'
++'<div class="mpbtn"><button onclick="mpHint()"'+(n>=m.hints.length?' disabled':'')+'>&#128161; Hint ('+n+'/'+m.hints.length+')</button><button onclick="tab(9)">All missions</button></div>'+(shown?'<ol class="mph">'+shown+'</ol>':'')}
+window.mpHint=function(){var m=curM();if(!m)return;if(MP.hints<m.hints.length)MP.hints++;mpBar()};
+window.mpBar=mpBar;
+
+/* finishing a mission */
+function mpDone(){var m=curM();if(!m||MP.cur!=m.id)return;var t=R&&R.t?R.t:999,st=1+(MP.hints==0?1:0)+(t<=m.par?1:0),was=stars(m.id);
+if(st>was)MP.stars[m.id]=st;if(!MP.best[m.id]||t<MP.best[m.id])MP.best[m.id]=Math.round(t*10)/10;mpSave();mpBar();
+var v=visible(),i=v.indexOf(m),nx=v[i+1],tot=v.reduce(function(a,x){return a+stars(x.id)},0);
+var why=['<li class="y">You finished the mission.</li>',MP.hints==0?'<li class="y">You did it without hints.</li>':'<li>No-hint star: try again without hints.</li>',t<=m.par?'<li class="y">Quick! Under '+m.par+' seconds.</li>':'<li>Speed star: finish in under '+m.par+' seconds (you took '+Math.round(t)+').</li>'].join('');
+var o=$('mpcel');o.innerHTML='<canvas id="mpconf" aria-hidden="true"></canvas><div class="mpbox mpc2"><div class="mpbolt">'+bolt('wow',96)+'</div><h2>'+(st==3?'Perfect, ':'Great job, ')+who()+'!</h2><div class="mpbig">'+starStr(st)+'</div><ul class="mpwhy">'+why+'</ul><p class="mu">Total stars: '+tot+' of '+v.length*3+'</p>'
++'<div class="mpact">'+(nx?'<button class="pri" onclick="mpNext()">Next mission</button>':'<button class="pri" onclick="mpClose(\'mpcel\');tab(9)">All missions</button>')+'<button onclick="mpAgain()">Try again</button>'+(nx?'<button onclick="mpClose(\'mpcel\');tab(9)">All missions</button>':'')+'</div></div>';
+o.hidden=false;cheer();setTimeout(confetti,30)}
+window.mpNext=function(){var m=curM(),v=visible(),nx=m&&v[v.indexOf(m)+1];mpClose('mpcel');if(nx)mpStart(nx.id);else tab(9)};
+window.mpAgain=function(){mpClose('mpcel');var m=curM();if(m)mpStart(m.id)};
+var _md=window.markDone;window.markDone=function(){_md.apply(this,arguments);try{mpDone()}catch(e){}};
+var _sl=window.setLesson;window.setLesson=function(){_sl.apply(this,arguments);var m=curM();if(m&&MP.cur!=m.id){MP.cur=m.id;MP.hints=0}mpBar()};
+
+/* ---------- the missions page ---------- */
+window.mpRender=function(){var el=$('mpmain');if(!el)return;var v=visible(),tot=v.reduce(function(a,x){return a+stars(x.id)},0),done=v.filter(function(x){return stars(x.id)>0}).length;
+var next=null;for(var i=0;i<v.length;i++)if(open_(i)&&!stars(v[i].id)){next=v[i];break}
+var say=!MP.lv?'':done==v.length?'You finished every mission, '+who()+'! Try for three stars on all of them.':next?'Hi '+who()+'! Ready for "'+next.t+'"?':'Hi '+who()+'!';
+var h='<div class="mpbanner">'+bolt(done==v.length?'wow':'happy',84)+'<div class="mpbt"><h2>'+(done==v.length?'Champion!':'Missions')+'</h2><p>'+say+'</p><div class="mpprog"><i style="width:'+Math.round(tot/(v.length*3)*100)+'%"></i></div><small>'+tot+' of '+v.length*3+' stars &middot; '+done+' of '+v.length+' missions</small></div></div>';
+h+='<div class="mpgrid">'+v.map(function(m,i){var op=open_(i),s=stars(m.id);return '<button class="mpcard'+(op?'':' lock')+(s?' done':'')+'" '+(op?'':'disabled ')+'onclick="mpStart(\''+m.id+'\')"><span class="mpnum">'+(i+1)+'</span><span class="mpic">'+(op?m.ic:'&#128274;')+'</span><b>'+esc(m.t)+'</b><small>'+esc(m.story)+'</small><span class="mpstars">'+starStr(s)+'</span><em>'+(op?(s?'Play again':'Start'):'Finish the last mission to unlock')+'</em></button>'}).join('')+'</div>';
+h+='<div class="r mpfoot"><button onclick="mpLevelOpen()">Change level or name</button><label class="mu"><input type="checkbox" id="mpsnd" '+(MP.snd?'checked':'')+' onchange="mpSnd(this.checked)"> Sounds</label>'+(MP.lv=='g'?'<button onclick="tab(5)">Free play</button>':'')+'<button id="mpreset" onclick="mpReset()">Clear my stars</button></div>';
+el.innerHTML=h};
+window.mpSnd=function(v){MP.snd=v?1:0;mpSave();if(v)cheer()};
+window.mpReset=function(){var b=$('mpreset');if(!b.dataset.sure){b.dataset.sure=1;b.textContent='Click again to clear';setTimeout(function(){if(b){b.dataset.sure='';b.textContent='Clear my stars'}},3000);return}MP.stars={};MP.best={};mpSave();mpRender()};
+
+/* small robot view that follows you on phones */
+var mini=$('cvmini');
+if(mini){mini.width=320;mini.height=200;mini.onclick=function(){mini.classList.toggle('min')};
+var _pd=window.progDraw;window.progDraw=function(){if(_pd)_pd.apply(this,arguments);var p5=$('p5');if(window.innerWidth>760||!p5||p5.classList.contains('hid')){mini.style.display='none';return}mini.style.display='block';if(!mini.classList.contains('min'))mini.getContext('2d').drawImage($('cv'),0,0,320,200)}}
+
+/* ---------- start-up ---------- */
+mpLoad();applyLevel();
+if(!MP.lv){mpLevelOpen(true);tab(9)}else tab(9);
 })();
 </script>
 <script type="importmap">{"imports":{"three":"./libs/three/three.module.js","three/addons/":"./libs/three/addons/"}}</script>
@@ -2530,6 +2781,7 @@ Q('lsnd').checked=!!S.snd;
 buildCtl();sync3d();uiAll();frame();
 </script>
 </body></html>
+
 
 
 
