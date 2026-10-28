@@ -15,9 +15,15 @@ A browser-based virtual robotics lab for schools. Pick parts from a real kit, wi
 
 ## Run it
 
-**Online:** open `index.html` in a browser, or publish the repository with GitHub Pages (Settings, Pages, deploy from `main`, root). Blockly, three.js and Pyodide load from a CDN, so an internet connection is needed.
+**As a web app (online and offline, Android, iPhone, iPad, Windows, Mac, Chromebook):** open the live link above once with an internet connection. KitBench saves itself on the device (a service worker keeps the app, Blockly, three.js and Python) and then opens with no internet. It needs HTTPS, which GitHub Pages provides (Settings, Pages, deploy from `main`, root).
 
-**Offline (Windows):** open the `offline` folder and double-click `Start KitBench.bat`. Everything, including the libraries, is in `offline/libs`. See `offline/README.txt`.
+- **Android (Chrome):** tap Install app when KitBench offers it, or the browser menu, then Install app.
+- **iPhone and iPad (Safari):** tap the Share button, then Add to Home Screen.
+- **Windows, Mac, Chromebook (Chrome or Edge):** click the install icon in the address bar.
+
+KitBench saves Python (about 15 MB) in the background on Wi-Fi so that Python code runs offline too. On mobile data it asks first. After an update is published, open the app once while online to get the new version.
+
+**Windows, no internet even the first time:** open the `offline` folder and double-click `Start KitBench.bat`. Everything, including the libraries, is in `offline/libs`, and it runs from a small local server. See `offline/README.txt`.
 
 Your kit, wiring, designs, projects and blocks are saved in the browser (localStorage), separately for each browser.
 

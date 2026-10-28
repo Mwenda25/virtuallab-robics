@@ -1,6 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0a0f1c">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="KitBench">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <title>KitBench: build and test a school robot kit</title>
 <style>
 :root{--bg:#fff;--card:#F7F6F2;--tx:#1f1f1d;--mu:#5F5E5A;--bd:#D3D1C7;--ac:#185FA5;--acbg:#E6F1FB;--ok:#27500A;--okbg:#EAF3DE;--wn:#633806;--wnbg:#FAEEDA;--er:#791F1F;--erbg:#FCEBEB;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -201,6 +209,11 @@ select{padding:8px;border-radius:8px;border:1px solid var(--bd);background:var(-
 #p8 .lhelp{position:absolute;left:12px;right:12px;bottom:10px;font-size:11.5px;color:#8ea0ba;text-align:center;pointer-events:none}
 #p8 .lsndl{display:block;margin-top:10px}
 @media(max-width:1060px){#p8{grid-template-columns:1fr}#p8 #lstage{order:-1;height:56vh}#p8 .lp{max-height:none}}
+.pwabar{position:fixed;left:50%;transform:translateX(-50%);bottom:max(12px,env(safe-area-inset-bottom));z-index:50;display:flex;gap:8px;align-items:center;flex-wrap:wrap;max-width:min(560px,calc(100vw - 24px));padding:10px 12px;background:var(--card);color:var(--tx);border:1px solid var(--ac);border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.35);font-size:14px}
+.pwabar[hidden]{display:none}
+.pwabar button{padding:6px 12px;border-radius:8px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font:inherit;cursor:pointer}
+.pwabar button.pri{background:var(--ac);color:var(--bg);border-color:var(--ac)}
+.pwabar #pwamsg{flex:1 1 200px}
 </style></head>
 <body><div class="w">
 <h1>KitBench</h1>
@@ -475,7 +488,7 @@ $('wc').innerHTML=m.join('');sensNote();save()}
 
 /* python engine */
 var PY=null,PYFAIL=0,ENG='',PYLOAD=null;
-function loadPy(){return new Promise(function(res){var done=0;function fail(){if(done)return;done=1;PYFAIL=1;res()}setTimeout(fail,8000);var sc=document.createElement('script');sc.src='https://cdn.jsdelivr.net/npm/pyodide@0.26.4/pyodide.js';sc.onload=function(){loadPyodide({indexURL:'https://cdn.jsdelivr.net/npm/pyodide@0.26.4/'}).then(function(p){if(done)return;done=1;PY=p;res()}).catch(fail)};sc.onerror=fail;document.head.appendChild(sc)})}
+function loadPy(){return new Promise(function(res){var done=0;function fail(){if(done)return;done=1;PYFAIL=1;res()}setTimeout(fail,8000);var sc=document.createElement('script');sc.src='offline/libs/pyodide/pyodide.js';sc.onload=function(){loadPyodide({indexURL:'offline/libs/pyodide/'}).then(function(p){if(done)return;done=1;PY=p;res()}).catch(fail)};sc.onerror=fail;document.head.appendChild(sc)})}
 function ex(t){return t.replace(/\bis not\b/g,'!=').replace(/\bis\b/g,'==').replace(/\bTrue\b/g,'true').replace(/\bFalse\b/g,'false').replace(/\bNone\b/g,'null').replace(/\band\b/g,'&&').replace(/\bor\b/g,'||').replace(/\bnot\b/g,'!')}
 function rt(t){t=t.trim();if(/^\(.*\)$/.test(t))t=t.slice(1,-1);var p=[],d=0,c='';for(var i=0;i<t.length;i++){var ch=t[i];if('(['.indexOf(ch)>-1)d++;if(')]'.indexOf(ch)>-1)d--;if(ch==','&&!d){p.push(c);c=''}else c+=ch}p.push(c);return p.length>1?'['+p.map(ex).join(',')+']':ex(t)}
 function pyToJs(src){var o=[],st=[0],pend=0;src.split('\n').forEach(function(raw){var ln=raw.replace(/#.*$/,'');if(!ln.trim())return;var ind=ln.match(/^ */)[0].length,t=ln.trim(),m;
@@ -608,7 +621,7 @@ var CURDT=0.016;
 (function(){
 var PB={ws:null,loading:null,on:0,SK:'kitbench.blocks.v1'};
 var C={motor:'#0A8FF0',move:'#F04DB8',disp:'#8A5CF0',snd:'#B26BE8',ev:'#F5B800',ctl:'#F59A00',sen:'#12B8E8',op:'#22B14C',vr:'#F57C1F',my:'#F25C6E',grab:'#6C7BEF',mis:'#14B8A6'};
-var BV='https://cdn.jsdelivr.net/npm/blockly@10.4.3/';
+var BV='offline/libs/blockly/';
 function lib(src){return new Promise(function(res,rej){var s=document.createElement('script');s.src=src;s.onload=res;s.onerror=function(){rej(new Error(src))};document.head.appendChild(s)})}
 
 /* ---------- runtime ---------- */
@@ -802,7 +815,7 @@ B('math_arithmetic',{A:0,B:0}),B('math_random_int',{FROM:1,TO:10}),B('logic_comp
 function starter(){return{blocks:{languageVersion:0,blocks:[{type:'event_start',x:40,y:40,next:{block:{type:'move_for',fields:{DIR:'forward',UNIT:'rotations'},inputs:{AMT:{shadow:{type:'math_number',fields:{NUM:2}}}}}}}]}}}
 function saveWs(){try{localStorage.setItem(PB.SK,JSON.stringify(Blockly.serialization.workspaces.save(PB.ws)))}catch(e){}}
 function build(){var el=$('pblk');defineBlocks();
-PB.ws=Blockly.inject(el,{toolbox:toolbox(),theme:theme(),renderer:'zelos',sounds:false,trashcan:false,
+PB.ws=Blockly.inject(el,{toolbox:toolbox(),theme:theme(),renderer:'zelos',sounds:false,media:'offline/libs/blockly/',trashcan:false,
 zoom:{controls:false,wheel:true,startScale:0.9,maxScale:2,minScale:0.4,scaleSpeed:1.15},
 move:{scrollbars:true,drag:true,wheel:false},grid:{spacing:24,length:2,colour:'#e6e9ed',snap:false}});
 var s=null;try{s=JSON.parse(localStorage.getItem(PB.SK)||'null')}catch(e){}
@@ -1261,7 +1274,7 @@ try{navigator.clipboard.writeText(t).then(function(){ok('Copied')},function(){ok
 window.desUI=desUI;desUI();
 (function(){var d=desDefaults();for(var k in d)if(!(k in DES))DES[k]=d[k];desLoad();desUI()})();
 </script>
-<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="importmap">{"imports":{"three":"./offline/libs/three/three.module.js","three/addons/":"./offline/libs/three/addons/"}}</script>
 <script type="module">
 
 import * as THREE from 'three';
@@ -2367,7 +2380,41 @@ Q('ltpl').innerHTML=opt('','Start from an example...')+Object.keys(TPL).map(k=>o
 Q('lsnd').checked=!!S.snd;
 buildCtl();sync3d();uiAll();frame();
 </script>
+
+<div id="pwabar" class="pwabar" hidden role="status" aria-live="polite"><span id="pwamsg"></span><button id="pwainst" class="pri" hidden>Install app</button><button id="pwapy" hidden>Save Python offline</button><button id="pwax" aria-label="Close">Close</button></div>
+<script>
+(function(){
+var bar=document.getElementById('pwabar'),msg=document.getElementById('pwamsg'),bi=document.getElementById('pwainst'),bp=document.getElementById('pwapy'),bx=document.getElementById('pwax'),dp=null;
+function st(k,v){try{if(v===undefined)return localStorage.getItem('kitbench.pwa.'+k);localStorage.setItem('kitbench.pwa.'+k,v)}catch(e){}}
+function show(t){msg.textContent=t;bar.hidden=false}
+var standalone=(window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone;
+var ios=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+var PY=['pyodide.js','pyodide.asm.js','pyodide.asm.wasm','pyodide-lock.json','python_stdlib.zip'];
+function savePy(){
+  if(st('py')||!window.caches)return;bp.hidden=true;show('Saving Python for offline use...');
+  caches.open('kitbench-v1').then(function(c){var i=0;return(function next(){if(i>=PY.length)return;var f=PY[i++];return c.match('offline/libs/pyodide/'+f).then(function(m){return m||c.add('offline/libs/pyodide/'+f)}).then(next)})()})
+  .then(function(){st('py','1');show('Python is saved. KitBench now works fully offline.')},function(){bp.hidden=false;show('Could not save Python. Check your connection and try again.')});
+}
+function ready(){
+  if(!st('ready')){st('ready','1');show('KitBench is saved on this device and opens without internet.')}
+  if(st('py'))return;
+  var cn=navigator.connection;
+  if(cn&&(cn.saveData||cn.type==='cellular'||/2g/.test(cn.effectiveType||''))){bp.hidden=false;show('Save Python for offline use? It is about 15 MB.')}
+  else setTimeout(savePy,4000);
+}
+if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)){
+  navigator.serviceWorker.register('sw.js').then(function(){return navigator.serviceWorker.ready}).then(ready).catch(function(){});
+}
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;if(!standalone&&!st('x')){bi.hidden=false;show('Install KitBench on this device.')}});
+bi.onclick=function(){if(!dp)return;dp.prompt();dp.userChoice.then(function(){dp=null;bi.hidden=true;bar.hidden=true})};
+bp.onclick=savePy;
+bx.onclick=function(){bar.hidden=true;st('x','1')};
+window.addEventListener('appinstalled',function(){bar.hidden=true});
+if(ios&&!standalone&&!st('x')&&'serviceWorker' in navigator)show('To install on iPhone or iPad: tap the Share button, then Add to Home Screen.');
+})();
+</script>
 </body></html>
+
 
 
 
