@@ -3,8 +3,8 @@ $port=8765
 $mime=@{'.html'='text/html; charset=utf-8';'.js'='text/javascript; charset=utf-8';'.mjs'='text/javascript; charset=utf-8';'.json'='application/json';'.wasm'='application/wasm';'.zip'='application/zip';'.css'='text/css';'.svg'='image/svg+xml';'.png'='image/png';'.ico'='image/x-icon'}
 $l=New-Object System.Net.HttpListener
 $l.Prefixes.Add("http://localhost:$port/")
-try{$l.Start()}catch{Write-Host "Could not start on port $port. Is KitBench already running? Close the other window and try again.";Read-Host "Press Enter";exit 1}
-Write-Host "KitBench is running at http://localhost:$port/"
+try{$l.Start()}catch{Write-Host "Could not start on port $port. Is BotLabs Studio Ke already running? Close the other window and try again.";Read-Host "Press Enter";exit 1}
+Write-Host "BotLabs Studio Ke is running at http://localhost:$port/"
 Write-Host "Keep this window open while you use it. Close it to stop."
 Start-Process "http://localhost:$port/"
 while($l.IsListening){
