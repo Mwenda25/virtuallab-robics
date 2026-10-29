@@ -3369,9 +3369,17 @@ const footPose=(x,y)=>{const a=ik(x,y);return{h:a.h,k:a.k,ok:a.ok}};
 const POSES={stand:()=>mkPose(l=>footPose(0,11)),crouch:()=>mkPose(l=>footPose(0,7.5)),lie:()=>mkPose(l=>footPose(0,4.5)),
  lift:()=>mkPose(l=>l==UI.sel?footPose(3,8):footPose(0,11))};
 function mkPose(f){const p={};LEGS.forEach(l=>{const a=f(l);p[l]={h:limit(l,'h',a.h),k:limit(l,'k',a.k)}});return p}
-function tweenTo(p,dur,cb){tw.from=cp(DOG.pose);tw.to=cp(p);tw.t=0;tw.dur=dur||0.5;tw.on=1;tw.cb=cb||null}
+function tweenTo(p,dur,cb){tw.from=cp(DOG.pose);tw.to=cp(p);tw.t=0;tw.dur=dur||0.5;tw.on=1;tw.cb=cb||null;tw.settle=0}
 function setPoseNow(p){tw.on=0;LEGS.forEach(l=>{DOG.pose[l].h=p[l].h;DOG.pose[l].k=p[l].k})}
-function stopWalk(){if(MODE=='walk'){MODE='pose';UI.walking=false;const c=walkCmd(W,DOG.walk).cmd;LEGS.forEach(l=>{DOG.pose[l].h=limit(l,'h',c[l].h);DOG.pose[l].k=limit(l,'k',c[l].k)});syncSliders();setWalkBtn()}}
+/* when the dog stops, it puts all four feet down instead of freezing mid-step with two feet in the air */
+function stopWalk(){if(MODE=='walk'){MODE='pose';UI.walking=false;const c=walkCmd(W,DOG.walk).cmd;LEGS.forEach(l=>{DOG.pose[l].h=limit(l,'h',c[l].h);DOG.pose[l].k=limit(l,'k',c[l].k)});if(!W.fell&&!TIP.on){tweenTo(POSES.stand(),0.35,()=>syncSliders());tw.settle=1;unst=0}syncSliders();setWalkBtn()}}
+function uncal(){return DOG.real.on&&!LEGS.some(l=>DOG.trim[l].h||DOG.trim[l].k)}
+function fallTip(){const g=DOG.walk;
+ if(uncal())return 'The dog fell over! Real-world mode is on and the servos are not calibrated yet. Open the Calibrate tab and fix each leg, or turn real-world mode off.';
+ if(g.f>2.5)return 'The dog fell over! It was walking too fast. Set the speed to 2.5 steps a second or less.';
+ if(Math.hypot(DOG.battery.x,DOG.battery.z)>1.5||DOG.payload>0)return 'The dog fell over! The weight is off-centre. Move the battery back to the middle in the Balance tab.';
+ if(g.h>4||g.s>8)return 'The dog fell over! The steps are too big. Try a lower step height or a shorter step.';
+ return 'The dog fell over! Try a lower step, a slower speed, or keep the feet down longer.'}
 function resetDog(){stopWalk();W=newWalker();clearTip();unst=0;setPoseNow(POSES.stand());syncSliders();say('Dog reset. Standing up.')}
 
 /* ---------- main loop ---------- */
@@ -3379,11 +3387,11 @@ let last=performance.now(),remote={fwd:0,turn:0,on:0},uiT=0;
 function frame(){requestAnimationFrame(frame);if(P10.classList.contains('hid')){last=performance.now();return}
  const w=STG.clientWidth,h=STG.clientHeight;if(w&&h&&SZ!=w+'x'+h){SZ=w+'x'+h;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix()}
  const now=performance.now(),dt=Math.min(.05,(now-last)/1000);last=now;simT+=dt;
- if(remote.on&&!TIP.on){if(Math.abs(remote.fwd)>0.15||Math.abs(remote.turn)>0.15){if(MODE!='walk')startWalk();DOG.walk.turn=clampN(remote.turn,-1,1);DOG.walk.f=Math.max(0.8,Math.abs(remote.fwd)*3)}else if(MODE=='walk')stopWalk()}
+ if(remote.on&&!TIP.on){if(Math.abs(remote.fwd)>0.15||Math.abs(remote.turn)>0.15){if(MODE!='walk')startWalk();DOG.walk.turn=clampN(remote.turn,-1,1);DOG.walk.f=Math.max(0.8,Math.abs(remote.fwd)*2.4)}else if(MODE=='walk')stopWalk()}
  let cmd,st;
- if(MODE=='walk'){const r=walkStep(W,DOG.walk,dt,DOG.real.on);cmd=r.cmd;st=r.st;if(W.fell&&!TIP.on){startTip(st);say('The dog fell over! Try a lower step, slower speed, or move the battery to the middle.',1);SAVE.fell=(SAVE.fell||0)+1;saveAll()}}
+ if(MODE=='walk'){const r=walkStep(W,DOG.walk,dt,DOG.real.on);cmd=r.cmd;st=r.st;if(W.fell&&!TIP.on){startTip(st);say(fallTip(),1);SAVE.fell=(SAVE.fell||0)+1;saveAll()}}
  else{if(tw.on){tw.t+=dt;const k=Math.min(1,tw.t/tw.dur),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;LEGS.forEach(l=>['h','k'].forEach(j=>{DOG.pose[l][j]=tw.from[l][j]+(tw.to[l][j]-tw.from[l][j])*e}));if(k>=1){tw.on=0;const cb=tw.cb;tw.cb=null;cb&&cb()}}
-  cmd=DOG.pose;st=stance(cmd,simT);if(st.margin<0&&!TIP.on){unst+=dt;if(unst>0.18){startTip(st);say('Tipping over! The red dot (centre of mass) left the green area.',1);SAVE.tipped=1;day(2)}}else unst=0}
+  cmd=DOG.pose;st=stance(cmd,simT);if(st.margin<0&&!TIP.on&&!(tw.on&&tw.settle)){unst+=dt;if(unst>0.18){startTip(st);say('Tipping over! The red dot (centre of mass) left the green area.'+(uncal()?' Real-world mode is on: calibrate the servos in the Calibrate tab first.':''),1);SAVE.tipped=1;day(2)}}else unst=0}
  root.position.set(W.X,0,W.Z);root.rotation.y=-W.psi;updateTip(dt);drawDog(st,cmd);
  const tgt=root.position;controls.target.lerp(new THREE.Vector3(tgt.x,6,tgt.z),MODE=='walk'?0.08:0.02);controls.update();
  if(UI.showTri)drawTri(st);
