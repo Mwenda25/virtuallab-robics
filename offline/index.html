@@ -457,6 +457,15 @@ body.lv-e #sm10{display:none}
 #p10 .dgt tr.sel td{background:rgba(79,195,247,.15)}
 #p10 .dgt button{padding:2px 7px;border-radius:6px;border:1px solid rgba(255,255,255,.2);background:#16203a;color:#e6edf7;font:inherit;font-size:12px;cursor:pointer;margin-right:2px}
 #p10 .dgblk{height:300px;border-radius:10px;overflow:hidden;background:#fff;margin:6px 0}
+/* Program tab: hide the kit panel and give the blocks editor most of the screen */
+#p10.dgprog{grid-template-columns:minmax(0,1fr) minmax(460px,46%)}
+#p10.dgprog #dgl{display:none}
+#p10.dgprog #dgr{max-height:none}
+#p10.dgprog .dgblk{height:max(360px,calc(100vh - 380px))}
+#dgblk .blocklyToolboxDiv{background:#eef1f6}
+#dgblk .blocklyTreeLabel,#dgblk .blocklyToolboxCategoryLabel{color:#1d2433!important;font-weight:700}
+#p10.dgprog .dgcode{max-height:320px}
+@media(max-width:1060px){#p10.dgprog{grid-template-columns:1fr}#p10.dgprog #dgl{display:block}#p10.dgprog .dgblk{height:70vh}}
 #p10 .dgcodeh{display:flex;justify-content:space-between;align-items:center;margin-top:10px;font-size:13px}
 #p10 .dgcodeh button{padding:3px 9px;border-radius:7px;border:1px solid rgba(255,255,255,.2);background:#16203a;color:#e6edf7;font:inherit;font-size:12px;cursor:pointer}
 #p10 .dgcodeh button.on{background:#e3f0fb;color:#0b3a66}
@@ -3470,7 +3479,7 @@ function kitStatus(){const el=Qd('dgkit');if(!el)return;const c=window.ctrl?ctrl
 
 /* ---------- the dg object that buttons call ---------- */
 window.dg={
- tab(s){[].forEach.call(document.querySelectorAll('#dgtabs button'),b=>b.classList.toggle('on',b.dataset.s==s));[].forEach.call(document.querySelectorAll('.dgs'),e=>e.classList.toggle('on',e.dataset.s==s));if(s=='prog')progInit();if(s=='train')trainInit()},
+ tab(s){[].forEach.call(document.querySelectorAll('#dgtabs button'),b=>b.classList.toggle('on',b.dataset.s==s));[].forEach.call(document.querySelectorAll('.dgs'),e=>e.classList.toggle('on',e.dataset.s==s));const p10=document.getElementById('p10');if(p10)p10.classList.toggle('dgprog',s=='prog');if(s=='prog'){progInit();setTimeout(()=>{if(PR.ws)Blockly.svgResize(PR.ws)},60)}if(s=='train')trainInit()},
  joint(l,j,v){stopWalk();if(TIP.on&&TIP.ang<0.3)clearTip();v=limit(l,j,+v);linked(l).forEach(t=>{DOG.pose[t][j]=v});tw.on=0;UI.hot=l+'.'+j;clearTimeout(dg._h);dg._h=setTimeout(()=>UI.hot=null,900);UI.sel=l;if(Qd('dgleg'))Qd('dgleg').value=l;syncSliders()},
  link(v){UI.link=v},sel(l){UI.sel=l},
  limits(){const g=id=>+Qd(id).value;DOG.limits.h=[Math.min(g('dglh0'),g('dglh1')),Math.max(g('dglh0'),g('dglh1'))];DOG.limits.k=[Math.max(0,Math.min(g('dglk0'),g('dglk1'))),Math.min(150,Math.max(g('dglk0'),g('dglk1')))];LEGS.forEach(l=>{DOG.pose[l].h=limit(l,'h',DOG.pose[l].h);DOG.pose[l].k=limit(l,'k',DOG.pose[l].k)});saveAll();syncSliders();say('Limits set. Sliders and foot targets now stop at these angles.')},
@@ -3583,7 +3592,7 @@ function build(){if(PR.ws)return;Blockly.defineBlocksWithJsonArray(BLK);
   {kind:'category',name:'WALK',colour:160,contents:[bl('dg_walk',{SEC:3,H:3,S:6,F:2}),bl('dg_turn',{SEC:2})]},{kind:'category',name:'OTHER',colour:290,contents:[bl('dg_wait',{SEC:1}),{kind:'block',type:'dg_say',inputs:{T:{shadow:{type:'text',fields:{TEXT:'Hello'}}}}},bl('dg_balanced'),bl('dg_dist')]},
   {kind:'category',name:'CONTROL',colour:120,contents:[bl('controls_repeat_ext',{TIMES:4}),{kind:'block',type:'controls_if'},{kind:'block',type:'logic_compare',inputs:{A:sh(0),B:sh(0)}},{kind:'block',type:'logic_negate'},{kind:'block',type:'math_number'}]}]};
  const sc=document.querySelector('script[src*="blockly_compressed"]'),media=sc&&/libs\/blockly\//.test(sc.src)?sc.src.replace(/blockly_compressed\.js.*$/,''):null;
- PR.ws=Blockly.inject('dgblk',Object.assign({toolbox:tb,renderer:'zelos',sounds:false,trashcan:false,zoom:{controls:false,wheel:true,startScale:0.8,minScale:0.4,maxScale:1.6},move:{scrollbars:true,drag:true,wheel:false}},media?{media:media}:{}));
+ Qd('dgblk').innerHTML='';PR.ws=Blockly.inject('dgblk',Object.assign({toolbox:tb,renderer:'zelos',sounds:false,trashcan:false,zoom:{controls:true,wheel:true,startScale:0.9,minScale:0.4,maxScale:1.8},move:{scrollbars:true,drag:true,wheel:false}},media?{media:media}:{}));
  let s=null;try{s=JSON.parse(localStorage.getItem('kitbench.dogws.v1')||'null')}catch(e){}
  if(s)try{Blockly.serialization.workspaces.load(s,PR.ws)}catch(e){example()}else example();
  PR.ws.addChangeListener(e=>{if(!e.isUiEvent){try{localStorage.setItem('kitbench.dogws.v1',JSON.stringify(Blockly.serialization.workspaces.save(PR.ws)))}catch(x){}codeShow()}});codeShow()}
