@@ -1,6 +1,6 @@
 {
-  "name": "KitBench: build and test a school robot kit",
-  "short_name": "KitBench",
+  "name": "BotLabs Studio Ke: build and test a school robot kit",
+  "short_name": "BotLabs Studio",
   "description": "A virtual robotics lab for schools: build, wire, program and simulate robots in 2D and 3D.",
   "start_url": "./",
   "scope": "./",

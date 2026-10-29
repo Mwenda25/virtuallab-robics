@@ -6,11 +6,11 @@
 <meta name="theme-color" content="#0a0f1c">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="KitBench">
+<meta name="apple-mobile-web-app-title" content="BotLabs Studio">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>KitBench: build and test a school robot kit</title>
+<title>BotLabs Studio Ke: build and test a school robot kit</title>
 <style>
 :root{--bg:#fff;--card:#F7F6F2;--tx:#1f1f1d;--mu:#5F5E5A;--bd:#D3D1C7;--ac:#185FA5;--acbg:#E6F1FB;--ok:#27500A;--okbg:#EAF3DE;--wn:#633806;--wnbg:#FAEEDA;--er:#791F1F;--erbg:#FCEBEB;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1c1a;--card:#2a2a27;--tx:#f1efe8;--mu:#b4b2a9;--bd:#444441;--ac:#85B7EB;--acbg:#042C53;--ok:#C0DD97;--okbg:#173404;--wn:#FAC775;--wnbg:#412402;--er:#F7C1C1;--erbg:#501313}}
@@ -482,7 +482,7 @@ body.lv-e #sm10{display:none}
 @media(max-width:1060px){#dgstage #dgtri{width:170px;height:131px}}
 </style></head>
 <body><div class="w">
-<div class="hd"><div><h1>KitBench</h1><p class="s" id="hsub">Build, program and test your own robot.</p></div><button id="lvchip" class="lvchip" onclick="mpLevelOpen()" aria-label="Change level"></button></div>
+<div class="hd"><div><h1>BotLabs Studio Ke</h1><p class="s" id="hsub">Build, program and test your own robot.</p></div><button id="lvchip" class="lvchip" onclick="mpLevelOpen()" aria-label="Change level"></button></div>
 <div class="tabs"><button id="t9" onclick="tab(9)"><i>&#x1F3AF;</i><b>Missions</b></button><button id="t1" onclick="tab(1)"><i>&#x1F9E9;</i><b>Build</b></button><button id="t6" onclick="tab(6)"><i>&#x1F3A8;</i><b>Design</b></button><button id="t2" onclick="tab(2)"><i>&#x1F50C;</i><b>Wire</b></button><button id="t5" onclick="tab(5)"><i>&#x1F9F1;</i><b>Program</b></button><button id="t3" onclick="tab(window.simLast||3)"><i>&#x1F579;</i><b>Simulator</b></button><button id="t7" onclick="tab(7)"><i>&#x1F4D8;</i><b>Projects</b></button><button id="tx" onclick="mpExit()"><i>&#x1F6AA;</i><b>Exit</b></button></div>
 <div id="simbar" class="simbar hid" role="tablist" aria-label="Simulator view"><span class="mu">View</span><button id="sm3" onclick="tab(3)">2D practice track</button><button id="sm4" onclick="tab(4)">3D mission mat</button><button id="sm8" onclick="tab(8)">Project lab (3D)</button><button id="sm10" onclick="tab(10)">Robot Dog (3D)</button></div>
 
@@ -1907,20 +1907,20 @@ function lvOpts(sel,all){return (all?'<option value="all"'+(sel=='all'?' selecte
 function stars(id){return MP.stars[id]||0}
 
 /* ---------- guide ---------- */
-function guide(){return '<section class="tppage"><div class="tph"><small>KitBench teacher pack</small><h2>Teacher guide</h2></div>'
-+'<h3>What KitBench is</h3><p>KitBench is a virtual robotics lab. Learners build a robot kit, program it with blocks (and later Python or JavaScript) and test it on a simulated mat. No robot is needed, and after the first visit it works without internet.</p>'
+function guide(){return '<section class="tppage"><div class="tph"><small>BotLabs Studio Ke teacher pack</small><h2>Teacher guide</h2></div>'
++'<h3>What BotLabs Studio Ke is</h3><p>BotLabs Studio Ke is a virtual robotics lab. Learners build a robot kit, program it with blocks (and later Python or JavaScript) and test it on a simulated mat. No robot is needed, and after the first visit it works without internet.</p>'
 +'<h3>Choose a level</h3><table class="tpt"><tr><th>Level</th><th>Ages</th><th>What learners see</th><th>Missions</th></tr>'
 +['e','b','g'].map(function(k){return '<tr><td><b>'+LV[k].n+'</b></td><td>'+LV[k].age.replace('Ages ','')+'</td><td>'+E(LV[k].d)+'</td><td>'+vis(k).length+'</td></tr>'}).join('')+'</table>'
 +'<p>Learners can change level from the chip at the top right. Start younger learners on Explorer even if they type well. Older beginners can start on Builder.</p>'
-+'<h3>Get the devices ready (once, with internet)</h3><ol><li>Open the KitBench web address on each phone or laptop.</li><li>Wait about 10 seconds. A message says KitBench is saved. On a phone with mobile data it asks before saving Python (about 15 MB).</li><li>Install it: on Android Chrome tap <b>Install app</b>; on iPhone or iPad use Share, then <b>Add to Home Screen</b>; on a laptop use the install icon in the address bar.</li><li>Open it once more with the internet turned off to check that it works.</li></ol>'
++'<h3>Get the devices ready (once, with internet)</h3><ol><li>Open the BotLabs Studio Ke web address on each phone or laptop.</li><li>Wait about 10 seconds. A message says BotLabs Studio Ke is saved. On a phone with mobile data it asks before saving Python (about 15 MB).</li><li>Install it: on Android Chrome tap <b>Install app</b>; on iPhone or iPad use Share, then <b>Add to Home Screen</b>; on a laptop use the install icon in the address bar.</li><li>Open it once more with the internet turned off to check that it works.</li></ol>'
 +'<h3>A 40-minute lesson</h3><table class="tpt"><tr><td><b>5 min</b></td><td>Warm-up. A question or an unplugged activity (see each lesson plan).</td></tr><tr><td><b>5 min</b></td><td>Demonstrate the new idea on one screen.</td></tr><tr><td><b>20 min</b></td><td>Learners work in pairs on the mission. One is the <b>driver</b> (moves blocks) and one is the <b>navigator</b> (reads the goal and hints). Swap roles each mission.</td></tr><tr><td><b>5 min</b></td><td>Share. Ask the check questions on the lesson plan.</td></tr><tr><td><b>5 min</b></td><td>Record stars on the class score sheet and tidy up.</td></tr></table>'
 +'<h3>How stars work</h3><p>&#9733; for finishing the mission. &#9733; for finishing without opening a hint. &#9733; for finishing under the target time. Hints are for help, not a penalty: encourage learners to use them after trying for a few minutes.</p>'
-+'<h3>If something goes wrong</h3><table class="tpt"><tr><td><b>The robot does not move</b></td><td>Open Build the kit (Builder and Engineer) and look for the red or yellow message. Or tap the mission again: it repairs the kit and wiring.</td></tr><tr><td><b>Python will not run</b></td><td>Python needs to be saved once with internet. Block programs and JavaScript always work.</td></tr><tr><td><b>Learners lost their blocks</b></td><td>Work is saved on the device and browser in use. Each mission keeps its own blocks.</td></tr><tr><td><b>Shared device shows another learner\'s stars</b></td><td>On the Missions page choose <b>Clear my stars</b>, or use the score sheet to record stars first.</td></tr><tr><td><b>Page looks old after an update</b></td><td>Open KitBench once with internet, close it, and open it again.</td></tr></table>'
-+'<h3>Robot Dog challenge (Builder and Engineer)</h3><p>In the Simulator, open <b>Robot Dog (3D)</b>. Over five days learners move a four-legged robot: Day 1 hip and knee angles and the foot target (inverse kinematics), Day 2 standing and tipping over, Day 3 balancing on three legs by moving the battery (centre of mass), Day 4 walking straight after calibrating wobbly servos, Day 5 training many dogs and sharing a clip. Ask learners to log every attempt in the Projects tab, especially the ones that fail. The Share tab can download MicroPython code for a real ESP32 dog (check pins and test with the legs in the air first). Train it is a simple evolution game, not real robot learning.</p>'+'<h3>Privacy and safety</h3><p>KitBench has no server, no advertising and no tracking. Learner names, PINs, stars and blocks are stored only in the browser on this device, and nothing is sent to any website. Use first names or nicknames only. The PIN is a simple lock to stop classmates changing each other\'s stars, not strong security, so never use a real password. Clearing the browser data deletes the stars: use Teacher, then Download backup, to keep a copy.</p>'+'<h3>Good practice</h3><ul><li>Pair a confident reader with a learner who is still learning to read, and swap roles.</li><li>Let learners predict before they press play: "What will the robot do?"</li><li>Celebrate trying again. Fixing a mistake is the main skill in programming.</li></ul></section>'}
++'<h3>If something goes wrong</h3><table class="tpt"><tr><td><b>The robot does not move</b></td><td>Open Build the kit (Builder and Engineer) and look for the red or yellow message. Or tap the mission again: it repairs the kit and wiring.</td></tr><tr><td><b>Python will not run</b></td><td>Python needs to be saved once with internet. Block programs and JavaScript always work.</td></tr><tr><td><b>Learners lost their blocks</b></td><td>Work is saved on the device and browser in use. Each mission keeps its own blocks.</td></tr><tr><td><b>Shared device shows another learner\'s stars</b></td><td>On the Missions page choose <b>Clear my stars</b>, or use the score sheet to record stars first.</td></tr><tr><td><b>Page looks old after an update</b></td><td>Open BotLabs Studio Ke once with internet, close it, and open it again.</td></tr></table>'
++'<h3>Robot Dog challenge (Builder and Engineer)</h3><p>In the Simulator, open <b>Robot Dog (3D)</b>. Over five days learners move a four-legged robot: Day 1 hip and knee angles and the foot target (inverse kinematics), Day 2 standing and tipping over, Day 3 balancing on three legs by moving the battery (centre of mass), Day 4 walking straight after calibrating wobbly servos, Day 5 training many dogs and sharing a clip. Ask learners to log every attempt in the Projects tab, especially the ones that fail. The Share tab can download MicroPython code for a real ESP32 dog (check pins and test with the legs in the air first). Train it is a simple evolution game, not real robot learning.</p>'+'<h3>Privacy and safety</h3><p>BotLabs Studio Ke has no server, no advertising and no tracking. Learner names, PINs, stars and blocks are stored only in the browser on this device, and nothing is sent to any website. Use first names or nicknames only. The PIN is a simple lock to stop classmates changing each other\'s stars, not strong security, so never use a real password. Clearing the browser data deletes the stars: use Teacher, then Download backup, to keep a copy.</p>'+'<h3>Good practice</h3><ul><li>Pair a confident reader with a learner who is still learning to read, and swap roles.</li><li>Let learners predict before they press play: "What will the robot do?"</li><li>Celebrate trying again. Fixing a mistake is the main skill in programming.</li></ul></section>'}
 
 /* ---------- lesson plans ---------- */
 function plan(m,i){var d=TD[m.id]||{};
-return '<section class="tppage"><div class="tph"><small>KitBench lesson plan &middot; '+E(LV[m.lv].n)+' and above</small><h2>Mission '+(i+1)+': '+E(m.t)+'</h2><div class="tpmeta">Time: '+E(d.time||'40 min')+' &middot; Learners work in pairs &middot; Needs: one phone or laptop per pair</div></div>'
+return '<section class="tppage"><div class="tph"><small>BotLabs Studio Ke lesson plan &middot; '+E(LV[m.lv].n)+' and above</small><h2>Mission '+(i+1)+': '+E(m.t)+'</h2><div class="tpmeta">Time: '+E(d.time||'40 min')+' &middot; Learners work in pairs &middot; Needs: one phone or laptop per pair</div></div>'
 +'<h3>Learning goal</h3><p>'+E(d.goal||m.goal)+'</p><h3>Key words</h3><p>'+E(d.words||'')+'</p>'
 +'<h3>The mission</h3><p>'+E(m.story)+' <b>Goal:</b> '+E(m.goal)+'</p>'
 +'<h3>Lesson steps</h3><table class="tpt"><tr><td><b>Warm-up<br>5 min</b></td><td>'+E(d.warm||'')+'</td></tr><tr><td><b>Demonstrate<br>5 min</b></td><td>'+E(d.demo||'')+'</td></tr><tr><td><b>Learners try<br>20 min</b></td><td>Open <b>Missions</b> and choose Mission '+(i+1)+'. Pairs build the program and press play. Remind them: try first, then use a hint. Walk round and ask "What do you think will happen?"</td></tr><tr><td><b>Share<br>5 min</b></td><td>Ask the check questions below. Record stars on the score sheet.</td></tr></table>'
@@ -1934,16 +1934,16 @@ function plans(sel){var lv=sel||MP.lv||'g';return vis(lv).map(function(m){return
 /* ---------- certificate and score sheet ---------- */
 function cert(){var lv=$q('tcLv').value,v=vis(lv),tot=v.reduce(function(a,m){return a+stars(m.id)},0),done=v.filter(function(m){return stars(m.id)>0}).length,
  name=$q('tcName').value.trim()||'____________________',sch=$q('tcSch').value.trim(),tch=$q('tcTch').value.trim(),dt=$q('tcDt').value;
-$q('tcOut').innerHTML='<div class="tpcert"><div class="tpcb">'+K.bolt('happy',72)+'</div><div class="tpck">KitBench</div><h2>Certificate of achievement</h2><p>This certificate is awarded to</p><div class="tpcn">'+E(name)+'</div><p>for completing the <b>'+E(LV[lv].n)+'</b> robotics missions'+(sch?' at <b>'+E(sch)+'</b>':'')+'.</p>'
+$q('tcOut').innerHTML='<div class="tpcert"><div class="tpcb">'+K.bolt('happy',72)+'</div><div class="tpck">BotLabs Studio Ke</div><h2>Certificate of achievement</h2><p>This certificate is awarded to</p><div class="tpcn">'+E(name)+'</div><p>for completing the <b>'+E(LV[lv].n)+'</b> robotics missions'+(sch?' at <b>'+E(sch)+'</b>':'')+'.</p>'
 +'<p class="tpcs">'+'<span>'+(done+' of '+v.length+' missions')+'</span><span>'+tot+' of '+v.length*3+' stars</span></p><div class="tpcsig"><div><i></i>'+(tch?E(tch):'Teacher')+'</div><div><i></i>'+(dt?E(dt):'Date')+'</div></div></div>'}
-function certSec(){var lv=MP.lv||'g';return '<section class="tppage"><div class="tpctl"><div class="tph"><small>KitBench teacher pack</small><h2>Certificate</h2></div><p>Fill in the boxes, then press <b>Print this page</b> (choose "Save as PDF" to keep a copy). The stars come from the stars saved on this device for the chosen level.</p>'
+function certSec(){var lv=MP.lv||'g';return '<section class="tppage"><div class="tpctl"><div class="tph"><small>BotLabs Studio Ke teacher pack</small><h2>Certificate</h2></div><p>Fill in the boxes, then press <b>Print this page</b> (choose "Save as PDF" to keep a copy). The stars come from the stars saved on this device for the chosen level.</p>'
 +'<div class="tpform"><label>Learner name<input id="tcName" maxlength="40" value="'+E(MP.name)+'" oninput="tpCert()"></label><label>Level<select id="tcLv" onchange="tpCert()">'+lvOpts(lv)+'</select></label><label>School (optional)<input id="tcSch" maxlength="50" oninput="tpCert()"></label><label>Teacher (optional)<input id="tcTch" maxlength="40" oninput="tpCert()"></label><label>Date<input id="tcDt" type="date" onchange="tpCert()"></label></div></div><div id="tcOut"></div></section>'}
 function sheet(){var lv=$q('tsLv').value,n=Math.max(5,Math.min(60,+$q('tsN').value||30)),cls=$q('tsCls').value.trim(),v=vis(lv),rows='';
 var LR=($q('tsFill')&&$q('tsFill').checked&&window.pfLearners)?pfLearners():[];if(LR.length>n)n=LR.length;
 for(var i=1;i<=n;i++){var Lr=LR[i-1];rows+='<tr><td>'+i+'</td><td class="tpnm">'+(Lr?E(Lr.name):'')+'</td>'+v.map(function(m){var s=Lr?(Lr.stars[m.id]||0):0,g='';for(var k=0;k<3;k++)g+=k<s?'&#9733;':'&#9734;';return '<td class="tpst">'+g+'</td>'}).join('')+'<td>'+(Lr?v.reduce(function(a,m){return a+(Lr.stars[m.id]||0)},0):'')+'</td></tr>'}
-$q('tsOut').innerHTML='<div class="tph"><small>KitBench class score sheet</small><h2>'+E(LV[lv].n)+' missions'+(cls?' &middot; '+E(cls):'')+'</h2><div class="tpmeta">Date: ______________ &nbsp; Teacher: ______________________ &nbsp; Colour in a star for each star earned.</div></div><table class="tpt tpsheet"><tr><th>#</th><th>Learner name</th>'+v.map(function(m,i){return '<th><span class="tpm">'+(i+1)+'</span>'+E(m.t)+'</th>'}).join('')+'<th>Total</th></tr>'+rows+'</table>'}
-function sheetSec(){var lv=MP.lv||'g';return '<section class="tppage tpland"><div class="tpctl"><div class="tph"><small>KitBench teacher pack</small><h2>Class score sheet</h2></div><p>A blank sheet to print. Learners or the teacher colour in stars after each mission.</p><div class="tpform"><label>Level<select id="tsLv" onchange="tpSheet()">'+lvOpts(lv)+'</select></label><label>Number of learners<input id="tsN" type="number" min="5" max="60" value="30" onchange="tpSheet()"></label><label>Names and stars<span style="font-weight:400"><input id="tsFill" type="checkbox" onchange="tpSheet()"> Fill with learners on this device</span></label><label>Class name (optional)<input id="tsCls" maxlength="30" oninput="tpSheet()"></label></div></div><div id="tsOut"></div></section>'}
-function planSec(){var lv=MP.lv||'g';return '<section class="tpctl2"><div class="tpctl"><div class="tph"><small>KitBench teacher pack</small><h2>Lesson plans</h2></div><p>One page per mission, with the answer and check questions. Choose the level, then press <b>Print this page</b>.</p><div class="tpform"><label>Show missions for<select id="tpLv" onchange="tpPlans()">'+lvOpts(lv)+'</select></label></div></div><div id="tpPl">'+plans(lv)+'</div></section>'}
+$q('tsOut').innerHTML='<div class="tph"><small>BotLabs Studio Ke class score sheet</small><h2>'+E(LV[lv].n)+' missions'+(cls?' &middot; '+E(cls):'')+'</h2><div class="tpmeta">Date: ______________ &nbsp; Teacher: ______________________ &nbsp; Colour in a star for each star earned.</div></div><table class="tpt tpsheet"><tr><th>#</th><th>Learner name</th>'+v.map(function(m,i){return '<th><span class="tpm">'+(i+1)+'</span>'+E(m.t)+'</th>'}).join('')+'<th>Total</th></tr>'+rows+'</table>'}
+function sheetSec(){var lv=MP.lv||'g';return '<section class="tppage tpland"><div class="tpctl"><div class="tph"><small>BotLabs Studio Ke teacher pack</small><h2>Class score sheet</h2></div><p>A blank sheet to print. Learners or the teacher colour in stars after each mission.</p><div class="tpform"><label>Level<select id="tsLv" onchange="tpSheet()">'+lvOpts(lv)+'</select></label><label>Number of learners<input id="tsN" type="number" min="5" max="60" value="30" onchange="tpSheet()"></label><label>Names and stars<span style="font-weight:400"><input id="tsFill" type="checkbox" onchange="tpSheet()"> Fill with learners on this device</span></label><label>Class name (optional)<input id="tsCls" maxlength="30" oninput="tpSheet()"></label></div></div><div id="tsOut"></div></section>'}
+function planSec(){var lv=MP.lv||'g';return '<section class="tpctl2"><div class="tpctl"><div class="tph"><small>BotLabs Studio Ke teacher pack</small><h2>Lesson plans</h2></div><p>One page per mission, with the answer and check questions. Choose the level, then press <b>Print this page</b>.</p><div class="tpform"><label>Show missions for<select id="tpLv" onchange="tpPlans()">'+lvOpts(lv)+'</select></label></div></div><div id="tpPl">'+plans(lv)+'</div></section>'}
 
 /* ---------- shell ---------- */
 var CUR='guide';
@@ -1966,7 +1966,7 @@ var done=function(){var o=$q('tpPage');if(o)o.remove();window.removeEventListene
 function $q(i){return document.getElementById(i)}
 window.mpExit=function(){try{if(typeof stop=='function')stop()}catch(e){}try{if(window.kb3d&&kb3d.stopProgram)kb3d.stopProgram()}catch(e){}
 var nm='';try{nm=(JSON.parse(localStorage.getItem('kitbench.mp.v1')||'{}').name||'')}catch(e){}
-var o=$q('mplv');o.innerHTML='<div class="mpbox mpc2"><div class="mpbolt">'+(window.KBM?KBM.bolt('happy',96):'')+'</div><h2>Bye'+(nm?', '+esc(nm):'')+'!</h2><p>Your stars and blocks are saved on this device. See you next time!</p><div class="mpact"><button class="pri" onclick="mpClose(\'mplv\')">Stay and keep playing</button><button onclick="mpClose(\'mplv\');pfSwitch()">Switch learner</button><button onclick="mpLeave()">Close KitBench</button></div><p class="mu" id="mpbyem"></p></div>';o.hidden=false};
+var o=$q('mplv');o.innerHTML='<div class="mpbox mpc2"><div class="mpbolt">'+(window.KBM?KBM.bolt('happy',96):'')+'</div><h2>Bye'+(nm?', '+esc(nm):'')+'!</h2><p>Your stars and blocks are saved on this device. See you next time!</p><div class="mpact"><button class="pri" onclick="mpClose(\'mplv\')">Stay and keep playing</button><button onclick="mpClose(\'mplv\');pfSwitch()">Switch learner</button><button onclick="mpLeave()">Close BotLabs Studio Ke</button></div><p class="mu" id="mpbyem"></p></div>';o.hidden=false};
 window.mpLeave=function(){var m=$q('mpbyem');try{window.close()}catch(e){}
 setTimeout(function(){if(m)m.textContent='Your browser keeps this window open. Please close this tab, or swipe the app away. Your work is saved.'},400)};
 })();
@@ -1997,7 +1997,7 @@ function shell(inner){var o=Q('pflg');if(!o){o=document.createElement('div');o.i
 
 /* ---------- login screen ---------- */
 window.pfLogin=function(){var cards=P.list.map(function(p,i){var b=blob(p.id);return '<button class="pfc" onclick="pfPick(\''+p.id+'\')"><span class="pfa" style="background:'+col(i)+'">'+esc((p.name||'?').charAt(0).toUpperCase())+'</span><b>'+esc(p.name)+'</b><small>'+(K.LV[p.lv||b.lv]?K.LV[p.lv||b.lv].n:'')+' &middot; '+totalStars(b)+' &#9733;'+(p.pin?'':'')+'</small></button>'}).join('');
-shell('<div class="mphead">'+K.bolt('happy',72)+'<div><h2>Who is playing?</h2><p>'+(P.list.length?'Tap your name.':'Make a profile so KitBench remembers your stars.')+'</p></div></div><div class="pfgrid">'+cards+'<button class="pfc pfnew" onclick="pfNew()"><span class="pfa">+</span><b>New learner</b><small>Make a profile</small></button></div>'
+shell('<div class="mphead">'+K.bolt('happy',72)+'<div><h2>Who is playing?</h2><p>'+(P.list.length?'Tap your name.':'Make a profile so BotLabs Studio Ke remembers your stars.')+'</p></div></div><div class="pfgrid">'+cards+'<button class="pfc pfnew" onclick="pfNew()"><span class="pfa">+</span><b>New learner</b><small>Make a profile</small></button></div>'
 +'<div class="mpact"><button onclick="pfGuest()">Play without a login</button><button onclick="pfTeacher()">Teacher</button></div>')};
 window.pfGuest=function(){enter('')};
 
@@ -2042,10 +2042,10 @@ try{localStorage.removeItem('kitbench.mp.p.'+id);var pre='kitbench.mpws.p'+id+'.
 P.list=P.list.filter(function(x){return x.id!=id});if(P.cur==id)P.cur='';sv();tpanel('Learner deleted.')};
 function dl(name,text,type){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:type}));a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500)}
 window.pfCsv=function(){var q=function(s){return '"'+String(s).replace(/"/g,'""')+'"'},h=['Name','Level'].concat(K.MS.map(function(m){return m.t})).concat(['Total stars']),r=[h.map(q).join(',')];
-P.list.forEach(function(p){var b=blob(p.id);r.push([p.name,K.LV[p.lv]?K.LV[p.lv].n:''].concat(K.MS.map(function(m){return (b.stars||{})[m.id]||0})).concat([totalStars(b)]).map(q).join(','))});dl('kitbench-class-list.csv',r.join('\r\n'),'text/csv')};
-window.pfBackup=function(){var d={app:'kitbench',v:1,profiles:P.list,mp:{},ws:{}};P.list.forEach(function(p){d.mp[p.id]=blob(p.id);var pre='kitbench.mpws.p'+p.id+'.';for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k.indexOf(pre)==0)d.ws[k]=localStorage.getItem(k)}});dl('kitbench-backup.json',JSON.stringify(d),'application/json')};
+P.list.forEach(function(p){var b=blob(p.id);r.push([p.name,K.LV[p.lv]?K.LV[p.lv].n:''].concat(K.MS.map(function(m){return (b.stars||{})[m.id]||0})).concat([totalStars(b)]).map(q).join(','))});dl('botlabs-studio-class-list.csv',r.join('\r\n'),'text/csv')};
+window.pfBackup=function(){var d={app:'kitbench',v:1,profiles:P.list,mp:{},ws:{}};P.list.forEach(function(p){d.mp[p.id]=blob(p.id);var pre='kitbench.mpws.p'+p.id+'.';for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k.indexOf(pre)==0)d.ws[k]=localStorage.getItem(k)}});dl('botlabs-studio-backup.json',JSON.stringify(d),'application/json')};
 window.pfImport=function(inp){var f=inp.files&&inp.files[0];if(!f)return;var r=new FileReader();r.onload=function(){try{var d=JSON.parse(r.result);if(d.app!='kitbench'||!Array.isArray(d.profiles))throw 0;var n=0;d.profiles.forEach(function(p){if(!p.id||!p.name)return;var i=-1;P.list.forEach(function(x,j){if(x.id==p.id)i=j});if(i<0)P.list.push(p);else P.list[i]=p;try{localStorage.setItem('kitbench.mp.p.'+p.id,JSON.stringify(d.mp[p.id]||{}))}catch(e){}n++});
-for(var k in (d.ws||{}))try{localStorage.setItem(k,d.ws[k])}catch(e){}sv();tpanel(n+' learner(s) restored.')}catch(e){tpanel('That file is not a KitBench backup.')}};r.readAsText(f)};
+for(var k in (d.ws||{}))try{localStorage.setItem(k,d.ws[k])}catch(e){}sv();tpanel(n+' learner(s) restored.')}catch(e){tpanel('That file is not a BotLabs Studio Ke backup.')}};r.readAsText(f)};
 
 /* learners for the class score sheet */
 window.pfLearners=function(){return P.list.map(function(p){return {name:p.name,lv:p.lv,stars:blob(p.id).stars||{}}})};
@@ -3228,10 +3228,10 @@ var PY=['pyodide.js','pyodide.asm.js','pyodide.asm.wasm','pyodide-lock.json','py
 function savePy(){
   if(st('py')||!window.caches)return;bp.hidden=true;show('Saving Python for offline use...');
   caches.open('kitbench-v2').then(function(c){var i=0;return(function next(){if(i>=PY.length)return;var f=PY[i++];return c.match('offline/libs/pyodide/'+f).then(function(m){return m||c.add('offline/libs/pyodide/'+f)}).then(next)})()})
-  .then(function(){st('py','1');show('Python is saved. KitBench now works fully offline.')},function(){bp.hidden=false;show('Could not save Python. Check your connection and try again.')});
+  .then(function(){st('py','1');show('Python is saved. BotLabs Studio Ke now works fully offline.')},function(){bp.hidden=false;show('Could not save Python. Check your connection and try again.')});
 }
 function ready(){
-  if(!st('ready')){st('ready','1');show('KitBench is saved on this device and opens without internet.')}
+  if(!st('ready')){st('ready','1');show('BotLabs Studio Ke is saved on this device and opens without internet.')}
   if(st('py'))return;
   var cn=navigator.connection;
   if(cn&&(cn.saveData||cn.type==='cellular'||/2g/.test(cn.effectiveType||''))){bp.hidden=false;show('Save Python for offline use? It is about 15 MB.')}
@@ -3240,7 +3240,7 @@ function ready(){
 if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)){
   navigator.serviceWorker.register('sw.js').then(function(){return navigator.serviceWorker.ready}).then(ready).catch(function(){});
 }
-window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;if(!standalone&&!st('x')){bi.hidden=false;show('Install KitBench on this device.')}});
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;if(!standalone&&!st('x')){bi.hidden=false;show('Install BotLabs Studio Ke on this device.')}});
 bi.onclick=function(){if(!dp)return;dp.prompt();dp.userChoice.then(function(){dp=null;bi.hidden=true;bar.hidden=true})};
 bp.onclick=savePy;
 bx.onclick=function(){bar.hidden=true;st('x','1')};
@@ -3673,15 +3673,15 @@ function tcode(py){if(!PR.ws)return '';const tops=PR.ws.getTopBlocks(true).filte
    if(b.getInput('ELSE')){const body=S(b.getInputTargetBlock('ELSE'),d+1);o+=py?p+'else:\n'+(body||pad(d+1)+'pass\n'):p+'} else {\n'+body}if(!py)o+=p+'}\n'}
   b=b.getNextBlock()}return o}
  const body=tops.map(t=>S(t.getNextBlock(),0)).join('\n');
- return py?'# Made from your blocks. dog is the KitBench Robot Dog.\nimport dog\n\n'+(body||'pass\n'):'// Made from your blocks. dog is the KitBench Robot Dog.\n'+(body||'')}
+ return py?'# Made from your blocks. dog is the BotLabs Studio Ke Robot Dog.\nimport dog\n\n'+(body||'pass\n'):'// Made from your blocks. dog is the BotLabs Studio Ke Robot Dog.\n'+(body||'')}
 function codeText(){return PR.lang=='esp'?esp32Code():tcode(PR.lang=='py')}
 function codeShow(){const e=Qd('dgcode');if(e)e.textContent=codeText()}
 
 
 /* ===== Sharing, the real ESP32 dog, phone remote, journal and start-up ===== */
 function dlFile(name,text,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:type||'text/plain'}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
-function esp32Code(){const prog=tcode(true).replace(/^import dog\n\n?/m,'').replace('# Made from your blocks. dog is the KitBench Robot Dog.\n','').trim()||'dog.stand()\ndog.wait(1)',G=DOG.walk,fx=v=>Math.round(v*100)/100;
-return `# KitBench Robot Dog on an ESP32 (MicroPython)
+function esp32Code(){const prog=tcode(true).replace(/^import dog\n\n?/m,'').replace('# Made from your blocks. dog is the BotLabs Studio Ke Robot Dog.\n','').trim()||'dog.stand()\ndog.wait(1)',G=DOG.walk,fx=v=>Math.round(v*100)/100;
+return `# BotLabs Studio Ke Robot Dog on an ESP32 (MicroPython)
 # 1. Wire the 8 servos to the pins below (or to a PCA9685 and change Servo).
 # 2. In Thonny, save this file on the ESP32 as main.py.
 # 3. Stand the dog on a box with its legs in the air the first time.
@@ -3860,7 +3860,7 @@ def remote():
     import socket
     ap = network.WLAN(network.AP_IF)
     ap.active(True)
-    ap.config(essid="KitBench-Dog", password="change-me-123")
+    ap.config(essid="BotLabs-Dog", password="change-me-123")
     srv = socket.socket()
     srv.bind(("0.0.0.0", 80))
     srv.listen(2)
@@ -3868,7 +3868,7 @@ def remote():
     fwd = 0.0
     turn = 0.0
     last = time.ticks_ms()
-    print("Join the Wi-Fi KitBench-Dog, then open http://192.168.4.1 on your phone")
+    print("Join the Wi-Fi BotLabs-Dog, then open http://192.168.4.1 on your phone")
     while True:
         try:
             conn, addr = srv.accept()
@@ -3937,7 +3937,7 @@ Object.assign(dg,{
  const up=()=>{on=false;k.style.transform='';remote.fwd=remote.turn=0;remote.on=false;if(MODE=='walk')stopWalk()};j.addEventListener('pointerup',up);j.addEventListener('pointercancel',up)})();
 let chan=null;try{chan=new BroadcastChannel('kitbench-dog-remote');chan.onmessage=e=>{const d=e.data||{};remote.fwd=+d.fwd||0;remote.turn=+d.turn||0;remote.on=Math.abs(remote.fwd)>0.15||Math.abs(remote.turn)>0.15;if(!remote.on&&MODE=='walk')stopWalk()}}catch(e){}
 /* a stand-alone phone controller page: #remote */
-function remotePage(){const o=document.createElement('div');o.id='dgremote';o.innerHTML='<h2>Robot Dog remote</h2><p>Drag the dot. This sends commands to a KitBench Robot Dog open in another tab on this device. A real ESP32 dog serves its own page.</p><div id="dgjoy2" class="dgjoy big"><i id="dgknob2"></i></div><p id="dgrt">Ready</p>';document.body.appendChild(o);
+function remotePage(){const o=document.createElement('div');o.id='dgremote';o.innerHTML='<h2>Robot Dog remote</h2><p>Drag the dot. This sends commands to a BotLabs Studio Ke Robot Dog open in another tab on this device. A real ESP32 dog serves its own page.</p><div id="dgjoy2" class="dgjoy big"><i id="dgknob2"></i></div><p id="dgrt">Ready</p>';document.body.appendChild(o);
  const j=Qd('dgjoy2'),k=Qd('dgknob2');let on=false;const send=(f,t)=>{if(chan)chan.postMessage({fwd:f,turn:t});Qd('dgrt').textContent='Forward '+Math.round(f*100)+'%, turn '+Math.round(t*100)+'%'};
  const mv=e=>{const r=j.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;let dx=(e.clientX-cx)/(r.width/2),dy=(e.clientY-cy)/(r.height/2);const l=Math.hypot(dx,dy);if(l>1){dx/=l;dy/=l}k.style.transform='translate('+dx*70+'px,'+dy*70+'px)';send(-dy,dx)};
  j.addEventListener('pointerdown',e=>{on=true;j.setPointerCapture(e.pointerId);mv(e)});j.addEventListener('pointermove',e=>{if(on)mv(e)});const up=()=>{on=false;k.style.transform='';send(0,0)};j.addEventListener('pointerup',up);j.addEventListener('pointercancel',up)}

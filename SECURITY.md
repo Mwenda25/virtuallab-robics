@@ -1,6 +1,6 @@
 # Security
 
-## How KitBench is built
+## How BotLabs Studio Ke is built
 
 - A static website. There is no server code, database or user data on a server.
 - The page loads code only from its own address. A Content Security Policy in the page blocks scripts and network requests to other websites.

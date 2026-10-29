@@ -1,4 +1,4 @@
-/* KitBench service worker: keeps the app and its libraries so it opens with no connection. */
+/* BotLabs Studio Ke service worker: keeps the app and its libraries so it opens with no connection. */
 const V = 'kitbench-v2';
 const SHELL = [
   './', 'index.html', 'manifest.webmanifest',

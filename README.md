@@ -1,4 +1,4 @@
-﻿# virtuallab-robics (KitBench)
+﻿# virtuallab-robics (BotLabs Studio Ke)
 
 A browser-based virtual robotics lab for schools. Pick parts from a real kit, wire them, redesign the robot, program it, then test it on 2D and 3D mats. No install and no server needed for the online version.
 
@@ -27,15 +27,15 @@ A browser-based virtual robotics lab for schools. Pick parts from a real kit, wi
 
 ## Run it
 
-**As a web app (online and offline, Android, iPhone, iPad, Windows, Mac, Chromebook):** open the live link above once with an internet connection. KitBench saves itself on the device (a service worker keeps the app, Blockly, three.js and Python) and then opens with no internet. It needs HTTPS, which GitHub Pages provides (Settings, Pages, deploy from `main`, root).
+**As a web app (online and offline, Android, iPhone, iPad, Windows, Mac, Chromebook):** open the live link above once with an internet connection. BotLabs Studio Ke saves itself on the device (a service worker keeps the app, Blockly, three.js and Python) and then opens with no internet. It needs HTTPS, which GitHub Pages provides (Settings, Pages, deploy from `main`, root).
 
-- **Android (Chrome):** tap Install app when KitBench offers it, or the browser menu, then Install app.
+- **Android (Chrome):** tap Install app when BotLabs Studio Ke offers it, or the browser menu, then Install app.
 - **iPhone and iPad (Safari):** tap the Share button, then Add to Home Screen.
 - **Windows, Mac, Chromebook (Chrome or Edge):** click the install icon in the address bar.
 
-KitBench saves Python (about 15 MB) in the background on Wi-Fi so that Python code runs offline too. On mobile data it asks first. After an update is published, open the app once while online to get the new version.
+BotLabs Studio Ke saves Python (about 15 MB) in the background on Wi-Fi so that Python code runs offline too. On mobile data it asks first. After an update is published, open the app once while online to get the new version.
 
-**Windows, no internet even the first time:** open the `offline` folder and double-click `Start KitBench.bat`. Everything, including the libraries, is in `offline/libs`, and it runs from a small local server. See `offline/README.txt`.
+**Windows, no internet even the first time:** open the `offline` folder and double-click `Start BotLabs Studio Ke.bat`. Everything, including the libraries, is in `offline/libs`, and it runs from a small local server. See `offline/README.txt`.
 
 Your kit, wiring, designs, projects and blocks are saved in the browser (localStorage), separately for each browser.
 
